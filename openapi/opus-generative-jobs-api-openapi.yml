@@ -1,0 +1,160 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates generative-jobs API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: generative-jobs
+paths:
+  /api/generative-jobs:
+    post:
+      operationId: GenerativeJobController_createGenerativeJob
+      summary: Create a thumbnail generation job
+      description: Experimental. Subject to change; daily caps apply and the endpoint may be temporarily disabled via a runtime kill switch. Currently the only published `jobType` is `thumbnail` (7 credits/call, charged on success and refunded on failure).
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GenerativeThumbnailJobRequest'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerativeJobCreateResponse'
+      security:
+      - bearer: []
+      tags:
+      - generative-jobs
+  /api/generative-jobs/{jobId}:
+    get:
+      operationId: GenerativeJobController_getGenerativeJob
+      summary: Get a generative job
+      description: Experimental. Returns status, progress, and result for a job created via `POST /api/generative-jobs`. For `thumbnail` jobs, the `result.generatedThumbnailUris` array contains the CDN URLs of the produced thumbnails when `status` is `CONCLUDED`.
+      parameters:
+      - name: jobId
+        required: true
+        in: path
+        description: The jobId returned by `POST /api/generative-jobs`.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GenerativeJobStatusResponse'
+      security:
+      - bearer: []
+      tags:
+      - generative-jobs
+components:
+  schemas:
+    GenerativeJobCreateResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: The generated job ID. Use it with `GET /api/generative-jobs/{jobId}` to poll status and fetch results.
+          example: thumbnail-aB3xR7nQ8z
+      required:
+      - jobId
+    GenerativeJobStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - PROCESSING
+          - CONCLUDED
+          - FAILED
+          - UNKNOWN
+          description: The job status.
+        result:
+          $ref: '#/components/schemas/GenerativeJobResult'
+          description: Present when `status` is `CONCLUDED` and the job produced output.
+        progress:
+          $ref: '#/components/schemas/GenerativeJobProgress'
+          description: Present while the job is `QUEUED` or `PROCESSING`, and on `CONCLUDED` as a final snapshot.
+        error:
+          $ref: '#/components/schemas/GenerativeJobError'
+          description: Present when `status` is `FAILED` or when result extraction failed for a `CONCLUDED` job.
+      required:
+      - status
+    GenerativeJobError:
+      type: object
+      description: User-facing error info for a failed generative job.
+      properties:
+        type:
+          type: string
+          description: Error type identifier.
+        message:
+          type: string
+          description: Human-readable error message.
+    GenerativeJobProgress:
+      type: object
+      description: Progress snapshot for an in-flight or completed generative job.
+      properties:
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - PROCESSING
+          - CONCLUDED
+          - FAILED
+          - UNKNOWN
+        percentage:
+          type: number
+          description: Coarse progress between 0 and 1.
+          minimum: 0
+          maximum: 1
+    GenerativeThumbnailJobRequest:
+      type: object
+      properties:
+        jobType:
+          type: string
+          enum:
+          - thumbnail
+          description: The type of generative job to create. Currently the only published value is `thumbnail`.
+        sourceUri:
+          type: string
+          description: URL of the source video to extract thumbnails from.
+          example: https://youtube.com/watch?v=...
+        referenceImageUri:
+          type: string
+          description: 'Optional reference image URL. The thumbnail composition draws stylistic cues from this image. Upload via `POST /api/upload-links` with `usecase: ''FreeToolMedia''`, then pass the returned `cdnUrl` here.'
+          example: https://cdn.opus.pro/uploads/.../ref.png
+        maskImageUri:
+          type: string
+          description: Optional mask image URL for inpainting.
+          example: https://cdn.opus.pro/uploads/.../mask.png
+        prompt:
+          type: string
+          description: Optional text prompt steering the thumbnail composition.
+          example: punchy red overlay, bold sans-serif title
+      required:
+      - jobType
+      - sourceUri
+    GenerativeJobResult:
+      type: object
+      description: Result payload. For `thumbnail` jobs, includes `generatedThumbnailUris`.
+      properties:
+        generatedThumbnailUris:
+          type: array
+          items:
+            type: string
+          description: CDN URLs of the produced thumbnails. Typically 4 images per successful thumbnail job.
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

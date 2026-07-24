@@ -1,0 +1,391 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: brand-templates
+paths:
+  /api/brand-templates:
+    get:
+      operationId: BrandTemplateController_getTemplates
+      parameters:
+      - name: q
+        required: true
+        in: query
+        schema:
+          enum:
+          - mine
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/BrandTemplateRepresentation'
+      security:
+      - bearer: []
+      tags:
+      - brand-templates
+components:
+  schemas:
+    ShadowDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the shadow is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the shadow.
+          example: '#FFFFFFFF'
+        x:
+          type: number
+          description: The x offset of the shadow.
+          example: 2
+        y:
+          type: number
+          description: The y offset of the shadow.
+          example: 2
+        blur:
+          type: number
+          description: The blur radius of the shadow.
+          example: 16
+        useWordHighlightColor:
+          type: boolean
+          description: Indicates if the word highlight color should be used for the shadow.
+          example: false
+      required:
+      - enabled
+      - color
+      - x
+      - y
+      - blur
+    HighlightColorDto:
+      type: object
+      properties:
+        primary:
+          type: string
+          description: Primary highlight color.
+          example: '#ff0000'
+        secondary:
+          type: string
+          description: Secondary highlight color.
+          example: '#00ff00'
+      required:
+      - primary
+      - secondary
+    RenderPreferenceDto:
+      type: object
+      properties:
+        enableAutoLayout:
+          type: boolean
+          description: Enables automatic layout adjustment.
+          example: false
+          default: false
+        enableScreenLayout:
+          type: boolean
+          description: Enables screen layout for the video.
+          example: true
+          default: false
+        enableCrop:
+          type: boolean
+          description: Enables cropping of the video.
+          example: true
+          default: false
+        enableCaption:
+          type: boolean
+          description: Enables caption overlay on the video.
+          example: true
+          default: false
+        enableUppercase:
+          type: boolean
+          description: Converts all characters to uppercase in captions.
+          example: true
+          default: false
+        enableHighlight:
+          type: boolean
+          description: Enables keyword highlighting in captions.
+          example: true
+          default: false
+        enableEmoji:
+          type: boolean
+          description: Enables emoji overlay on the video.
+          example: true
+          default: false
+        enableFillLayout:
+          type: boolean
+          description: Enables fill layout for a single person.
+          example: false
+          default: false
+        enableSplitLayout:
+          type: boolean
+          description: Enables split layout for two people.
+          example: true
+          default: false
+        enableThreeLayout:
+          type: boolean
+          description: Enables layout for three people.
+          example: true
+          default: false
+        enableFourLayout:
+          type: boolean
+          description: Enables layout for four people.
+          example: true
+          default: false
+        enableFitLayout:
+          type: boolean
+          description: Enables fit layout for multiple people.
+          example: false
+          default: false
+        fitLayoutCropRatio:
+          type: string
+          description: Specifies the crop ratio for fit layout.
+          example: '4:3'
+          default: '4:3'
+        enableVisualHook:
+          type: boolean
+          description: Enables visual hook overlay, deprecated and should always be false.
+          example: false
+          default: false
+        enableWatermark:
+          type: boolean
+          description: Enables watermark overlay.
+          example: false
+          default: false
+        layoutAspectRatio:
+          description: Specifies the layout aspect ratio.
+          example: portrait
+          default: portrait
+          allOf:
+          - $ref: '#/components/schemas/LayoutAspectRatio'
+        enableBroll:
+          type: boolean
+          description: Enables B-Roll overlay on the video.
+          example: false
+          default: false
+        font:
+          description: Font settings for captions.
+          example:
+            color: '#ffffff'
+            style:
+            - '900'
+            family: Komika-axis
+            stroke:
+              enabled: false
+              color: '#000000FF'
+              width: 16
+            shadow:
+              enabled: true
+              color: '#FFFFFFFF'
+              x: 2
+              y: 2
+              blur: 16
+          allOf:
+          - $ref: '#/components/schemas/FontDto'
+        highlightColor:
+          description: Highlight colors for keywords in captions.
+          example:
+            primary: '#ff0000'
+            secondary: '#00ff00'
+          allOf:
+          - $ref: '#/components/schemas/HighlightColorDto'
+      required:
+      - enableAutoLayout
+      - enableScreenLayout
+      - enableCrop
+      - enableCaption
+      - enableUppercase
+      - enableHighlight
+      - enableEmoji
+      - enableFillLayout
+      - enableSplitLayout
+      - enableThreeLayout
+      - enableFourLayout
+      - enableFitLayout
+      - fitLayoutCropRatio
+      - enableVisualHook
+      - enableWatermark
+      - font
+      - highlightColor
+    BrandTemplateRepresentation:
+      type: object
+      properties:
+        templateId:
+          type: string
+          description: Template ID
+          example: cm32g2poc0002t5bnhmg2kfyx
+        name:
+          type: string
+          description: Template name
+          example: Karaoke Template
+        isDefault:
+          type: boolean
+          description: Is default template
+          example: true
+        preferences:
+          description: Render preference
+          example:
+            enableAutoLayout: false
+            enableFillLayout: false
+            enableFitLayout: false
+            fitLayoutCropRatio: '4:3'
+            enableSplitLayout: true
+            enableThreeLayout: true
+            enableFourLayout: true
+            enableScreenLayout: true
+            enableVisualHook: false
+            enableWatermark: false
+            enableCrop: true
+            enableCaption: true
+            enableUppercase: true
+            enableHighlight: true
+            enableEmoji: true
+            font:
+              color: '#ffffff'
+              style:
+              - '900'
+              family: Komika-axis
+              stroke:
+                enabled: false
+                color: '#000000FF'
+                width: 16
+              shadow:
+                enabled: true
+                color: '#FFFFFFFF'
+                x: 2
+                y: 2
+                blur: 16
+            highlightColor:
+              primary: '#04f827'
+              secondary: '#FFFD03'
+          allOf:
+          - $ref: '#/components/schemas/RenderPreferenceDto'
+        type:
+          type: string
+          description: Type of template
+          example: PresetOverwrite
+      required:
+      - templateId
+      - name
+      - isDefault
+      - preferences
+    StrokeDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the stroke is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the stroke.
+          example: '#000000FF'
+        width:
+          type: number
+          description: The width of the stroke.
+          example: 16
+      required:
+      - enabled
+      - color
+      - width
+    FontDto:
+      type: object
+      properties:
+        color:
+          type: string
+          description: The color of the font.
+          example: '#ffffff'
+        style:
+          description: The style of the font.
+          example:
+          - '900'
+          type: array
+          items:
+            type: string
+        family:
+          type: string
+          description: The family of the font.
+          example: Komika-axis
+        stroke:
+          description: The stroke settings of the font.
+          example:
+            enabled: false
+            color: '#000000FF'
+            width: 16
+          allOf:
+          - $ref: '#/components/schemas/StrokeDto'
+        shadow:
+          description: The shadow settings of the font.
+          example:
+            enabled: true
+            color: '#FFFFFFFF'
+            x: 2
+            y: 2
+            blur: 16
+          allOf:
+          - $ref: '#/components/schemas/ShadowDto'
+        id:
+          type: string
+          description: The ID of the font.
+          example: font123
+        type:
+          type: string
+          description: The type of the font.
+          example: CustomizedFont
+          enum:
+          - CustomizedFont
+          - System
+        name:
+          type: string
+          description: The name of the font.
+          example: Arial
+        path:
+          type: string
+          description: The storage path of the font.
+          example: /fonts/arial.ttf
+        size:
+          type: string
+          description: The size of the font.
+          example: Large
+          enum:
+          - Large
+          - Middle
+          - Small
+        numericalSize:
+          type: number
+          description: The numerical size of the font.
+          example: 50
+        textDecoration:
+          type: string
+          description: The text decoration of the font.
+          example: underline
+          enum:
+          - line-through
+          - underline
+          - ''
+      required:
+      - color
+      - style
+      - family
+      - stroke
+      - shadow
+    LayoutAspectRatio:
+      type: string
+      enum:
+      - portrait
+      - landscape
+      - square
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,114 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates censor-jobs API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: censor-jobs
+paths:
+  /api/censor-jobs:
+    post:
+      operationId: CensorJobController_createCensorJob
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CensorJobRequest'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CensorJobResponse'
+      security:
+      - bearer: []
+      tags:
+      - censor-jobs
+  /api/censor-jobs/{jobId}:
+    get:
+      operationId: CensorJobController_getCensorJob
+      parameters:
+      - name: jobId
+        required: true
+        in: path
+        description: The jobId that you want to get the status of.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CensorJobStatusResponse'
+      security:
+      - bearer: []
+      tags:
+      - censor-jobs
+components:
+  schemas:
+    CensorJobOptions:
+      type: object
+      properties:
+        beepSound:
+          type: boolean
+          description: Use beep sound instead of the censored words.
+          example: true
+    CensorJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: If the job was created successfully, this will contain the job ID.
+        message:
+          type: string
+          description: A message indicating the result of the job creation.
+    CensorJobStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - CONCLUDED
+          - FAILED
+          - PROCESSING
+          - QUEUED
+          - UNKNOWN
+          description: The status of the censor job.
+        error:
+          type: string
+          description: Error message.
+      required:
+      - status
+    CensorJobRequest:
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: The project id that you want to censor.
+          example: P0000000demo
+        clipId:
+          type: string
+          description: The clip id that you want to censor.
+          example: lDIOHRzdac
+        options:
+          description: Some options for the censor job.
+          example:
+            beepSound: false
+          allOf:
+          - $ref: '#/components/schemas/CensorJobOptions'
+      required:
+      - projectId
+      - clipId
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

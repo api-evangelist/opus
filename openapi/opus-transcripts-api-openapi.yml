@@ -1,0 +1,121 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates transcripts API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: transcripts
+paths:
+  /api/transcripts:
+    get:
+      operationId: TranscriptController_getTranscript
+      summary: Get a source-video transcript
+      description: Fetch the trimmed source-video transcript for a project. ASR internals (seek, tokens, log-probabilities, etc.) are stripped. For API callers on a range-limited project, paragraphs are filtered to the billed curation range; internal callers and full-source submissions get the full transcript.
+      parameters:
+      - name: q
+        required: true
+        in: query
+        description: Query variant. Public callers must pass `findByProjectId`.
+        schema:
+          type: string
+          enum:
+          - findByProjectId
+      - name: projectId
+        required: true
+        in: query
+        description: Project ID.
+        schema:
+          type: string
+          example: P2120900kDmP
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TranscriptResponse'
+      security:
+      - bearer: []
+      tags:
+      - transcripts
+components:
+  schemas:
+    TranscriptResponse:
+      type: object
+      description: Wrapper for the transcript response. `data[0]` is the transcript, or `null` when the project has no transcript yet.
+      properties:
+        data:
+          type: array
+          items:
+            type: array
+            nullable: true
+            items:
+              $ref: '#/components/schemas/TranscriptExportParagraph'
+    TranscriptExportWord:
+      type: object
+      description: A single word with start/end timings and optional filler-word flag.
+      properties:
+        word:
+          type: string
+          description: The word.
+          example: hello
+        start:
+          type: number
+          description: Start time in seconds.
+          example: 0.12
+        end:
+          type: number
+          description: End time in seconds.
+          example: 0.48
+        isFillerWord:
+          type: boolean
+          description: True if the word is a filler (um, uh, ...).
+          example: false
+      required:
+      - word
+      - start
+      - end
+    TranscriptExportParagraph:
+      type: object
+      description: A paragraph of the transcript with timing and optional speaker attribution.
+      properties:
+        id:
+          type: integer
+          description: Paragraph index within the transcript.
+          example: 0
+        start:
+          type: number
+          description: Start time in seconds.
+          example: 0
+        end:
+          type: number
+          description: End time in seconds.
+          example: 10.5
+        text:
+          type: string
+          description: Paragraph text.
+          example: Hello and welcome to the show.
+        speaker:
+          type: string
+          description: Speaker label, when diarization is available.
+          example: SPEAKER_00
+        words:
+          type: array
+          items:
+            $ref: '#/components/schemas/TranscriptExportWord'
+          description: Per-word timings inside this paragraph.
+      required:
+      - id
+      - start
+      - end
+      - text
+      - words
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

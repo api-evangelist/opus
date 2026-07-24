@@ -1,0 +1,439 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates social-posting API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: social-posting
+paths:
+  /api/social-accounts:
+    get:
+      operationId: SocialAccountController_getSocialAccounts
+      description: Retrieve the connected social destinations available for social posting.
+      parameters:
+      - name: q
+        required: true
+        in: query
+        description: Query type
+        schema:
+          type: string
+          enum:
+          - mine
+          example: mine
+      responses:
+        '200':
+          description: Successfully retrieved social accounts
+          content:
+            application/json:
+              example:
+                data:
+                - postAccountId: postAccountId_xxx1
+                  subAccountId: subAccountId_xxx1
+                  platform: FACEBOOK_PAGE
+                  extUserId: extUserId_xxx
+                  extUserName: Page Name
+                  extUserPictureLink: https://example.com/avatar.png
+                  extUserProfileLink: https://www.facebook.com/page_id
+                - postAccountId: postAccountId_xxx2
+                  platform: TIKTOK_BUSINESS
+                  extUserId: extUserId_xxx
+                  extUserName: tiktok_account
+                  extUserPictureLink: https://example.com/avatar.jpeg
+                  extUserProfileLink: https://www.tiktok.com/@username
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      required:
+                      - postAccountId
+                      - platform
+                      - extUserId
+                      - extUserName
+                      properties:
+                        postAccountId:
+                          type: string
+                          description: Unique ID of the connected social account record
+                        subAccountId:
+                          type: string
+                          description: Sub-account ID for Facebook pages, Instagram business accounts, or LinkedIn person or org URNs
+                        platform:
+                          type: string
+                          enum:
+                          - YOUTUBE
+                          - TIKTOK_BUSINESS
+                          - FACEBOOK_PAGE
+                          - INSTAGRAM_BUSINESS
+                          - LINKEDIN
+                          - TWITTER
+                        extUserId:
+                          type: string
+                          description: Platform-side user or account ID
+                        extUserName:
+                          type: string
+                          description: Display name from the third-party platform
+                        extUserPictureLink:
+                          type: string
+                          description: Avatar image URL
+                        extUserProfileLink:
+                          type: string
+                          description: Public channel or profile URL
+      security:
+      - bearer: []
+      tags:
+      - social-posting
+  /api/social-copy-jobs:
+    post:
+      operationId: SocialCopyJobController_createSocialCopyJob
+      description: Create an asynchronous social copy generation job for a specific clip and destination account.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              projectId: P0000000demo
+              clipId: CUexample1
+              postAccountId: postAccountId_xxx1
+              subAccountId: subAccountId_xxx1
+              prompt: Write the caption in a playful, witty tone that uses humor to keep the audience engaged, while ending with a clear call to action.
+              forceRegenerate: false
+            schema:
+              type: object
+              required:
+              - projectId
+              - clipId
+              - postAccountId
+              - subAccountId
+              properties:
+                projectId:
+                  type: string
+                  description: Project ID
+                clipId:
+                  type: string
+                  description: Bare clip ID (e.g. `CUexample1`). **Not** the composite `{projectId}.{clipId}` form returned as `id` by `GET /api/exportable-clips` — pass only the part after the dot.
+                postAccountId:
+                  type: string
+                  description: Unique ID of the connected social account record
+                subAccountId:
+                  type: string
+                  description: Sub-account ID used by Facebook pages, Instagram business accounts, or LinkedIn
+                prompt:
+                  type: string
+                  description: Custom style or tone instruction for generation
+                forceRegenerate:
+                  type: boolean
+                  description: Whether to bypass the cached result and regenerate
+      responses:
+        '201':
+          description: Successfully created a social copy generation job
+          content:
+            application/json:
+              example:
+                data:
+                  jobId: 96e3d68c-49ef-4c19-b3b6-595f9564537c
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: object
+                    required:
+                    - jobId
+                    properties:
+                      jobId:
+                        type: string
+                        description: Unique ID of the social copy generation job
+      security:
+      - bearer: []
+      tags:
+      - social-posting
+  /api/social-copy-jobs/{jobId}:
+    get:
+      operationId: SocialCopyJobController_getSocialCopyJob
+      description: Get the current status and generated copy for a social copy generation job.
+      parameters:
+      - name: jobId
+        required: true
+        in: path
+        description: Unique ID of the social copy generation job
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully retrieved the social copy generation result
+          content:
+            application/json:
+              example:
+                data:
+                  jobId: 96e3d68c-49ef-4c19-b3b6-595f9564537c
+                  status: COMPLETED
+                  cached: false
+                  title: My Daughter's 'Gift' at 3 AM
+                  description: Thought I was losing my mind. Hear walking at 3 AM, check the house - everyone's asleep. Then I see it... my daughter's 'gift' moved. My wife has some explaining to do!
+                  hashtags: '#ParentingFails #CreepyKids #MomLife #FunnyParenting #WhatDidISignUpFor'
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: object
+                    required:
+                    - jobId
+                    - status
+                    properties:
+                      jobId:
+                        type: string
+                        description: Unique ID of the social copy generation job
+                      status:
+                        type: string
+                        enum:
+                        - RUNNING
+                        - COMPLETED
+                        - FAILED
+                        description: Status of the social copy generation job
+                      cached:
+                        type: boolean
+                        description: Whether the result came from cache
+                      title:
+                        type: string
+                        description: Generated title
+                      description:
+                        type: string
+                        description: Generated description
+                      hashtags:
+                        type: string
+                        description: Generated hashtags
+      security:
+      - bearer: []
+      tags:
+      - social-posting
+  /api/post-tasks:
+    post:
+      operationId: PostTaskController_createPostTask
+      description: Publish a clip immediately to a connected social account. Each X (formerly Twitter) post costs 1 credit.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              projectId: P0000000demo
+              clipId: qU3iVMSO77
+              postAccountId: postAccountId_xxx1
+              subAccountId: subAccountId_xxx1
+              postDetail:
+                title: My Daughter's Creepy 3 AM Visitor
+                custom:
+                  description: 'Okay, so my daughter got a doll that can apparently move on its own. Last night at 3 AM, I heard footsteps, went to check, and this thing had moved! Totally thought I was losing my mind. Anyone else''s toys play tricks? #CreepyDoll #HauntedHouse #MomLife #ParentingFails #ScaryStories'
+                  privacy: public
+                mediaType: video
+            schema:
+              type: object
+              required:
+              - projectId
+              - clipId
+              - postAccountId
+              - postDetail
+              properties:
+                projectId:
+                  type: string
+                  description: Project ID
+                clipId:
+                  type: string
+                  description: Bare clip ID (e.g. `qU3iVMSO77`). **Not** the composite `{projectId}.{clipId}` form returned as `id` by `GET /api/exportable-clips` — pass only the part after the dot.
+                postAccountId:
+                  type: string
+                  description: Unique ID of the connected social account record
+                subAccountId:
+                  type: string
+                  description: Sub-account ID used by Facebook pages, Instagram business accounts, or LinkedIn
+                postDetail:
+                  type: object
+                  required:
+                  - title
+                  properties:
+                    title:
+                      type: string
+                      description: Title of the post
+                    mediaType:
+                      type: string
+                      description: Media type. Supported values depend on the connected platform
+                    custom:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                          description: Description of the post, including hashtags
+                        privacy:
+                          type: string
+                          enum:
+                          - public
+                          - private
+                          - unlisted
+                          description: Privacy setting for YouTube
+      responses:
+        '201':
+          description: Successfully created a post task
+          content:
+            application/json:
+              example:
+                data:
+                  postId: 17722461986440WKW-FACEBOOK_PAGE
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: object
+                    required:
+                    - postId
+                    properties:
+                      postId:
+                        type: string
+                        description: Unique ID of the post task
+      security:
+      - bearer: []
+      tags:
+      - social-posting
+  /api/publish-schedules:
+    post:
+      operationId: PublishScheduleController_createPublishSchedule
+      description: Schedule a clip to be published later. The `publishAt` value must be a future UTC ISO 8601 timestamp. Each X (formerly Twitter) post costs 1 credit.
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            example:
+              projectId: P0000000demo
+              clipId: qU3iVMSO77
+              postAccountId: postAccountId_xxx1
+              subAccountId: subAccountId_xxx1
+              postDetail:
+                title: My Daughter's Creepy 3 AM Visitor
+                custom:
+                  description: 'Okay, so my daughter got a doll that can apparently move on its own. Last night at 3 AM, I heard footsteps, went to check, and this thing had moved! Totally thought I was losing my mind. Anyone else''s toys play tricks? #CreepyDoll #HauntedHouse #MomLife #ParentingFails #ScaryStories'
+                  privacy: public
+                mediaType: video
+              publishAt: '2026-03-01T16:00:00.000Z'
+            schema:
+              type: object
+              required:
+              - projectId
+              - clipId
+              - postAccountId
+              - postDetail
+              - publishAt
+              properties:
+                projectId:
+                  type: string
+                  description: Project ID
+                clipId:
+                  type: string
+                  description: Bare clip ID (e.g. `qU3iVMSO77`). **Not** the composite `{projectId}.{clipId}` form returned as `id` by `GET /api/exportable-clips` — pass only the part after the dot.
+                postAccountId:
+                  type: string
+                  description: Unique ID of the connected social account record
+                subAccountId:
+                  type: string
+                  description: Sub-account ID used by Facebook pages, Instagram business accounts, or LinkedIn
+                publishAt:
+                  type: string
+                  description: Future publish time in UTC ISO 8601 format
+                postDetail:
+                  type: object
+                  required:
+                  - title
+                  properties:
+                    title:
+                      type: string
+                      description: Title of the post
+                    mediaType:
+                      type: string
+                      description: Media type. Supported values depend on the connected platform
+                    custom:
+                      type: object
+                      properties:
+                        description:
+                          type: string
+                          description: Description of the post, including hashtags
+                        privacy:
+                          type: string
+                          enum:
+                          - public
+                          - private
+                          - unlisted
+                          description: Privacy setting for YouTube
+      responses:
+        '201':
+          description: Successfully created a publish schedule
+          content:
+            application/json:
+              example:
+                data:
+                  scheduleId: 1772177588135sHuZ-FACEBOOK_PAGE
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: object
+                    required:
+                    - scheduleId
+                    properties:
+                      scheduleId:
+                        type: string
+                        description: Unique ID of the created schedule task
+      security:
+      - bearer: []
+      tags:
+      - social-posting
+  /api/publish-schedules/{scheduleId}:
+    delete:
+      operationId: PublishScheduleController_cancelPublishSchedule
+      description: Cancel a scheduled publish task before its publish time.
+      parameters:
+      - name: scheduleId
+        required: true
+        in: path
+        description: Unique ID of the schedule task to cancel
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Successfully canceled the publish schedule
+          content:
+            application/json:
+              example:
+                data: {}
+              schema:
+                type: object
+                required:
+                - data
+                properties:
+                  data:
+                    type: object
+                    description: Empty object returned on success
+      security:
+      - bearer: []
+      tags:
+      - social-posting
+components:
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,522 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates ExportableClip API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: ExportableClip
+paths:
+  /api/exportable-clips:
+    get:
+      operationId: ExportableClipController_queryExportableClips
+      parameters:
+      - name: x-opus-org-id
+        required: false
+        in: header
+        description: Organization ID. Required for users with multiple organizations.
+        schema:
+          example: org_Example00000001
+          type: string
+      - name: q
+        required: true
+        in: query
+        description: Query type
+        schema:
+          example: findByProjectId
+          enum:
+          - findByCollectionId
+          - findByProjectId
+          type: string
+      - name: projectId
+        required: false
+        in: query
+        description: Project ID, required when q=findByProjectId
+        schema:
+          example: P0000000demo
+          type: string
+      - name: collectionId
+        required: false
+        in: query
+        description: Collection ID, required when q=findByCollectionId
+        schema:
+          example: xmAwhhFi0IJt
+          type: string
+      - name: pageNum
+        required: false
+        in: query
+        description: Page Num, started with 1
+        schema:
+          example: 1
+          type: number
+      - name: pageSize
+        required: false
+        in: query
+        description: Page Size
+        schema:
+          example: 10
+          type: number
+      responses:
+        '200':
+          description: Successfully retrieved exportable clips
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/ExportableClipRepresentation'
+      security:
+      - bearer: []
+      tags:
+      - ExportableClip
+components:
+  schemas:
+    ShadowDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the shadow is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the shadow.
+          example: '#FFFFFFFF'
+        x:
+          type: number
+          description: The x offset of the shadow.
+          example: 2
+        y:
+          type: number
+          description: The y offset of the shadow.
+          example: 2
+        blur:
+          type: number
+          description: The blur radius of the shadow.
+          example: 16
+        useWordHighlightColor:
+          type: boolean
+          description: Indicates if the word highlight color should be used for the shadow.
+          example: false
+      required:
+      - enabled
+      - color
+      - x
+      - y
+      - blur
+    HighlightColorDto:
+      type: object
+      properties:
+        primary:
+          type: string
+          description: Primary highlight color.
+          example: '#ff0000'
+        secondary:
+          type: string
+          description: Secondary highlight color.
+          example: '#00ff00'
+      required:
+      - primary
+      - secondary
+    RenderPreferenceDto:
+      type: object
+      properties:
+        enableAutoLayout:
+          type: boolean
+          description: Enables automatic layout adjustment.
+          example: false
+          default: false
+        enableScreenLayout:
+          type: boolean
+          description: Enables screen layout for the video.
+          example: true
+          default: false
+        enableCrop:
+          type: boolean
+          description: Enables cropping of the video.
+          example: true
+          default: false
+        enableCaption:
+          type: boolean
+          description: Enables caption overlay on the video.
+          example: true
+          default: false
+        enableUppercase:
+          type: boolean
+          description: Converts all characters to uppercase in captions.
+          example: true
+          default: false
+        enableHighlight:
+          type: boolean
+          description: Enables keyword highlighting in captions.
+          example: true
+          default: false
+        enableEmoji:
+          type: boolean
+          description: Enables emoji overlay on the video.
+          example: true
+          default: false
+        enableFillLayout:
+          type: boolean
+          description: Enables fill layout for a single person.
+          example: false
+          default: false
+        enableSplitLayout:
+          type: boolean
+          description: Enables split layout for two people.
+          example: true
+          default: false
+        enableThreeLayout:
+          type: boolean
+          description: Enables layout for three people.
+          example: true
+          default: false
+        enableFourLayout:
+          type: boolean
+          description: Enables layout for four people.
+          example: true
+          default: false
+        enableFitLayout:
+          type: boolean
+          description: Enables fit layout for multiple people.
+          example: false
+          default: false
+        fitLayoutCropRatio:
+          type: string
+          description: Specifies the crop ratio for fit layout.
+          example: '4:3'
+          default: '4:3'
+        enableVisualHook:
+          type: boolean
+          description: Enables visual hook overlay, deprecated and should always be false.
+          example: false
+          default: false
+        enableWatermark:
+          type: boolean
+          description: Enables watermark overlay.
+          example: false
+          default: false
+        layoutAspectRatio:
+          description: Specifies the layout aspect ratio.
+          example: portrait
+          default: portrait
+          allOf:
+          - $ref: '#/components/schemas/LayoutAspectRatio'
+        enableBroll:
+          type: boolean
+          description: Enables B-Roll overlay on the video.
+          example: false
+          default: false
+        font:
+          description: Font settings for captions.
+          example:
+            color: '#ffffff'
+            style:
+            - '900'
+            family: Komika-axis
+            stroke:
+              enabled: false
+              color: '#000000FF'
+              width: 16
+            shadow:
+              enabled: true
+              color: '#FFFFFFFF'
+              x: 2
+              y: 2
+              blur: 16
+          allOf:
+          - $ref: '#/components/schemas/FontDto'
+        highlightColor:
+          description: Highlight colors for keywords in captions.
+          example:
+            primary: '#ff0000'
+            secondary: '#00ff00'
+          allOf:
+          - $ref: '#/components/schemas/HighlightColorDto'
+      required:
+      - enableAutoLayout
+      - enableScreenLayout
+      - enableCrop
+      - enableCaption
+      - enableUppercase
+      - enableHighlight
+      - enableEmoji
+      - enableFillLayout
+      - enableSplitLayout
+      - enableThreeLayout
+      - enableFourLayout
+      - enableFitLayout
+      - fitLayoutCropRatio
+      - enableVisualHook
+      - enableWatermark
+      - font
+      - highlightColor
+    StrokeDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the stroke is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the stroke.
+          example: '#000000FF'
+        width:
+          type: number
+          description: The width of the stroke.
+          example: 16
+      required:
+      - enabled
+      - color
+      - width
+    FontDto:
+      type: object
+      properties:
+        color:
+          type: string
+          description: The color of the font.
+          example: '#ffffff'
+        style:
+          description: The style of the font.
+          example:
+          - '900'
+          type: array
+          items:
+            type: string
+        family:
+          type: string
+          description: The family of the font.
+          example: Komika-axis
+        stroke:
+          description: The stroke settings of the font.
+          example:
+            enabled: false
+            color: '#000000FF'
+            width: 16
+          allOf:
+          - $ref: '#/components/schemas/StrokeDto'
+        shadow:
+          description: The shadow settings of the font.
+          example:
+            enabled: true
+            color: '#FFFFFFFF'
+            x: 2
+            y: 2
+            blur: 16
+          allOf:
+          - $ref: '#/components/schemas/ShadowDto'
+        id:
+          type: string
+          description: The ID of the font.
+          example: font123
+        type:
+          type: string
+          description: The type of the font.
+          example: CustomizedFont
+          enum:
+          - CustomizedFont
+          - System
+        name:
+          type: string
+          description: The name of the font.
+          example: Arial
+        path:
+          type: string
+          description: The storage path of the font.
+          example: /fonts/arial.ttf
+        size:
+          type: string
+          description: The size of the font.
+          example: Large
+          enum:
+          - Large
+          - Middle
+          - Small
+        numericalSize:
+          type: number
+          description: The numerical size of the font.
+          example: 50
+        textDecoration:
+          type: string
+          description: The text decoration of the font.
+          example: underline
+          enum:
+          - line-through
+          - underline
+          - ''
+      required:
+      - color
+      - style
+      - family
+      - stroke
+      - shadow
+    ExportableClipRepresentation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: 'Full clip id. Format: `{project_id}.{curation_id}`'
+          example: P0000000demo.CUexample1
+        projectId:
+          type: string
+          description: Project ID
+          example: P0000000demo
+        runId:
+          type: string
+          description: Run ID
+          example: 20241113071229217.FP
+        curationId:
+          type: string
+          description: Curation ID
+          example: CUexample1
+        orgId:
+          type: string
+          description: Organization ID
+          example: org_Example00000001
+        userId:
+          type: string
+          description: User ID
+          example: google-oauth2|100000000000000000001
+        uriForPreview:
+          type: string
+          description: Google Cloud Storage URI of video for preview
+          example: https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/esd.mp4?v=1731482302577650
+        uriForExport:
+          type: string
+          description: Google Cloud Storage URI of video for export/download
+          example: https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/ehd.mp4?v=1731482302564330
+        storageUsed:
+          type: number
+          description: Storage used in bytes
+          example: 15537888
+        durationMs:
+          type: number
+          description: Duration in milliseconds
+          example: 19478
+        timeRanges:
+          description: Original time ranges of the clip (in seconds)
+          example:
+          - - 192170
+            - 211630
+          items:
+            type: array
+          type: array
+        keywords:
+          description: Keywords of this clip
+          example:
+          - Q&A
+          type: array
+          items:
+            type: string
+        promptName:
+          type: string
+          description: Prompt name
+          example: Q&A
+        title:
+          type: string
+          description: Title of the clip
+          example: 'Connect Through Passion: The Power of Ensemble Performance'
+        description:
+          type: string
+          description: Description of the clip
+          example: Experience the magic of live performance as our talented cellist captivates the audience with her passionate playing. Witness the seamless coordination of the ensemble in a breathtaking display of musical artistry that will leave you inspired!
+        hashtags:
+          type: string
+          description: Hashtags for the clip
+          example: '#ClassicalMusic #CelloPerformance #EnsembleMusic #LiveConcert #MusicPassion #CoordinatedPerformance #MusicalArtistry #Cellist #AudienceEngagement #StageMagic'
+        text:
+          type: string
+          description: Text content of the clip
+          example: Clip text content
+        genre:
+          type: string
+          description: Genre of the clip
+          example: Auto
+        subgenre:
+          type: string
+          description: Subgenre of the clip
+          example: general
+        createdAt:
+          type: string
+          description: Creation date
+          example: '2024-11-13T07:18:22.811Z'
+        updatedAt:
+          type: string
+          description: Last update date
+          example: '2024-11-13T07:18:22.811Z'
+        clipCopilotTaskId:
+          type: string
+          description: Clip copilot task ID
+          example: taskid
+        productTier:
+          type: string
+          description: Product tier
+          example: PRO
+        renderPref:
+          description: Render preference
+          example:
+            enableAutoLayout: false
+            enableFillLayout: false
+            enableFitLayout: false
+            fitLayoutCropRatio: '4:3'
+            enableSplitLayout: true
+            enableThreeLayout: true
+            enableFourLayout: true
+            enableScreenLayout: true
+            enableVisualHook: false
+            enableWatermark: false
+            enableCrop: true
+            enableCaption: true
+            enableUppercase: true
+            enableHighlight: true
+            enableEmoji: true
+            font:
+              color: '#ffffff'
+              style:
+              - '900'
+              family: Komika-axis
+              stroke:
+                enabled: false
+                color: '#000000FF'
+                width: 16
+              shadow:
+                enabled: true
+                color: '#FFFFFFFF'
+                x: 2
+                y: 2
+                blur: 16
+            highlightColor:
+              primary: '#04f827'
+              secondary: '#FFFD03'
+          allOf:
+          - $ref: '#/components/schemas/RenderPreferenceDto'
+      required:
+      - id
+      - projectId
+      - runId
+      - curationId
+      - orgId
+      - userId
+      - storageUsed
+      - durationMs
+      - title
+      - text
+      - createdAt
+      - updatedAt
+      - productTier
+      - renderPref
+    LayoutAspectRatio:
+      type: string
+      enum:
+      - portrait
+      - landscape
+      - square
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

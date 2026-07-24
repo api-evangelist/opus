@@ -1,0 +1,251 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates collection API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: collection
+paths:
+  /api/collections/{collectionId}:
+    delete:
+      operationId: CollectionController_delete
+      parameters:
+      - name: collectionId
+        required: true
+        in: path
+        description: The unique collection ID of the collection that you want to delete.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    data:
+                      type: string
+                      description: ID of collection deleted successfully
+                      nullable: false
+                      example: xmAwhhFi0IJt
+      security:
+      - bearer: []
+      tags:
+      - collection
+  /api/collections:
+    post:
+      operationId: CollectionController_create
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollectionCmd'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SuccessResponse'
+                - properties:
+                    data:
+                      $ref: '#/components/schemas/CollectionDto'
+        '402':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  errorName:
+                    type: string
+                    nullable: false
+                    enum:
+                    - QuotaExceed
+                  errorMessage:
+                    type: string
+                    nullable: true
+      security:
+      - bearer: []
+      tags:
+      - collection
+    get:
+      operationId: CollectionController_list
+      parameters:
+      - name: q
+        required: true
+        in: query
+        description: "**Query type**\n `q = mine` means list collections of your account.\n `q = findByContentId` means list collections contained the specific content(clip)."
+        schema:
+          example: mine
+          enum:
+          - findByContentId
+          - mine
+          type: string
+      - name: contentId
+        required: false
+        in: query
+        description: If specified, will only return collections that contain the clip with this contentID.
+        schema:
+          example: P0000000demo.CUexample2
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SuccessResponse'
+                - properties:
+                    data:
+                      properties:
+                        list:
+                          type: array
+                          items:
+                            $ref: '#/components/schemas/CollectionDto'
+                          description: The list of collections
+                        total:
+                          type: number
+                          nullable: false
+                          description: Total number of valid items
+                        next:
+                          oneOf:
+                          - type: string
+                            nullable: true
+                            description: Next page cursor
+                          - type: number
+                            nullable: true
+                            description: Next page cursor
+                        limit:
+                          type: number
+                          nullable: true
+                          description: Limit number in this paged query
+        '400':
+          description: ''
+          content:
+            application/json:
+              schema:
+                properties:
+                  errorName:
+                    type: string
+                    nullable: false
+                    enum:
+                    - Bad Request
+                  errorMessage:
+                    type: string
+                    nullable: true
+      security:
+      - bearer: []
+      tags:
+      - collection
+  /api/collections/{collectionId}/export:
+    post:
+      operationId: CollectionController_export
+      parameters:
+      - name: collectionId
+        required: true
+        in: path
+        description: The collectionID of the collection that you want to export
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/EmptyDto'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SuccessResponse'
+                - properties:
+                    data:
+                      $ref: '#/components/schemas/CollectionExportedDto'
+      security:
+      - bearer: []
+      tags:
+      - collection
+components:
+  schemas:
+    ContentExportedDto:
+      type: object
+      properties:
+        contentId:
+          type: string
+          description: Content ID
+          example: P0000000demo.CUexample2
+        uriForExport:
+          type: string
+          description: Export url
+          example: https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436
+      required:
+      - contentId
+      - uriForExport
+    CollectionExportedDto:
+      type: object
+      properties:
+        contentList:
+          description: A list of download links for all the clips in that collection.
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentExportedDto'
+      required:
+      - contentList
+    CreateCollectionCmd:
+      type: object
+      properties:
+        collectionName:
+          type: string
+          description: The name of the collection that you want to create.
+          example: Opus demo clips
+      required:
+      - collectionName
+    SuccessResponse:
+      type: object
+      properties:
+        data:
+          type: object
+      required:
+      - data
+    EmptyDto:
+      type: object
+      properties: {}
+    CollectionDto:
+      type: object
+      properties:
+        collectionId:
+          type: string
+          description: The unique collection ID.
+          example: xmAwhhFi0IJt
+        collectionName:
+          type: string
+          description: The name of the collection that you have created.
+          example: Opus demo clips
+        createdAt:
+          format: date-time
+          type: string
+          description: The date and time the collection was created.
+        updatedAt:
+          format: date-time
+          type: string
+          description: The date and time the collection was updated.
+      required:
+      - collectionId
+      - collectionName
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,126 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates collection-content API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: collection-content
+paths:
+  /api/collection-contents/delete-collection-contents:
+    post:
+      operationId: CollectionContentController_deleteCollectionContents
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/DeleteCollectionContentCmd'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - properties:
+                    data:
+                      type: string
+                      description: Show action execute status
+                      nullable: false
+                      example: success
+      security:
+      - bearer: []
+      tags:
+      - collection-content
+  /api/collection-contents:
+    post:
+      operationId: CollectionContentController_createCollectionContent
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateCollectionContentCmd'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                allOf:
+                - $ref: '#/components/schemas/SuccessResponse'
+                - properties:
+                    data:
+                      $ref: '#/components/schemas/CollectionContentDto'
+      security:
+      - bearer: []
+      tags:
+      - collection-content
+components:
+  schemas:
+    SuccessResponse:
+      type: object
+      properties:
+        data:
+          type: object
+      required:
+      - data
+    DeleteCollectionContentCmd:
+      type: object
+      properties:
+        q:
+          type: string
+          description: "**Query type**\n `findByCollectionIdAndContentId` is the only valid value, means delete relation by collectionId + contentId"
+          enum:
+          - findByCollectionIdAndContentId
+        collectionId:
+          type: string
+          description: The collectionID of the collection that you want to remove the clip from.
+          example: xmAwhhFi0IJt
+        contentId:
+          type: string
+          description: 'The ID of the clip that you want to remove from the collection. FullClipId: {projectId}.{curationId}'
+          example: P0000000demo.CUexample2
+      required:
+      - q
+      - collectionId
+      - contentId
+    CreateCollectionContentCmd:
+      type: object
+      properties:
+        collectionId:
+          type: string
+          description: The collectionID of the collection that you want to add the clip to.
+          example: xmAwhhFi0IJt
+        contentId:
+          type: string
+          description: 'The ID of the clip that you want to add to the collection. FullClipId: {projectId}.{curationId}'
+          example: P0000000demo.CUexample2
+      required:
+      - collectionId
+      - contentId
+    CollectionContentDto:
+      type: object
+      properties:
+        collectionId:
+          type: string
+          description: The collectionID of the collection that the clip was added to.
+          example: xmAwhhFi0IJt
+        contentId:
+          type: string
+          description: 'The ID of the clip that has been added to the collection. FullClipId: {projectId}.{curationId}'
+          example: P0000000demo.CUexample2
+      required:
+      - collectionId
+      - contentId
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http

@@ -1,0 +1,829 @@
+openapi: 3.0.0
+info:
+  title: Clip brand-templates clip-project API
+  description: Clip API documentation
+  version: '1.0'
+  contact: {}
+servers:
+- url: https://api.opus.pro
+  description: OpusClip Open API Production Server
+tags:
+- name: clip-project
+paths:
+  /api/clip-projects:
+    post:
+      operationId: ClipProjectController_createClipProject
+      parameters: []
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateClipProjectCommand'
+      responses:
+        '201':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClipProjectRepresentation'
+      security:
+      - bearer: []
+      tags:
+      - clip-project
+  /api/clip-projects/{projectId}:
+    get:
+      operationId: ClipProjectController_getClipProjectDetail
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClipProjectRepresentation'
+      security:
+      - bearer: []
+      tags:
+      - clip-project
+  /api/clip-projects/{projectId}/update-visibility:
+    post:
+      operationId: ClipProjectController_updateClipProjectVisibility
+      parameters:
+      - name: projectId
+        required: true
+        in: path
+        schema:
+          type: string
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdateProjectVisibilityCommand'
+      responses:
+        '200':
+          description: ''
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ClipProjectRepresentation'
+      security:
+      - bearer: []
+      tags:
+      - clip-project
+components:
+  schemas:
+    CreateClipProjectCommand:
+      type: object
+      properties:
+        videoUrl:
+          type: string
+          description: "This parameter defines the url of the long-form video. OpusClip can import public videos from the following platforms: \n- YouTube, Google Drive, Vimeo, Zoom, Rumble, Twitch, Facebook, LinkedIn, X, Dropbox, Riverside, Loom, Frame.io, StreamYard\n- Any public video s3 link of an mp4 file (up to 10GB per video)"
+          example: https://www.youtube.com/watch?v=LXvv6CbGg8A
+        conclusionActions:
+          description: Actions to be taken upon project conclusion, such as sending an email or triggering a webhook.
+          example:
+          - type: EMAIL
+            notifyFailure: true
+            email: opusclip@opus.pro
+          type: array
+          items:
+            $ref: '#/components/schemas/ConclusionActionDto'
+        curationPref:
+          description: Preferences for advanced curation of the video.
+          example:
+            range:
+              startSec: 28
+              endSec: 636
+            clipDurations:
+            - - 0
+              - 90
+            topicKeywords:
+            - OpusClip
+            genre: Auto
+            skipCurate: false
+          allOf:
+          - $ref: '#/components/schemas/CurationPreferenceDto'
+        importPref:
+          description: Preferences for importing the video, such as source language.
+          example:
+            sourceLang: auto
+          allOf:
+          - $ref: '#/components/schemas/ImportPreferenceDto'
+        brandTemplateId:
+          type: string
+          description: ID of the brand template to be used for the project.
+          example: preset-fancy-Karaoke
+          default: null
+      required:
+      - videoUrl
+    ShadowDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the shadow is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the shadow.
+          example: '#FFFFFFFF'
+        x:
+          type: number
+          description: The x offset of the shadow.
+          example: 2
+        y:
+          type: number
+          description: The y offset of the shadow.
+          example: 2
+        blur:
+          type: number
+          description: The blur radius of the shadow.
+          example: 16
+        useWordHighlightColor:
+          type: boolean
+          description: Indicates if the word highlight color should be used for the shadow.
+          example: false
+      required:
+      - enabled
+      - color
+      - x
+      - y
+      - blur
+    HighlightColorDto:
+      type: object
+      properties:
+        primary:
+          type: string
+          description: Primary highlight color.
+          example: '#ff0000'
+        secondary:
+          type: string
+          description: Secondary highlight color.
+          example: '#00ff00'
+      required:
+      - primary
+      - secondary
+    RenderPreferenceDto:
+      type: object
+      properties:
+        enableAutoLayout:
+          type: boolean
+          description: Enables automatic layout adjustment.
+          example: false
+          default: false
+        enableScreenLayout:
+          type: boolean
+          description: Enables screen layout for the video.
+          example: true
+          default: false
+        enableCrop:
+          type: boolean
+          description: Enables cropping of the video.
+          example: true
+          default: false
+        enableCaption:
+          type: boolean
+          description: Enables caption overlay on the video.
+          example: true
+          default: false
+        enableUppercase:
+          type: boolean
+          description: Converts all characters to uppercase in captions.
+          example: true
+          default: false
+        enableHighlight:
+          type: boolean
+          description: Enables keyword highlighting in captions.
+          example: true
+          default: false
+        enableEmoji:
+          type: boolean
+          description: Enables emoji overlay on the video.
+          example: true
+          default: false
+        enableFillLayout:
+          type: boolean
+          description: Enables fill layout for a single person.
+          example: false
+          default: false
+        enableSplitLayout:
+          type: boolean
+          description: Enables split layout for two people.
+          example: true
+          default: false
+        enableThreeLayout:
+          type: boolean
+          description: Enables layout for three people.
+          example: true
+          default: false
+        enableFourLayout:
+          type: boolean
+          description: Enables layout for four people.
+          example: true
+          default: false
+        enableFitLayout:
+          type: boolean
+          description: Enables fit layout for multiple people.
+          example: false
+          default: false
+        fitLayoutCropRatio:
+          type: string
+          description: Specifies the crop ratio for fit layout.
+          example: '4:3'
+          default: '4:3'
+        enableVisualHook:
+          type: boolean
+          description: Enables visual hook overlay, deprecated and should always be false.
+          example: false
+          default: false
+        enableWatermark:
+          type: boolean
+          description: Enables watermark overlay.
+          example: false
+          default: false
+        layoutAspectRatio:
+          description: Specifies the layout aspect ratio.
+          example: portrait
+          default: portrait
+          allOf:
+          - $ref: '#/components/schemas/LayoutAspectRatio'
+        enableBroll:
+          type: boolean
+          description: Enables B-Roll overlay on the video.
+          example: false
+          default: false
+        font:
+          description: Font settings for captions.
+          example:
+            color: '#ffffff'
+            style:
+            - '900'
+            family: Komika-axis
+            stroke:
+              enabled: false
+              color: '#000000FF'
+              width: 16
+            shadow:
+              enabled: true
+              color: '#FFFFFFFF'
+              x: 2
+              y: 2
+              blur: 16
+          allOf:
+          - $ref: '#/components/schemas/FontDto'
+        highlightColor:
+          description: Highlight colors for keywords in captions.
+          example:
+            primary: '#ff0000'
+            secondary: '#00ff00'
+          allOf:
+          - $ref: '#/components/schemas/HighlightColorDto'
+      required:
+      - enableAutoLayout
+      - enableScreenLayout
+      - enableCrop
+      - enableCaption
+      - enableUppercase
+      - enableHighlight
+      - enableEmoji
+      - enableFillLayout
+      - enableSplitLayout
+      - enableThreeLayout
+      - enableFourLayout
+      - enableFitLayout
+      - fitLayoutCropRatio
+      - enableVisualHook
+      - enableWatermark
+      - font
+      - highlightColor
+    Genre:
+      type: string
+      enum:
+      - Auto
+      - Q&A
+      - Commentary
+      - Marketing
+      - Webinar
+      - Motivational speech
+      - Podcast
+      - Academic
+      - Listicle
+      - Product reviews
+      - How-to
+      - Comedy
+      - Sports commentary
+      - Church
+      - News
+      - Vlog
+      - Gaming
+      - Others
+    ConclusionActionDto:
+      type: object
+      properties:
+        type:
+          type: string
+          description: Specifies the action to be taken upon project conclusion. Options include sending an email or triggering a webhook.
+          enum:
+          - EMAIL
+          - WEBHOOK
+          example: EMAIL
+        notifyFailure:
+          type: boolean
+          description: Indicates whether to notify on failure.
+          default: false
+          example: true
+        email:
+          type: string
+          description: Email address to send notifications to, if type is EMAIL.
+          example: user@example.com
+        url:
+          type: string
+          description: Webhook URL to trigger, if type is WEBHOOK.
+          example: https://example.com/webhook
+      required:
+      - type
+    ImportPreferenceDto:
+      type: object
+      properties:
+        sourceLang:
+          type: string
+          description: 'Select the language to detect the video''s spoken content, or leave it blank for automatic detection. Using ISO-639 language codes, examples: "en" for English, "de" for German, "fr" for French.'
+          default: auto
+          example: en
+    CurationPreferenceDto:
+      type: object
+      properties:
+        clipDurations:
+          description: 'Durations (in seconds) of the clips to be generated. Default value is [0, 90]. Other possible values are: [0, 30], [30, 60], [60, 90], [90, 180].'
+          example:
+          - - 0
+            - 30
+          - - 30
+            - 60
+          - - 60
+            - 90
+          - - 90
+            - 180
+          default: []
+          readOnly: true
+          type: array
+          items:
+            type: array
+        topicKeywords:
+          description: Keywords used to find relevant moments to clip from
+          example:
+          - Fancy Words
+          default: []
+          type: array
+          items:
+            type: string
+        range:
+          description: The range of the original long-form video to generate clips from.
+          example:
+            startSec: 106
+            endSec: 204
+          default: null
+          allOf:
+          - $ref: '#/components/schemas/CurationRangeDto'
+        genre:
+          description: The genre of the clips, will apply suitable AI curation models to find the best results.
+          default: Auto
+          example: Auto
+          allOf:
+          - $ref: '#/components/schemas/Genre'
+    CurationRangeDto:
+      type: object
+      properties:
+        startSec:
+          type: number
+          description: The start time of the range to be curated.
+          example: 106
+        endSec:
+          type: number
+          description: The end time of the range to be curated.
+          example: 204
+    StrokeDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the stroke is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the stroke.
+          example: '#000000FF'
+        width:
+          type: number
+          description: The width of the stroke.
+          example: 16
+      required:
+      - enabled
+      - color
+      - width
+    FontDto:
+      type: object
+      properties:
+        color:
+          type: string
+          description: The color of the font.
+          example: '#ffffff'
+        style:
+          description: The style of the font.
+          example:
+          - '900'
+          type: array
+          items:
+            type: string
+        family:
+          type: string
+          description: The family of the font.
+          example: Komika-axis
+        stroke:
+          description: The stroke settings of the font.
+          example:
+            enabled: false
+            color: '#000000FF'
+            width: 16
+          allOf:
+          - $ref: '#/components/schemas/StrokeDto'
+        shadow:
+          description: The shadow settings of the font.
+          example:
+            enabled: true
+            color: '#FFFFFFFF'
+            x: 2
+            y: 2
+            blur: 16
+          allOf:
+          - $ref: '#/components/schemas/ShadowDto'
+        id:
+          type: string
+          description: The ID of the font.
+          example: font123
+        type:
+          type: string
+          description: The type of the font.
+          example: CustomizedFont
+          enum:
+          - CustomizedFont
+          - System
+        name:
+          type: string
+          description: The name of the font.
+          example: Arial
+        path:
+          type: string
+          description: The storage path of the font.
+          example: /fonts/arial.ttf
+        size:
+          type: string
+          description: The size of the font.
+          example: Large
+          enum:
+          - Large
+          - Middle
+          - Small
+        numericalSize:
+          type: number
+          description: The numerical size of the font.
+          example: 50
+        textDecoration:
+          type: string
+          description: The text decoration of the font.
+          example: underline
+          enum:
+          - line-through
+          - underline
+          - ''
+      required:
+      - color
+      - style
+      - family
+      - stroke
+      - shadow
+    LayoutAspectRatio:
+      type: string
+      enum:
+      - portrait
+      - landscape
+      - square
+    UpdateProjectVisibilityCommand:
+      type: object
+      properties:
+        visibility:
+          type: string
+          description: 'The visibility of the project. `DEFAULT`: Team members can open, edit and export the project. `PUBLIC`: Anyone can open, edit and export the project.'
+          example: PUBLIC
+          enum:
+          - DEFAULT
+          - PUBLIC
+      required:
+      - visibility
+    ClipProjectRepresentation:
+      type: object
+      properties:
+        id:
+          type: string
+          description: The unique identifier of the project.
+          example: P0000000demo
+        userId:
+          type: string
+          description: The unique identifier of the user.
+          example: google-oauth2|100000000000000000001
+        orgId:
+          type: string
+          description: The unique identifier of the organization.
+          example: org_Example00000001
+        isDeleted:
+          type: boolean
+          description: Indicates whether the project is deleted.
+          example: false
+        isPurged:
+          type: boolean
+          description: Indicates whether the project is purged.
+          example: false
+        projectId:
+          type: string
+          description: The unique identifier of the project.
+          example: P0000000demo
+        sourcePlatform:
+          type: string
+          description: The platform from which the video is sourced.
+          example: YOUTUBE
+          enum:
+          - YOUTUBE
+          - UPLOADED
+          - YTDLP_LINK
+          - GDRIVE
+          - ZOOM
+          - STREAM_YARD
+        sourceId:
+          type: string
+          description: The unique identifier for the video on the source platform.
+          example: YT_tEXaoozFRes
+        sourceUri:
+          type: string
+          description: The URI of the source video.
+          example: null
+        labels:
+          description: Labels associated with the project.
+          example: []
+          type: array
+          items:
+            type: string
+        productTier:
+          type: string
+          description: The product tier of the project.
+          example: PRO
+        stage:
+          type: string
+          description: The current stage of the project.
+          example: QUEUED
+          enum:
+          - PENDING
+          - QUEUED
+          - IMPORT
+          - CURATE
+          - REFINE
+          - RENDER
+          - UPLOAD
+          - COMPLETE
+          - STALLED
+        model:
+          type: string
+          description: The AI clipping model used for the project.
+          example: ClipBasic
+          enum:
+          - ClipAnything
+          - ClipBasic
+        error:
+          type: string
+          description: Error message, if any.
+          example: null
+        stallCount:
+          type: number
+          description: The number of times the project has stalled.
+          example: null
+        workerUrl:
+          type: string
+          description: The URL of the worker processing the project.
+          example: null
+        curationPref:
+          description: Preferences for advanced curation of the video.
+          example:
+            range:
+              startSec: 28
+              endSec: 636
+            clipDurations:
+            - - 0
+              - 90
+            topicKeywords:
+            - OpusClip
+            genre: Auto
+            skipCurate: false
+          allOf:
+          - $ref: '#/components/schemas/CurationPreferenceDto'
+        storageSize:
+          type: number
+          description: The total size of the project in bytes.
+          example: 0
+        storageStatus:
+          type: string
+          description: The storage status of the project.
+          example: TEMPORARY
+        storageExpireAt:
+          type: string
+          description: The expiration date of the project storage.
+          example: '2024-12-19T08:17:42.832Z'
+        renderPref:
+          description: Preferences for rendering the video, including layout and overlay options.
+          example:
+            skipReframe: false
+            enableSplitLayout: true
+            enableFitLayout: false
+            enableFillLayout: false
+            enableScreenLayout: true
+            enableThreeLayout: true
+            enableFourLayout: true
+            enableGameLayout: null
+            enableAutoLayout: false
+            disableFitLayout: false
+            disableFillLayout: false
+            fitLayoutCropRatio: '4:3'
+            enableCrop: true
+            layoutAspectRatio: portrait
+            enableVisualHook: false
+            enableCaption: true
+            captionStyle: one-line
+            captionPosition: auto
+            enableCaptionAnimation: true
+            captionAnimation:
+              name: pop
+              highlightColor: '#04f827'
+              bgColor: ''
+            enableHighlight: true
+            enableEmoji: true
+            emojiStyle:
+              pos: null
+              scaleX: null
+              scaleY: null
+              rect:
+                xPct: 0
+                yPct: -0.79
+                wPct: 0.133
+                hPct: 0.075
+                type: CPct
+            enableUppercase: true
+            highlightColor:
+              primary: '#04f827'
+              secondary: '#FFFD03'
+            font:
+              id: null
+              type: null
+              name: null
+              path: null
+              size: Large
+              numericalSize: 50
+              color: '#ffffff'
+              style:
+              - '900'
+              textDecoration: ''
+              family: Komika-axis
+              stroke:
+                enabled: true
+                color: '#000000FF'
+                width: 16
+              shadow:
+                enabled: true
+                color: '#FFFFFFFF'
+                x: 2
+                y: 2
+                blur: 16
+                useWordHighlightColor: false
+            screenOverlay: null
+            screenOverlayFileId: null
+            screenOverlays:
+            - object:
+                id: null
+                kind: null
+                name: overlay/org_Example00000001/google-oauth2|100000000000000000001/1731395502191.png
+                displayName: test.png
+                selfLink: null
+                mediaLink: null
+                bucket: ext.gcs.opus.pro
+                metageneration: null
+                storageClass: null
+                md5Hash: null
+                etag: null
+                crc32c: null
+                contentType: null
+                size: null
+                updated: null
+                timeCreated: null
+                generation: null
+                timeStorageClassUpdated: null
+              style: null
+              rect:
+                xPct: 0.5806182121971597
+                yPct: 0.6965845864661654
+                wPct: 0.4193817878028405
+                hPct: 0.3035714285714285
+                type: CPct
+            enableBroll: null
+            enableScreenOverlay: null
+            disableScreenOverlay: null
+            enableAutoTransition: true
+            selectedTransitions:
+            - crossFade
+            enableVoiceEnhancement: null
+            enableWatermark: false
+          allOf:
+          - $ref: '#/components/schemas/RenderPreferenceDto'
+        refundStatus:
+          type: string
+          description: The refund status of the project.
+          example: null
+        createdAt:
+          format: date-time
+          type: string
+          description: The date and time when the project was created.
+          example: '2024-11-19T08:17:42.832Z'
+        updatedAt:
+          format: date-time
+          type: string
+          description: The date and time when the project was last updated.
+          example: '2024-11-19T08:17:42.860Z'
+        clusterJobId:
+          type: string
+          description: The unique identifier of the cluster job processing the project.
+          example: FP.P0000000demo:20241119081742853.FP
+        cluster:
+          type: string
+          description: The cluster on which the project is running.
+          example: gold
+        importPref:
+          description: Preferences for importing the video, such as source language.
+          example:
+            sourceLang: en
+          allOf:
+          - $ref: '#/components/schemas/ImportPreferenceDto'
+        visibility:
+          type: string
+          description: The visibility of the project.
+          example: DEFAULT
+          enum:
+          - DEFAULT
+          - PUBLIC
+          - PUBLIC_VIEW
+        permissions:
+          description: Permissions associated with the project.
+          example:
+          - PROJECT_SHARE
+          - PROJECT_EDIT
+          - PROJECT_VIEW
+          type: array
+          items:
+            type: string
+        promptRecommendations:
+          description: Recommendations for project prompts.
+          example:
+          - Foo
+          - Boo
+          type: array
+          items:
+            type: string
+      required:
+      - id
+      - userId
+      - orgId
+      - isDeleted
+      - isPurged
+      - projectId
+      - sourcePlatform
+      - sourceId
+      - labels
+      - productTier
+      - stage
+      - storageSize
+      - storageStatus
+      - storageExpireAt
+      - createdAt
+      - updatedAt
+      - clusterJobId
+      - cluster
+      - visibility
+      - permissions
+      - promptRecommendations
+  securitySchemes:
+    bearer:
+      scheme: bearer
+      bearerFormat: JWT
+      type: http
