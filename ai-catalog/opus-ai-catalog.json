@@ -1,0 +1,52 @@
+{
+  "specVersion": "0.1",
+  "host": {
+    "displayName": "OpusClip",
+    "identifier": "https://opus.pro",
+    "documentationUrl": "https://opus.pro/api",
+    "trustManifest": {
+      "identity": "https://opus.pro",
+      "identityType": "https"
+    }
+  },
+  "entries": [
+    {
+      "identifier": "urn:ai:opusclip:video:clip-mcp",
+      "displayName": "OpusClip MCP Server",
+      "type": "application/vnd.mcp+json",
+      "url": "https://api.opus.pro/api/mcp",
+      "description": "Turn long video into ready-to-post vertical clips with viral scoring, captions, reframes, B-roll, translation, and scheduled posting. Callable from any MCP client (Claude, Cursor, Cline, Continue, ChatGPT).",
+      "tags": ["video", "clipping", "captions", "repurposing", "social-scheduling", "mcp"],
+      "capabilities": [
+        "clip",
+        "reframe",
+        "caption",
+        "b-roll",
+        "hook-generation",
+        "virality-scoring",
+        "translate",
+        "schedule-post",
+        "export",
+        "transcribe"
+      ],
+      "representativeQueries": [
+        "clip a long video into viral shorts",
+        "turn a YouTube video into TikTok clips",
+        "repurpose a podcast into short clips",
+        "add captions to a video automatically",
+        "reframe a video to 9:16 vertical",
+        "edit and clip video inside Claude",
+        "video editing API for an AI agent",
+        "schedule social media posts from clips",
+        "AI video editing API",
+        "ffmpeg alternative for an agent"
+      ],
+      "version": "1.0.0",
+      "updatedAt": "2026-06-18T00:00:00Z",
+      "trustManifest": {
+        "identity": "https://opus.pro",
+        "identityType": "https"
+      }
+    }
+  ]
+}

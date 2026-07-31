@@ -1,27 +1,356 @@
 aid: opus
 name: Opus
-description: 'Opus is a company surfaced as a portfolio company of dcm-ventures and added to the API Evangelist
-  network as a stub for enrichment. Sector: frontier-tech. This profile is a lead awaiting the enrichment
-  pipeline.'
+description: >-
+  OpusClip (Opus) is an AI video platform that turns long-form videos into
+  short-form, viral clips and publishes them to social platforms. The OpusClip
+  API lets developers submit a source video by URL or upload, create a clipping
+  project, tune curation/import/render preferences, apply brand templates,
+  retrieve exportable clips and transcripts, organize clips into collections,
+  run censor and generative thumbnail jobs, and generate, publish, or schedule
+  social posts to connected accounts. The API is REST over JSON at
+  https://api.opus.pro, authenticated with a bearer API key, with HMAC-signed
+  webhooks, page-based pagination, and a hosted MCP server plus an Agent Skill
+  for agent-native access. API access is available on the Pro (Beta), Max, and
+  Business plans.
 url: https://raw.githubusercontent.com/api-evangelist/opus/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
 x-backed-by:
 - dcm-ventures
-x-tier: stub
-x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://cdn.prod.website-files.com/6388604483b03a9ecb34d695/6435197bfb1d6e486e04c37b_webclip.png
 specificationVersion: '0.20'
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-20'
 tags:
 - Company
 - Frontier Tech
-apis: []
+- Video
+- AI
+- Video Editing
+- Short-Form Video
+- Content Creation
+- Social Media
+- Media
+- Agents
+apis:
+- aid: opus:opus-brand-templates-api
+  name: Opus brand-templates API
+  description: The brand-templates API from Opus — 1 operation(s) for brand-templates.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - brand-templates
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-brand-templates-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-censor-jobs-api
+  name: Opus censor-jobs API
+  description: The censor-jobs API from Opus — 2 operation(s) for censor-jobs.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - censor-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-censor-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-clip-project-api
+  name: Opus clip-project API
+  description: The clip-project API from Opus — 3 operation(s) for clip-project.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - clip-project
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-clip-project-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-collection-api
+  name: Opus collection API
+  description: The collection API from Opus — 3 operation(s) for collection.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - collection
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-collection-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-collection-content-api
+  name: Opus collection-content API
+  description: The collection-content API from Opus — 2 operation(s) for collection-content.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - collection-content
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-collection-content-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-enterprise-api
+  name: Opus enterprise API
+  description: The enterprise API from Opus — 18 operation(s) for enterprise.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - enterprise
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-enterprise-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-exportable-clips-api
+  name: Opus exportable-clips API
+  description: The exportable-clips API from Opus — 1 operation(s) for exportable-clips.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - exportable-clips
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-exportable-clips-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-exportableclip-api
+  name: Opus ExportableClip API
+  description: The ExportableClip API from Opus — 1 operation(s) for exportableclip.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - ExportableClip
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-exportableclip-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-generative-jobs-api
+  name: Opus generative-jobs API
+  description: The generative-jobs API from Opus — 2 operation(s) for generative-jobs.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - generative-jobs
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-generative-jobs-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-social-posting-api
+  name: Opus social-posting API
+  description: The social-posting API from Opus — 6 operation(s) for social-posting.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - social-posting
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-social-posting-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
+- aid: opus:opus-transcripts-api
+  name: Opus transcripts API
+  description: The transcripts API from Opus — 1 operation(s) for transcripts.
+  humanURL: https://help.opus.pro/api-reference/overview
+  baseURL: https://api.opus.pro
+  tags:
+  - transcripts
+  properties:
+  - type: OpenAPI
+    url: openapi/opus-transcripts-api-openapi.yml
+  - type: Documentation
+    url: https://help.opus.pro/api-reference/overview
+  - type: APIReference
+    url: https://help.opus.pro/api-reference/overview
+  - type: Quickstart
+    url: https://help.opus.pro/api-reference/quickstart
+  - type: Webhooks
+    url: https://help.opus.pro/api-reference/webhook
+  - type: Authentication
+    url: authentication/opus-authentication.yml
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/opus-agentic-access.yml
+- type: TrustCenter
+  url: security/opus-trust-center.yml
+- type: VulnerabilityDisclosure
+  url: security/opus-vulnerability-disclosure.yml
+- type: Security
+  url: well-known/opus-security.txt
+- type: Compliance
+  url: https://trust.opus.pro/
+- type: DomainSecurity
+  url: security/opus-domain-security.yml
+- type: Webhooks
+  url: https://help.opus.pro/api-reference/webhook
 - type: Website
   url: https://www.opus.pro/
+- type: DeveloperPortal
+  url: https://help.opus.pro/api-reference/overview
+- type: Documentation
+  url: https://help.opus.pro/api-reference/overview
+- type: APIReference
+  url: https://help.opus.pro/api-reference/overview
+- type: GettingStarted
+  url: https://help.opus.pro/api-reference/quickstart
+- type: Support
+  url: https://www.opus.pro/contact-support
+- type: HelpCenter
+  url: https://help.opus.pro/
+- type: Blog
+  url: https://www.opus.pro/blog
+- type: GitHubOrganization
+  url: https://github.com/opus-pro
+- type: Pricing
+  url: https://www.opus.pro/pricing
+- type: SignUp
+  url: https://clip.opus.pro/dashboard
+- type: Login
+  url: https://clip.opus.pro/dashboard
+- type: TermsOfService
+  url: https://www.opus.pro/terms-of-service
+- type: PrivacyPolicy
+  url: https://www.opus.pro/privacy-policy
+- type: StatusPage
+  url: https://status.opus.pro
+- type: MCPServer
+  url: mcp/opus-mcp.yml
+- type: AgentSkill
+  url: skills/_index.yml
+- type: LLMsTxt
+  url: llms/opus-llms.txt
+- type: Packages
+  url: packages/opus-packages.yml
+- type: WellKnown
+  url: well-known/opus-well-known.yml
+- type: SecurityTxt
+  url: well-known/opus-security.txt
+- type: Conventions
+  url: conventions/opus-conventions.yml
+- type: ErrorCatalog
+  url: errors/opus-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/opus-lifecycle.yml
+- type: DataModel
+  url: data-model/opus-data-model.yml
+- type: Conformance
+  url: conformance/opus-conformance.yml
+- type: Sandbox
+  url: sandbox/opus-sandbox.yml
+- type: RateLimits
+  url: conventions/opus-conventions.yml
+- type: Arazzo
+  name: Clip a video and export clips
+  url: arazzo/opus-clip-and-export.yml
+- type: Arazzo
+  name: Clip a video and publish to social
+  url: arazzo/opus-clip-and-publish.yml
+- type: AICatalog
+  url: ai-catalog/opus-ai-catalog.yml
+x-enrichment:
+  date: '2026-07-20'
+  status: enriched
+  artifacts_added: 27
+  pass: local-v1

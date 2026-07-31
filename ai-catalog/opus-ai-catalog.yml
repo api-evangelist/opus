@@ -1,0 +1,61 @@
+generated: '2026-07-31'
+method: probed
+source: https://www.opus.pro/.well-known/ai-catalog.json
+description: 'AI Catalog manifest observed at /.well-known/ai-catalog.json on opus.pro. The AI Catalog
+  Standard 1.0 is the publishing half of the Agentic Resource Discovery (ARD) v0.9 draft: a JSON manifest
+  listing the agentic resources a domain offers — MCP servers, agent cards, skills, APIs — each typed
+  by media type and identified by a domain-anchored urn:air: URN. Two verdicts are recorded: a structural
+  grade against the AI Catalog 1.0 data model, and the result of the ARD project''s own conformance CLI
+  run against this exact body. Provider-published by construction — served from the provider''s own host;
+  nothing here is derived or generated.'
+discovery:
+  path: /.well-known/ai-catalog.json
+  canonical: true
+  host: opus.pro
+  also_served_on:
+  - www.opus.pro
+conformance:
+  spec: AI Catalog 1.0 / ARD v0.9 (Draft)
+  grade: flavored
+  spec_version_declared: '0.1'
+  hard_failures:
+  - entry-identifier-not-urn-air
+  soft_gaps:
+  - cors-not-wildcard
+  - host-identifier-not-did-web
+  - representativeQueries-outside-2-5
+  official_tool:
+    tool: ARD conformance-test v0.5.0 (ards-project/ard-spec)
+    status: FAIL
+    critical_errors: 1
+    errors:
+    - '[OpusClip MCP Server] Identifier ''urn:ai:opusclip:video:clip-mcp'' does not match RFC 8141 URN
+      pattern ''urn:air:<publisher>:<namespace>:<agent-name>''.'
+    warnings:
+    - 'Unrecognized ''specVersion'': 0.1. Expected ''1.0''.'
+    - '[OpusClip MCP Server] ''representativeQueries'' array has size 10. 2 to 5 queries are recommended
+      for vector index embedding.'
+    - '[OpusClip MCP Server] Media type ''application/vnd.mcp+json'' is not one of standard discovery
+      types: [''application/ai-catalog+json'', ''application/agent-card+json'', ''application/a2a-agent-card+json'',
+      ''application/mcp-server-card+json'', ''application/agent-skills+zip'', ''application/agent-skills+gzip'',
+      ''text/markdown; profile="urn:air:agent-skills"'', ''application/ai-registry'', ''application/ai-registry+json''].'
+catalog:
+  host_display_name: OpusClip
+  host_identifier: https://opus.pro
+  entry_count: 1
+  types:
+    application/vnd.mcp+json: 1
+  representative_queries: 10
+  trust_manifests: 1
+  file: opus-ai-catalog.json
+transport:
+  http_status: 200
+  content_type: application/json
+  access_control_allow_origin: null
+  meets_publish_guide_requirements: false
+x-evidence:
+  fetched: '2026-07-31'
+  url: https://www.opus.pro/.well-known/ai-catalog.json
+  http_status: 200
+  content_type: application/json
+  note: Verbatim body saved alongside this manifest. No field inferred.
