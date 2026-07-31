@@ -1,0 +1,12 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opus-openapi-original.json
+workflows:
+- file: opus-clip-and-export.yml
+  workflowId: clipAndExport
+  title: Clip a video and export clips
+  summary: Submit a long-form video, wait for clipping, list clips, and export them.
+- file: opus-clip-and-publish.yml
+  workflowId: clipAndPublish
+  title: Clip a video and publish to social
+  summary: Clip a video, generate social copy, and publish a clip to a connected social account.

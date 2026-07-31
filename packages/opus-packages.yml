@@ -1,0 +1,17 @@
+generated: '2026-07-20'
+method: searched
+source: https://help.opus.pro/api-reference/agent-setup
+notes: >-
+  OpusClip does not publish traditional per-language REST client SDKs; the API
+  is called directly over HTTPS (see conventions/) or through the hosted MCP
+  server. The one first-party published package is the MCP launcher below.
+packages:
+- language: javascript
+  registry: npm
+  name: "@opusclip/mcp"
+  url: https://www.npmjs.com/package/@opusclip/mcp
+  install: npx @opusclip/mcp
+  official: true
+  description: >-
+    Official launcher that connects an MCP host to the hosted OpusClip MCP
+    server at https://mcp.opus.pro/mcp (OAuth sign-in on first use).

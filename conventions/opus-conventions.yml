@@ -1,0 +1,66 @@
+generated: '2026-07-20'
+method: searched
+source: https://help.opus.pro/api-reference/overview
+base_url: https://api.opus.pro
+authentication:
+  style: bearer
+  header: 'Authorization: Bearer <API_KEY>'
+  notes: >-
+    Organization API access key from the dashboard (lower-left). Some endpoints
+    additionally accept/require an x-opus-org-id header to select the target org
+    for multi-org accounts.
+  ref: authentication/opus-authentication.yml
+org_scoping:
+  header: x-opus-org-id
+  notes: Selects the target organization for the request on multi-org accounts.
+idempotency:
+  supported: false
+  notes: >-
+    No idempotency key header is documented in the API reference or OpenAPI as
+    of 2026-07. Not asserting an idempotency contract.
+pagination:
+  style: page-number
+  params:
+  - name: pageNum
+    description: Page number, starts at 1
+  - name: pageSize
+    description: Page size
+  applies_to:
+  - GET /api/exportable-clips
+versioning:
+  scheme: api-path
+  current: 'Clip API 1.0'
+  notes: All endpoints are served under the /api base path on https://api.opus.pro.
+rate_limiting:
+  standard: 30 requests per minute per API key (core project & clip APIs)
+  over_limit_status: 429
+  concurrency:
+    pro_beta_max: 4 parallel projects
+    business: 50 parallel projects
+    over_limit_status: 429
+    header: 'X-Cap-Reason: concurrent'
+  monthly_cap:
+    pro_beta_max: 900 credits / 15 hours per calendar month per workspace
+    over_cap_status: 403
+    reset: first day of next month (UTC)
+  social_posting: separate per-endpoint rate limits
+error_envelope:
+  example:
+    code: API_MONTHLY_CAP_REACHED
+    reset_at: '2026-06-01T00:00:00Z'
+    upgrade_url: https://www.opus.pro/contact-api
+  ref: errors/opus-problem-types.yml
+webhooks:
+  delivery: POST to a caller-supplied url via conclusionActions on project creation
+  signing: HMAC-SHA256(secretKey, body + salt)
+  headers:
+  - X-Opus-Signature
+  - X-Opus-Salt
+  - X-Opus-Timestamp
+  secret: Opus API secret key (sk-… value); first key created is used for signing
+  docs: https://help.opus.pro/api-reference/webhook
+async_jobs:
+  pattern: >-
+    Long-running work (censor, generative thumbnail, social copy, clipping) is
+    submitted as a job/project that returns an id, then polled via a GET
+    status endpoint or delivered via webhook.

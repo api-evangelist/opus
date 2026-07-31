@@ -1,0 +1,14 @@
+generated: '2026-07-20'
+method: searched
+probe: true
+source: https://trust.opus.pro/
+url: https://trust.opus.pro/
+certifications:
+- SOC 2
+- GDPR
+evidence:
+- source: https://trust.opus.pro/
+  keywords:
+  - soc 2
+  - trust center
+  - gdpr

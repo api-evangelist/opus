@@ -1,0 +1,100 @@
+generated: '2026-07-20'
+method: searched
+status: published
+source: https://help.opus.pro/api-reference/agent-setup
+server:
+  name: opusclip
+  registry_name: io.github.opus-pro/opusclip
+  transport: http
+  auth: oauth
+  auth_note: >-
+    Hosted MCP server. OAuth sign-in on first use (no API key). OAuth
+    authorization server is AuthKit; the protected resource is
+    https://api.opus.pro/ (see well-known/opus-oauth-protected-resource.json).
+  endpoints:
+  - host: Cursor, Cline, Claude Code, ChatGPT / Codex, and other MCP hosts
+    url: https://mcp.opus.pro/mcp
+    note: additionally exposes thumbnail-generation tools
+  - host: Claude.ai (web & desktop)
+    url: https://api.opus.pro/api/mcp
+  install:
+  - npx @opusclip/mcp
+  - registry: MCP Registry (search "opusclip", server io.github.opus-pro/opusclip)
+  - registry: Smithery (smithery.ai/servers/opusclip/opusclip)
+  - registry: Cursor (cursor.directory)
+  - registry: Cline MCP Marketplace
+entitlement: >-
+  Any account can complete OAuth and view the tool catalog; calling a tool
+  requires Pro Beta, Max, or Business plan access.
+tools:
+  read:
+  - name: opusclip_whoami
+    description: Identity check for the connected org
+  - name: opusclip_get_usage
+    description: Show the org's current API usage against its cap
+  - name: opusclip_list_projects
+    description: List recent clip projects
+    source_operation: openapi/opus-openapi-original.json#ClipProjectController_getClipProjectDetail
+  - name: opusclip_list_clips
+    description: List clips inside a project (preview URLs only)
+    source_operation: openapi/opus-openapi-original.json#ExportableClipController_queryExportableClips
+  - name: opusclip_describe_clip
+    description: Fetch a single clip's detail (transcript, layout, render status)
+  - name: opusclip_list_collections
+    description: List collections
+    source_operation: openapi/opus-openapi-original.json#CollectionController_list
+  - name: opusclip_list_clips_in_collection
+    description: List clips inside a collection
+  - name: opusclip_list_brand_templates
+    description: List brand templates
+    source_operation: openapi/opus-openapi-original.json#BrandTemplateController_getTemplates
+  - name: opusclip_list_social_accounts
+    description: List connected social accounts
+    source_operation: openapi/opus-openapi-original.json#SocialAccountController_getSocialAccounts
+  - name: opusclip_get_editing_script
+    description: Fetch a clip's editing script
+  - name: opusclip_get_transcript
+    description: Fetch a project's source-video transcript
+    source_operation: openapi/opus-openapi-original.json#TranscriptController_getTranscript
+  - name: opusclip_get_social_copy_job
+    description: Fetch a social copy job
+    source_operation: openapi/opus-openapi-original.json#SocialCopyJobController_getSocialCopyJob
+  write:
+  - name: opusclip_submit_project
+    description: Clip a YouTube or Vimeo URL (consumes credits)
+    source_operation: openapi/opus-openapi-original.json#ClipProjectController_createClipProject
+  - name: opusclip_create_upload_link
+    description: Get a signed URL to upload a local video
+  - name: opusclip_apply_editing_script
+    description: Modify a clip and re-render (consumes credits)
+  - name: opusclip_create_censor_job
+    description: Bleep or mask flagged content (consumes credits)
+    source_operation: openapi/opus-openapi-original.json#CensorJobController_createCensorJob
+  - name: opusclip_share_project
+    description: Make a project publicly viewable
+    source_operation: openapi/opus-openapi-original.json#ClipProjectController_updateClipProjectVisibility
+  - name: opusclip_create_collection
+    description: Create a collection
+    source_operation: openapi/opus-openapi-original.json#CollectionController_create
+  - name: opusclip_add_clip_to_collection
+    description: Add a clip to a collection
+    source_operation: openapi/opus-openapi-original.json#CollectionContentController_createCollectionContent
+  - name: opusclip_export_clip
+    description: Get one clip's HD download URL
+  - name: opusclip_export_collection
+    description: Get HD download URLs for every clip in a collection
+    source_operation: openapi/opus-openapi-original.json#CollectionController_export
+  - name: opusclip_duplicate_clip
+    description: Copy a clip (free, no re-render)
+  - name: opusclip_create_social_copy_job
+    description: Generate platform-specific social copy
+    source_operation: openapi/opus-openapi-original.json#SocialCopyJobController_createSocialCopyJob
+  - name: opusclip_create_post_task
+    description: Post a clip to a connected social account
+    source_operation: openapi/opus-openapi-original.json#PostTaskController_createPostTask
+  - name: opusclip_schedule_publish
+    description: Schedule a clip for future posting
+    source_operation: openapi/opus-openapi-original.json#PublishScheduleController_createPublishSchedule
+  - name: opusclip_unschedule_publish
+    description: Cancel a previously scheduled post
+    source_operation: openapi/opus-openapi-original.json#PublishScheduleController_cancelPublishSchedule

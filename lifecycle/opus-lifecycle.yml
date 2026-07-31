@@ -1,0 +1,24 @@
+generated: '2026-07-20'
+method: searched
+source: https://help.opus.pro/api-reference/overview
+versioning:
+  scheme: api-path
+  current: 'Clip API 1.0'
+  docs: https://help.opus.pro/api-reference/overview
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No formal deprecation/Sunset policy published as of 2026-07.
+sla:
+  url: null
+  uptime_target: null
+status_page: https://status.opus.pro
+storage:
+  default_expiry_days: 30
+  notes: >-
+    All projects expire in 30 days by default; auto-save (if enabled) persists
+    projects to org storage.
+api_stability: >-
+  API access is Beta on the Pro tier; General for Max and Business (per
+  contract). Beta limits apply to Pro Beta and Max unless otherwise noted.
+deprecated_operations: []

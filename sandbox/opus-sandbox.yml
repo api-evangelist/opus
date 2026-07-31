@@ -1,0 +1,22 @@
+generated: '2026-07-20'
+method: searched
+source: https://help.opus.pro/api-reference/quickstart
+console:
+  name: API Playground
+  url: https://help.opus.pro/api-reference/playground
+  description: >-
+    Interactive, in-docs playground that generates request code snippets and
+    executes calls against the live API for the documented endpoints
+    (create-project, get-clips, share-project, censor-job, brand-templates).
+test_data:
+  supported: false
+  notes: >-
+    OpusClip does not publish a separate test/sandbox mode with mock
+    credentials or magic values. Calls run against production and consume
+    credits (API projects have a 10-credit minimum). Free-trial/Pro credits are
+    the mechanism for low-risk trial runs. No published test cards/tokens —
+    none fabricated here.
+keys:
+  live_only: true
+  secret_prefix: 'sk-'
+  notes: One organization API key (live). Webhook signing uses the sk- secret.

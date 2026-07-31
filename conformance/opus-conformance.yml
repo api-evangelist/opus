@@ -1,0 +1,36 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opus-openapi-original.json
+enriched_from: https://trust.opus.pro/
+standards:
+- id: oauth2
+  conforms: false
+  evidence: >-
+    The REST API uses HTTP bearer (API key) auth, not OAuth2. OAuth2 is used
+    only by the hosted MCP surface (AuthKit authorization server).
+- id: oidc
+  conforms: false
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: Errors are application/json, not application/problem+json.
+- id: rfc9116-security-txt
+  conforms: true
+  evidence: /.well-known/security.txt published on www.opus.pro
+- id: rfc9728-oauth-protected-resource
+  conforms: true
+  evidence: /.well-known/oauth-protected-resource published on api.opus.pro (MCP)
+- id: pagination
+  conforms: true
+  evidence: page-number pagination (pageNum/pageSize) on list endpoints
+- id: webhooks-signed
+  conforms: true
+  evidence: HMAC-SHA256 signed webhooks (X-Opus-Signature/Salt/Timestamp)
+- id: idempotency
+  conforms: false
+  evidence: No idempotency-key contract documented.
+- id: soc2
+  conforms: true
+  evidence: SOC 2 named on trust.opus.pro
+- id: gdpr
+  conforms: true
+  evidence: GDPR named on trust.opus.pro

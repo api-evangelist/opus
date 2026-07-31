@@ -1,0 +1,27 @@
+generated: '2026-07-20'
+method: searched
+hosts:
+- host: https://www.opus.pro
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    file: opus-security.txt
+- host: https://api.opus.pro
+  documents:
+  - path: /.well-known/oauth-protected-resource
+    status: 200
+    file: opus-oauth-protected-resource.json
+    note: >-
+      RFC 9728 OAuth 2.0 Protected Resource Metadata for the MCP surface;
+      authorization server is AuthKit (focused-horizon-38.authkit.app),
+      scopes openid/profile/email/offline_access.
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404

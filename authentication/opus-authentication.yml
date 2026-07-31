@@ -1,0 +1,13 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opus-openapi-original.json
+summary:
+  types:
+  - http
+schemes:
+- name: bearer
+  type: http
+  scheme: bearer
+  bearerFormat: JWT
+  sources:
+  - openapi/opus-openapi-original.json

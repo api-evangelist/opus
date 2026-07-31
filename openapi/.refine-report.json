@@ -1,0 +1,34 @@
+{
+  "provider": "opus",
+  "sources": [
+    "opus-brand-templates-api-openapi.yml",
+    "opus-censor-jobs-api-openapi.yml",
+    "opus-clip-project-api-openapi.yml",
+    "opus-collection-api-openapi.yml",
+    "opus-collection-content-api-openapi.yml",
+    "opus-enterprise-api-openapi.yml",
+    "opus-exportable-clips-api-openapi.yml",
+    "opus-exportableclip-api-openapi.yml",
+    "opus-generative-jobs-api-openapi.yml",
+    "opus-social-posting-api-openapi.yml",
+    "opus-transcripts-api-openapi.yml"
+  ],
+  "outputs": [
+    "opus-brand-templates-api-openapi.yml",
+    "opus-censor-jobs-api-openapi.yml",
+    "opus-clip-project-api-openapi.yml",
+    "opus-collection-api-openapi.yml",
+    "opus-collection-content-api-openapi.yml",
+    "opus-enterprise-api-openapi.yml",
+    "opus-exportable-clips-api-openapi.yml",
+    "opus-exportableclip-api-openapi.yml",
+    "opus-generative-jobs-api-openapi.yml",
+    "opus-social-posting-api-openapi.yml",
+    "opus-transcripts-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

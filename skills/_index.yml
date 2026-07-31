@@ -1,0 +1,17 @@
+generated: '2026-07-20'
+method: generated
+source: openapi/opus-openapi-original.json
+provider_published:
+- file: opus-AGENTS.md
+  name: OpusClip help-center AGENTS.md
+  method: searched
+  source: https://help.opus.pro/AGENTS.md
+skills:
+- file: opus-clip-and-export.md
+  name: Clip a long video and export the best clips
+  api: openapi/opus-openapi-original.json
+  operations: [ClipProjectController_createClipProject, ClipProjectController_getClipProjectDetail, ExportableClipController_queryExportableClips]
+- file: opus-clip-and-publish-social.md
+  name: Clip a video and publish it to social accounts
+  api: openapi/opus-openapi-original.json
+  operations: [ClipProjectController_createClipProject, ExportableClipController_queryExportableClips, SocialAccountController_getSocialAccounts, SocialCopyJobController_createSocialCopyJob, SocialCopyJobController_getSocialCopyJob, PostTaskController_createPostTask, PublishScheduleController_createPublishSchedule]

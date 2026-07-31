@@ -1,0 +1,21 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for OpusClip API
+  version: 1.0.0
+extends: openapi/opus-openapi-original.json
+actions:
+- target: $.info
+  update:
+    x-apievangelist-provider: opus
+    x-apievangelist-mcp: https://mcp.opus.pro/mcp
+    x-apievangelist-webhooks: https://help.opus.pro/api-reference/webhook
+    x-apievangelist-rate-limit: 30/min per API key; 900 credits/month cap (Pro Beta & Max)
+    x-apievangelist-pagination: page-number (pageNum, pageSize)
+    x-apievangelist-compliance: [SOC 2, GDPR]
+- target: $.servers
+  update:
+    x-apievangelist-note: Production server; all paths under /api.
+- target: "$.paths['/api/clip-projects']['post']"
+  update:
+    x-apievangelist-marquee: true
+    x-apievangelist-note: Core entry point — submit a video URL to create a clipping project.

@@ -1,0 +1,86 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opus-openapi-original.json
+entities:
+- name: ClipProject
+  schema: ClipProjectRepresentation
+  id_fields: [id, projectId, sourceId, orgId, userId, clusterJobId]
+  description: A clipping job created from a source long-form video.
+- name: ExportableClip
+  schema: ExportableClipRepresentation
+  id_fields: [id, projectId, runId, curationId, orgId, userId, clipCopilotTaskId]
+  description: A generated short-form clip belonging to a project.
+- name: BrandTemplate
+  schema: BrandTemplateRepresentation
+  id_fields: [templateId]
+  description: Reusable visual styling applied to clips.
+- name: Collection
+  schema: CollectionDto
+  id_fields: [collectionId]
+  description: A named grouping of clips.
+- name: CollectionContent
+  schema: CollectionContentDto
+  id_fields: [collectionId, contentId]
+  description: Membership record linking a clip to a collection.
+- name: CensorJob
+  schema: CensorJobResponse
+  id_fields: [jobId]
+  description: Asynchronous job that bleeps/masks flagged content in a clip.
+- name: GenerativeJob
+  schema: GenerativeJobCreateResponse
+  id_fields: [jobId]
+  description: Asynchronous thumbnail-generation job.
+- name: Transcript
+  schema: TranscriptResponse
+  description: Source-video transcript (paragraphs + word timings) for a project.
+- name: SocialAccount
+  description: A social platform account connected to the org.
+- name: SocialCopyJob
+  id_fields: [jobId]
+  description: Asynchronous social-copy generation job.
+- name: PostTask
+  description: An immediate publish of a clip to a connected social account.
+- name: PublishSchedule
+  id_fields: [scheduleId]
+  description: A scheduled future publish of a clip.
+relationships:
+- from: ExportableClip
+  to: ClipProject
+  type: belongs_to
+  via: projectId
+- from: ClipProject
+  to: ExportableClip
+  type: has_many
+  via: projectId
+- from: ClipProject
+  to: BrandTemplate
+  type: has_one
+  via: brandTemplateId
+- from: CollectionContent
+  to: Collection
+  type: belongs_to
+  via: collectionId
+- from: CollectionContent
+  to: ExportableClip
+  type: belongs_to
+  via: contentId
+- from: Collection
+  to: CollectionContent
+  type: has_many
+  via: collectionId
+- from: CensorJob
+  to: ExportableClip
+  type: belongs_to
+  via: clipId
+- from: CensorJob
+  to: ClipProject
+  type: belongs_to
+  via: projectId
+- from: Transcript
+  to: ClipProject
+  type: belongs_to
+  via: projectId
+- from: PublishSchedule
+  to: ExportableClip
+  type: belongs_to
+  via: clipId

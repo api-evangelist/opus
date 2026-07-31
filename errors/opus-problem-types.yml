@@ -1,0 +1,45 @@
+generated: '2026-07-20'
+method: derived
+source: openapi/opus-openapi-original.json
+enriched_from: https://help.opus.pro/api-reference/limitation
+format: json
+envelope:
+  notes: >-
+    Errors are returned as application/json. The OpenAPI documents 400 and 402
+    status responses; the docs additionally document 429 (rate limit), 403
+    (monthly cap) with a structured body {code, reset_at, upgrade_url}, and a
+    concurrency 429 carrying an X-Cap-Reason header. Responses are not RFC 9457
+    application/problem+json.
+problems:
+- status: 400
+  title: Bad Request
+  detail: Invalid request parameters.
+  source_operation: openapi/opus-openapi-original.json#CollectionController_list
+- status: 402
+  title: Payment Required
+  detail: Insufficient credits to complete the operation.
+  source_operation: openapi/opus-openapi-original.json#CollectionController_create
+- status: 403
+  code: API_MONTHLY_CAP_REACHED
+  title: Monthly API cap reached
+  detail: >-
+    The workspace has consumed its 900-credit / 15-hour monthly API allowance.
+    Returned as 403 (not 429) so agent frameworks do not retry in a loop.
+  remediation: Wait until the first day of next month (UTC) or upgrade.
+  body:
+    code: API_MONTHLY_CAP_REACHED
+    reset_at: '2026-06-01T00:00:00Z'
+    upgrade_url: https://www.opus.pro/contact-api
+  source: https://help.opus.pro/api-reference/limitation
+- status: 429
+  title: Too Many Requests (rate limit)
+  detail: Exceeded 30 requests/minute per API key on core project & clip APIs.
+  remediation: Back off and retry.
+  source: https://help.opus.pro/api-reference/limitation
+- status: 429
+  title: Too Many Requests (concurrency)
+  detail: >-
+    Exceeded the parallel-project concurrency limit (Pro Beta/Max 4, Business
+    50). Carries response header X-Cap-Reason: concurrent.
+  remediation: Retry after an in-flight project finishes (retry-after-backoff).
+  source: https://help.opus.pro/api-reference/limitation

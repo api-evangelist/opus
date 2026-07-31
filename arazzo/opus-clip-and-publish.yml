@@ -1,0 +1,44 @@
+arazzo: 1.0.1
+info:
+  title: OpusClip — clip a video and publish to social
+  version: 1.0.0
+  summary: Clip a video, generate social copy, and publish a clip to a connected social account.
+sourceDescriptions:
+- name: opus
+  url: ../openapi/opus-openapi-original.json
+  type: openapi
+workflows:
+- workflowId: clipAndPublish
+  summary: Create a clip project, list clips, list social accounts, generate social copy, and publish.
+  inputs:
+    type: object
+    properties:
+      videoUrl:
+        type: string
+        default: https://www.youtube.com/watch?v=tEXaoozFRes
+  steps:
+  - stepId: createProject
+    operationId: ClipProjectController_createClipProject
+    requestBody:
+      contentType: application/json
+      payload:
+        videoUrl: $inputs.videoUrl
+    outputs:
+      projectId: $response.body#/id
+  - stepId: listClips
+    operationId: ExportableClipController_queryExportableClips
+    parameters:
+    - name: q
+      in: query
+      value: findByProjectId
+    - name: projectId
+      in: query
+      value: $steps.createProject.outputs.projectId
+  - stepId: listSocialAccounts
+    operationId: SocialAccountController_getSocialAccounts
+  - stepId: generateSocialCopy
+    operationId: SocialCopyJobController_createSocialCopyJob
+    outputs:
+      jobId: $response.body#/jobId
+  - stepId: publishPost
+    operationId: PostTaskController_createPostTask

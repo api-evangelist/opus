@@ -1,0 +1,45 @@
+arazzo: 1.0.1
+info:
+  title: OpusClip — clip a video and export clips
+  version: 1.0.0
+  summary: Submit a long-form video, wait for clipping, list clips, and export a collection.
+sourceDescriptions:
+- name: opus
+  url: ../openapi/opus-openapi-original.json
+  type: openapi
+workflows:
+- workflowId: clipAndExport
+  summary: Create a clip project from a video URL, list the resulting clips, then export them.
+  inputs:
+    type: object
+    properties:
+      videoUrl:
+        type: string
+        default: https://www.youtube.com/watch?v=tEXaoozFRes
+  steps:
+  - stepId: createProject
+    operationId: ClipProjectController_createClipProject
+    requestBody:
+      contentType: application/json
+      payload:
+        videoUrl: $inputs.videoUrl
+    outputs:
+      projectId: $response.body#/id
+  - stepId: getProject
+    operationId: ClipProjectController_getClipProjectDetail
+    parameters:
+    - name: projectId
+      in: path
+      value: $steps.createProject.outputs.projectId
+  - stepId: listClips
+    operationId: ExportableClipController_queryExportableClips
+    parameters:
+    - name: q
+      in: query
+      value: findByProjectId
+    - name: projectId
+      in: query
+      value: $steps.createProject.outputs.projectId
+    - name: pageNum
+      in: query
+      value: 1
