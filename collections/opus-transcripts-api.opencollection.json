@@ -1,0 +1,47 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates transcripts API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "transcripts",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get a source-video transcript",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/transcripts",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query variant. Public callers must pass `findByProjectId`."
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Project ID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Fetch the trimmed source-video transcript for a project. ASR internals (seek, tokens, log-probabilities, etc.) are stripped. For API callers on a range-limited project, paragraphs are filtered to the billed curation range; internal callers and full-source submissions get the full transcript."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

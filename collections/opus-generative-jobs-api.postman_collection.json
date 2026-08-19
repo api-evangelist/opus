@@ -1,0 +1,245 @@
+{
+  "item": [
+    {
+      "id": "fe585124-2f33-452f-a70e-808f7a56dbf1",
+      "name": "generative-jobs",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "92a5a2a5-d307-4703-ba41-8c0730a374de",
+          "name": "Create a thumbnail generation job",
+          "request": {
+            "name": "Create a thumbnail generation job",
+            "description": {
+              "content": "Experimental. Subject to change; daily caps apply and the endpoint may be temporarily disabled via a runtime kill switch. Currently the only published `jobType` is `thumbnail` (7 credits/call, charged on success and refunded on failure).",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative-jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"jobType\": \"<string>\",\n  \"sourceUri\": \"<string>\",\n  \"referenceImageUri\": \"<string>\",\n  \"maskImageUri\": \"<string>\",\n  \"prompt\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "f3c91a60-15f4-4249-a1c5-2ecd5096e6c0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"jobType\": \"<string>\",\n  \"sourceUri\": \"https://youtube.com/watch?v=...\",\n  \"referenceImageUri\": \"https://cdn.opus.pro/uploads/.../ref.png\",\n  \"maskImageUri\": \"https://cdn.opus.pro/uploads/.../mask.png\",\n  \"prompt\": \"punchy red overlay, bold sans-serif title\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobId\": \"thumbnail-aB3xR7nQ8z\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "7e731a8b-1428-45ef-8bca-41c35dd8aaa1",
+          "name": "Get a generative job",
+          "request": {
+            "name": "Get a generative job",
+            "description": {
+              "content": "Experimental. Returns status, progress, and result for a job created via `POST /api/generative-jobs`. For `thumbnail` jobs, the `result.generatedThumbnailUris` array contains the CDN URLs of the produced thumbnails when `status` is `CONCLUDED`.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "generative-jobs",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The jobId returned by `POST /api/generative-jobs`."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "612851ca-b0ec-433e-97c9-4339db20d979",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "generative-jobs",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The jobId returned by `POST /api/generative-jobs`."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"UNKNOWN\",\n  \"result\": {\n    \"generatedThumbnailUris\": [\n      \"string\",\n      \"string\"\n    ]\n  },\n  \"progress\": {\n    \"status\": \"FAILED\",\n    \"percentage\": 0.68754594664313\n  },\n  \"error\": {\n    \"type\": \"string\",\n    \"message\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opus.pro",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "ffe5ddd4-d452-4170-a47f-e4be0b6161b8",
+    "name": "Clip brand-templates generative-jobs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Clip API documentation",
+      "type": "text/plain"
+    }
+  }
+}

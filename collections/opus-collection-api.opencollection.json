@@ -1,0 +1,112 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates collection API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "collection",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CollectionController_delete",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opus.pro/api/collections/:collectionId",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "The unique collection ID of the collection that you want to delete."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CollectionController_list",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/collections",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "**Query type**\n `q = mine` means list collections of your account.\n `q = findByContentId` means list collections contained the specific content(clip)."
+              },
+              {
+                "name": "contentId",
+                "value": "",
+                "type": "query",
+                "description": "If specified, will only return collections that contain the clip with this contentID."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CollectionController_create",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/collections",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CollectionController_export",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/collections/:collectionId/export",
+            "params": [
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "path",
+                "description": "The collectionID of the collection that you want to export"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

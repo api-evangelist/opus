@@ -7,10 +7,8 @@ server:
   registry_name: io.github.opus-pro/opusclip
   transport: http
   auth: oauth
-  auth_note: >-
-    Hosted MCP server. OAuth sign-in on first use (no API key). OAuth
-    authorization server is AuthKit; the protected resource is
-    https://api.opus.pro/ (see well-known/opus-oauth-protected-resource.json).
+  auth_note: Hosted MCP server. OAuth sign-in on first use (no API key). OAuth authorization server is
+    AuthKit; the protected resource is https://api.opus.pro/ (see well-known/opus-oauth-protected-resource.json).
   endpoints:
   - host: Cursor, Cline, Claude Code, ChatGPT / Codex, and other MCP hosts
     url: https://mcp.opus.pro/mcp
@@ -23,9 +21,8 @@ server:
   - registry: Smithery (smithery.ai/servers/opusclip/opusclip)
   - registry: Cursor (cursor.directory)
   - registry: Cline MCP Marketplace
-entitlement: >-
-  Any account can complete OAuth and view the tool catalog; calling a tool
-  requires Pro Beta, Max, or Business plan access.
+entitlement: Any account can complete OAuth and view the tool catalog; calling a tool requires Pro Beta,
+  Max, or Business plan access.
 tools:
   read:
   - name: opusclip_whoami
@@ -98,3 +95,10 @@ tools:
   - name: opusclip_unschedule_publish
     description: Cancel a previously scheduled post
     source_operation: openapi/opus-openapi-original.json#PublishScheduleController_cancelPublishSchedule
+deployment:
+  mode: remote
+  endpoint: https://mcp.opus.pro/mcp
+  verified: probed
+  probe: wall
+  checked: '2026-08-12'
+  source: catalog MCP census

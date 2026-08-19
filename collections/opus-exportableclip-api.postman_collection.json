@@ -1,0 +1,181 @@
+{
+  "item": [
+    {
+      "id": "c9ef8816-73b0-470a-90ea-33922b0213e3",
+      "name": "ExportableClip",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5915649b-75f0-4cc5-a691-b9b652b3c433",
+          "name": "Exportable Clip Controller query Exportable Clips",
+          "request": {
+            "name": "Exportable Clip Controller query Exportable Clips",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "exportable-clips"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Query type"
+                },
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "Project ID, required when q=findByProjectId"
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionId",
+                  "value": "<string>",
+                  "description": "Collection ID, required when q=findByCollectionId"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNum",
+                  "value": "<number>",
+                  "description": "Page Num, started with 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<number>",
+                  "description": "Page Size"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID. Required for users with multiple organizations.",
+                "key": "x-opus-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "12e283f6-d325-436a-b100-82336abd9e48",
+              "name": "Successfully retrieved exportable clips",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "exportable-clips"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "findByProjectId"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "P0000000demo"
+                    },
+                    {
+                      "key": "collectionId",
+                      "value": "xmAwhhFi0IJt"
+                    },
+                    {
+                      "key": "pageNum",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID. Required for users with multiple organizations.",
+                    "key": "x-opus-org-id",
+                    "value": "org_Example00000001"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"P0000000demo.CUexample1\",\n    \"projectId\": \"P0000000demo\",\n    \"runId\": \"20241113071229217.FP\",\n    \"curationId\": \"CUexample1\",\n    \"orgId\": \"org_Example00000001\",\n    \"userId\": \"google-oauth2|100000000000000000001\",\n    \"storageUsed\": 15537888,\n    \"durationMs\": 19478,\n    \"title\": \"Connect Through Passion: The Power of Ensemble Performance\",\n    \"text\": \"Clip text content\",\n    \"createdAt\": \"2024-11-13T07:18:22.811Z\",\n    \"updatedAt\": \"2024-11-13T07:18:22.811Z\",\n    \"productTier\": \"PRO\",\n    \"renderPref\": {\n      \"enableAutoLayout\": false,\n      \"enableFillLayout\": false,\n      \"enableFitLayout\": false,\n      \"fitLayoutCropRatio\": \"4:3\",\n      \"enableSplitLayout\": true,\n      \"enableThreeLayout\": true,\n      \"enableFourLayout\": true,\n      \"enableScreenLayout\": true,\n      \"enableVisualHook\": false,\n      \"enableWatermark\": false,\n      \"enableCrop\": true,\n      \"enableCaption\": true,\n      \"enableUppercase\": true,\n      \"enableHighlight\": true,\n      \"enableEmoji\": true,\n      \"font\": {\n        \"color\": \"#ffffff\",\n        \"style\": [\n          \"900\"\n        ],\n        \"family\": \"Komika-axis\",\n        \"stroke\": {\n          \"enabled\": false,\n          \"color\": \"#000000FF\",\n          \"width\": 16\n        },\n        \"shadow\": {\n          \"enabled\": true,\n          \"color\": \"#FFFFFFFF\",\n          \"x\": 2,\n          \"y\": 2,\n          \"blur\": 16\n        }\n      },\n      \"highlightColor\": {\n        \"primary\": \"#04f827\",\n        \"secondary\": \"#FFFD03\"\n      }\n    },\n    \"uriForPreview\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/esd.mp4?v=1731482302577650\",\n    \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/ehd.mp4?v=1731482302564330\",\n    \"timeRanges\": [\n      [\n        192170,\n        211630\n      ]\n    ],\n    \"keywords\": [\n      \"Q&A\"\n    ],\n    \"promptName\": \"Q&A\",\n    \"description\": \"Experience the magic of live performance as our talented cellist captivates the audience with her passionate playing. Witness the seamless coordination of the ensemble in a breathtaking display of musical artistry that will leave you inspired!\",\n    \"hashtags\": \"#ClassicalMusic #CelloPerformance #EnsembleMusic #LiveConcert #MusicPassion #CoordinatedPerformance #MusicalArtistry #Cellist #AudienceEngagement #StageMagic\",\n    \"genre\": \"Auto\",\n    \"subgenre\": \"general\",\n    \"clipCopilotTaskId\": \"taskid\"\n  },\n  {\n    \"id\": \"P0000000demo.CUexample1\",\n    \"projectId\": \"P0000000demo\",\n    \"runId\": \"20241113071229217.FP\",\n    \"curationId\": \"CUexample1\",\n    \"orgId\": \"org_Example00000001\",\n    \"userId\": \"google-oauth2|100000000000000000001\",\n    \"storageUsed\": 15537888,\n    \"durationMs\": 19478,\n    \"title\": \"Connect Through Passion: The Power of Ensemble Performance\",\n    \"text\": \"Clip text content\",\n    \"createdAt\": \"2024-11-13T07:18:22.811Z\",\n    \"updatedAt\": \"2024-11-13T07:18:22.811Z\",\n    \"productTier\": \"PRO\",\n    \"renderPref\": {\n      \"enableAutoLayout\": false,\n      \"enableFillLayout\": false,\n      \"enableFitLayout\": false,\n      \"fitLayoutCropRatio\": \"4:3\",\n      \"enableSplitLayout\": true,\n      \"enableThreeLayout\": true,\n      \"enableFourLayout\": true,\n      \"enableScreenLayout\": true,\n      \"enableVisualHook\": false,\n      \"enableWatermark\": false,\n      \"enableCrop\": true,\n      \"enableCaption\": true,\n      \"enableUppercase\": true,\n      \"enableHighlight\": true,\n      \"enableEmoji\": true,\n      \"font\": {\n        \"color\": \"#ffffff\",\n        \"style\": [\n          \"900\"\n        ],\n        \"family\": \"Komika-axis\",\n        \"stroke\": {\n          \"enabled\": false,\n          \"color\": \"#000000FF\",\n          \"width\": 16\n        },\n        \"shadow\": {\n          \"enabled\": true,\n          \"color\": \"#FFFFFFFF\",\n          \"x\": 2,\n          \"y\": 2,\n          \"blur\": 16\n        }\n      },\n      \"highlightColor\": {\n        \"primary\": \"#04f827\",\n        \"secondary\": \"#FFFD03\"\n      }\n    },\n    \"uriForPreview\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/esd.mp4?v=1731482302577650\",\n    \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/ehd.mp4?v=1731482302564330\",\n    \"timeRanges\": [\n      [\n        192170,\n        211630\n      ]\n    ],\n    \"keywords\": [\n      \"Q&A\"\n    ],\n    \"promptName\": \"Q&A\",\n    \"description\": \"Experience the magic of live performance as our talented cellist captivates the audience with her passionate playing. Witness the seamless coordination of the ensemble in a breathtaking display of musical artistry that will leave you inspired!\",\n    \"hashtags\": \"#ClassicalMusic #CelloPerformance #EnsembleMusic #LiveConcert #MusicPassion #CoordinatedPerformance #MusicalArtistry #Cellist #AudienceEngagement #StageMagic\",\n    \"genre\": \"Auto\",\n    \"subgenre\": \"general\",\n    \"clipCopilotTaskId\": \"taskid\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opus.pro",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "da3b7313-e764-4a65-9cb8-f1cf6be1c9b5",
+    "name": "Clip brand-templates ExportableClip API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Clip API documentation",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,573 @@
+{
+  "item": [
+    {
+      "id": "1daa8101-3bad-47fb-90f9-9e80f90d4f78",
+      "name": "collection",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6f5782e8-1d76-4ad9-a8e0-051956792335",
+          "name": "Collection Controller delete",
+          "request": {
+            "name": "Collection Controller delete",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections",
+                ":collectionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) The unique collection ID of the collection that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "4a9b1c57-0808-44c9-87de-4b83a7f7620a",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) The unique collection ID of the collection that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"xmAwhhFi0IJt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d0cef460-2224-4c4a-917f-0eab62d62678",
+          "name": "Collection Controller create",
+          "request": {
+            "name": "Collection Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collectionName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "d4f5ec78-aa1d-49a7-b5ef-d55a7878be6b",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collectionName\": \"Opus demo clips\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"collectionId\": \"xmAwhhFi0IJt\",\n    \"collectionName\": \"Opus demo clips\",\n    \"createdAt\": \"1996-04-11T18:41:04.089Z\",\n    \"updatedAt\": \"1957-12-02T15:46:25.348Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0b63d77f-c73a-440d-9719-3999d950d830",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collectionName\": \"Opus demo clips\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorName\": \"QuotaExceed\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f091f92e-16d0-4a3b-8a3b-292811026c32",
+          "name": "Collection Controller list",
+          "request": {
+            "name": "Collection Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) **Query type**\n `q = mine` means list collections of your account.\n `q = findByContentId` means list collections contained the specific content(clip)."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentId",
+                  "value": "<string>",
+                  "description": "If specified, will only return collections that contain the clip with this contentID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "eeee0c81-9ef4-4cfb-832b-ef786ecf4251",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "mine"
+                    },
+                    {
+                      "key": "contentId",
+                      "value": "P0000000demo.CUexample2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"list\": [\n      {\n        \"collectionId\": \"xmAwhhFi0IJt\",\n        \"collectionName\": \"Opus demo clips\",\n        \"createdAt\": \"1999-09-06T07:14:37.765Z\",\n        \"updatedAt\": \"2005-02-26T12:47:09.477Z\"\n      },\n      {\n        \"collectionId\": \"xmAwhhFi0IJt\",\n        \"collectionName\": \"Opus demo clips\",\n        \"createdAt\": \"1958-02-08T11:57:56.091Z\",\n        \"updatedAt\": \"1998-03-22T16:47:30.909Z\"\n      }\n    ],\n    \"total\": 1938.61496855551,\n    \"next\": \"string\",\n    \"limit\": 9771.128669961512\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "947b0a8e-a442-4fee-b03d-1865a625f557",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "mine"
+                    },
+                    {
+                      "key": "contentId",
+                      "value": "P0000000demo.CUexample2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorName\": \"Bad Request\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "5bba398f-4a72-40ce-9362-8e8f28a244a9",
+          "name": "Collection Controller export",
+          "request": {
+            "name": "Collection Controller export",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections",
+                ":collectionId",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) The collectionID of the collection that you want to export"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "045b33a9-94ec-452b-ba72-c095a1aaf42e",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections",
+                    ":collectionId",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) The collectionID of the collection that you want to export"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"contentList\": [\n      {\n        \"contentId\": \"P0000000demo.CUexample2\",\n        \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436\"\n      },\n      {\n        \"contentId\": \"P0000000demo.CUexample2\",\n        \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opus.pro",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "14e3cbcf-f1d8-4c9e-b312-7f426f8232c5",
+    "name": "Clip brand-templates collection API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Clip API documentation",
+      "type": "text/plain"
+    }
+  }
+}

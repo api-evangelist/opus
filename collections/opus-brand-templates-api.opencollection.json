@@ -1,0 +1,39 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "brand-templates",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "BrandTemplateController_getTemplates",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/brand-templates",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

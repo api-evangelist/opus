@@ -1,0 +1,141 @@
+{
+  "item": [
+    {
+      "id": "523726c9-0a31-40b5-a462-8c2664f3a8a0",
+      "name": "transcripts",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "2222369b-e715-47f4-9739-980de2cc3495",
+          "name": "Get a source-video transcript",
+          "request": {
+            "name": "Get a source-video transcript",
+            "description": {
+              "content": "Fetch the trimmed source-video transcript for a project. ASR internals (seek, tokens, log-probabilities, etc.) are stripped. For API callers on a range-limited project, paragraphs are filtered to the billed curation range; internal callers and full-source submissions get the full transcript.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "transcripts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Query variant. Public callers must pass `findByProjectId`."
+                },
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "(Required) Project ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "413ec417-4d01-431a-af6b-7b1f5dbbfae1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "transcripts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "P2120900kDmP"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    [\n      {\n        \"id\": 0,\n        \"start\": 0,\n        \"end\": 10.5,\n        \"text\": \"Hello and welcome to the show.\",\n        \"words\": [\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          },\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          }\n        ],\n        \"speaker\": \"SPEAKER_00\"\n      },\n      {\n        \"id\": 0,\n        \"start\": 0,\n        \"end\": 10.5,\n        \"text\": \"Hello and welcome to the show.\",\n        \"words\": [\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          },\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          }\n        ],\n        \"speaker\": \"SPEAKER_00\"\n      }\n    ],\n    [\n      {\n        \"id\": 0,\n        \"start\": 0,\n        \"end\": 10.5,\n        \"text\": \"Hello and welcome to the show.\",\n        \"words\": [\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          },\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          }\n        ],\n        \"speaker\": \"SPEAKER_00\"\n      },\n      {\n        \"id\": 0,\n        \"start\": 0,\n        \"end\": 10.5,\n        \"text\": \"Hello and welcome to the show.\",\n        \"words\": [\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          },\n          {\n            \"word\": \"hello\",\n            \"start\": 0.12,\n            \"end\": 0.48,\n            \"isFillerWord\": false\n          }\n        ],\n        \"speaker\": \"SPEAKER_00\"\n      }\n    ]\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opus.pro",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "2a1f4833-814e-4349-88a6-5670a55f9173",
+    "name": "Clip brand-templates transcripts API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Clip API documentation",
+      "type": "text/plain"
+    }
+  }
+}

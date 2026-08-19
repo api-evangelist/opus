@@ -1,0 +1,2208 @@
+{
+  "item": [
+    {
+      "id": "a8251589-c49e-4194-8d77-d547e710f43b",
+      "name": "enterprise",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e4719bb9-5e2c-44f2-855c-5481b68d2686",
+          "name": "Brand Template Controller get Templates",
+          "request": {
+            "name": "Brand Template Controller get Templates",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "brand-templates"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) "
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "11ea7dc1-5897-4a26-a096-0406bb2fb5f1",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "brand-templates"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"templateId\": \"cm32g2poc0002t5bnhmg2kfyx\",\n    \"name\": \"Karaoke Template\",\n    \"isDefault\": true,\n    \"preferences\": {\n      \"enableAutoLayout\": false,\n      \"enableFillLayout\": false,\n      \"enableFitLayout\": false,\n      \"fitLayoutCropRatio\": \"4:3\",\n      \"enableSplitLayout\": true,\n      \"enableThreeLayout\": true,\n      \"enableFourLayout\": true,\n      \"enableScreenLayout\": true,\n      \"enableVisualHook\": false,\n      \"enableWatermark\": false,\n      \"enableCrop\": true,\n      \"enableCaption\": true,\n      \"enableUppercase\": true,\n      \"enableHighlight\": true,\n      \"enableEmoji\": true,\n      \"font\": {\n        \"color\": \"#ffffff\",\n        \"style\": [\n          \"900\"\n        ],\n        \"family\": \"Komika-axis\",\n        \"stroke\": {\n          \"enabled\": false,\n          \"color\": \"#000000FF\",\n          \"width\": 16\n        },\n        \"shadow\": {\n          \"enabled\": true,\n          \"color\": \"#FFFFFFFF\",\n          \"x\": 2,\n          \"y\": 2,\n          \"blur\": 16\n        }\n      },\n      \"highlightColor\": {\n        \"primary\": \"#04f827\",\n        \"secondary\": \"#FFFD03\"\n      }\n    },\n    \"type\": \"PresetOverwrite\"\n  },\n  {\n    \"templateId\": \"cm32g2poc0002t5bnhmg2kfyx\",\n    \"name\": \"Karaoke Template\",\n    \"isDefault\": true,\n    \"preferences\": {\n      \"enableAutoLayout\": false,\n      \"enableFillLayout\": false,\n      \"enableFitLayout\": false,\n      \"fitLayoutCropRatio\": \"4:3\",\n      \"enableSplitLayout\": true,\n      \"enableThreeLayout\": true,\n      \"enableFourLayout\": true,\n      \"enableScreenLayout\": true,\n      \"enableVisualHook\": false,\n      \"enableWatermark\": false,\n      \"enableCrop\": true,\n      \"enableCaption\": true,\n      \"enableUppercase\": true,\n      \"enableHighlight\": true,\n      \"enableEmoji\": true,\n      \"font\": {\n        \"color\": \"#ffffff\",\n        \"style\": [\n          \"900\"\n        ],\n        \"family\": \"Komika-axis\",\n        \"stroke\": {\n          \"enabled\": false,\n          \"color\": \"#000000FF\",\n          \"width\": 16\n        },\n        \"shadow\": {\n          \"enabled\": true,\n          \"color\": \"#FFFFFFFF\",\n          \"x\": 2,\n          \"y\": 2,\n          \"blur\": 16\n        }\n      },\n      \"highlightColor\": {\n        \"primary\": \"#04f827\",\n        \"secondary\": \"#FFFD03\"\n      }\n    },\n    \"type\": \"PresetOverwrite\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "dad58152-7f7f-4170-8278-db4feb196365",
+          "name": "Clip Project Controller create Clip Project",
+          "request": {
+            "name": "Clip Project Controller create Clip Project",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "clip-projects"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"videoUrl\": \"<string>\",\n  \"conclusionActions\": [\n    {\n      \"type\": \"<string>\",\n      \"notifyFailure\": false,\n      \"email\": \"<string>\",\n      \"url\": \"<string>\"\n    },\n    {\n      \"type\": \"<string>\",\n      \"notifyFailure\": false,\n      \"email\": \"<string>\",\n      \"url\": \"<string>\"\n    }\n  ],\n  \"curationPref\": {\n    \"range\": null,\n    \"genre\": \"Auto\"\n  },\n  \"importPref\": {\n    \"sourceLang\": \"auto\"\n  },\n  \"brandTemplateId\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "2a1a2dae-f4e6-4179-acbd-f99c2e4a2ae0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "clip-projects"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"videoUrl\": \"https://www.youtube.com/watch?v=LXvv6CbGg8A\",\n  \"conclusionActions\": [\n    {\n      \"type\": \"EMAIL\",\n      \"notifyFailure\": true,\n      \"email\": \"opusclip@opus.pro\"\n    }\n  ],\n  \"curationPref\": {\n    \"topicKeywords\": [\n      \"Fancy Words\"\n    ],\n    \"range\": {\n      \"startSec\": 106,\n      \"endSec\": 204\n    },\n    \"genre\": \"Auto\"\n  },\n  \"importPref\": {\n    \"sourceLang\": \"auto\"\n  },\n  \"brandTemplateId\": \"preset-fancy-Karaoke\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"P0000000demo\",\n  \"userId\": \"google-oauth2|100000000000000000001\",\n  \"orgId\": \"org_Example00000001\",\n  \"isDeleted\": false,\n  \"isPurged\": false,\n  \"projectId\": \"P0000000demo\",\n  \"sourcePlatform\": \"YOUTUBE\",\n  \"sourceId\": \"YT_tEXaoozFRes\",\n  \"labels\": [],\n  \"productTier\": \"PRO\",\n  \"stage\": \"QUEUED\",\n  \"storageSize\": 0,\n  \"storageStatus\": \"TEMPORARY\",\n  \"storageExpireAt\": \"2024-12-19T08:17:42.832Z\",\n  \"createdAt\": \"2024-11-19T08:17:42.832Z\",\n  \"updatedAt\": \"2024-11-19T08:17:42.860Z\",\n  \"clusterJobId\": \"FP.P0000000demo:20241119081742853.FP\",\n  \"cluster\": \"gold\",\n  \"visibility\": \"DEFAULT\",\n  \"permissions\": [\n    \"PROJECT_SHARE\",\n    \"PROJECT_EDIT\",\n    \"PROJECT_VIEW\"\n  ],\n  \"promptRecommendations\": [\n    \"Foo\",\n    \"Boo\"\n  ],\n  \"sourceUri\": \"string\",\n  \"model\": \"ClipBasic\",\n  \"error\": \"string\",\n  \"stallCount\": 8762.908766336488,\n  \"workerUrl\": \"string\",\n  \"curationPref\": {\n    \"clipDurations\": [\n      [\n        0,\n        30\n      ],\n      [\n        30,\n        60\n      ],\n      [\n        60,\n        90\n      ],\n      [\n        90,\n        180\n      ]\n    ],\n    \"topicKeywords\": [\n      \"Fancy Words\"\n    ],\n    \"range\": {\n      \"startSec\": 106,\n      \"endSec\": 204\n    },\n    \"genre\": \"Auto\"\n  },\n  \"renderPref\": {\n    \"enableAutoLayout\": false,\n    \"enableScreenLayout\": true,\n    \"enableCrop\": true,\n    \"enableCaption\": true,\n    \"enableUppercase\": true,\n    \"enableHighlight\": true,\n    \"enableEmoji\": true,\n    \"enableFillLayout\": false,\n    \"enableSplitLayout\": true,\n    \"enableThreeLayout\": true,\n    \"enableFourLayout\": true,\n    \"enableFitLayout\": false,\n    \"fitLayoutCropRatio\": \"4:3\",\n    \"enableVisualHook\": false,\n    \"enableWatermark\": false,\n    \"font\": {\n      \"color\": \"#ffffff\",\n      \"style\": [\n        \"900\"\n      ],\n      \"family\": \"Komika-axis\",\n      \"stroke\": {\n        \"enabled\": false,\n        \"color\": \"#000000FF\",\n        \"width\": 16\n      },\n      \"shadow\": {\n        \"enabled\": true,\n        \"color\": \"#FFFFFFFF\",\n        \"x\": 2,\n        \"y\": 2,\n        \"blur\": 16\n      },\n      \"id\": \"font123\",\n      \"type\": \"CustomizedFont\",\n      \"name\": \"Arial\",\n      \"path\": \"/fonts/arial.ttf\",\n      \"size\": \"Large\",\n      \"numericalSize\": 50,\n      \"textDecoration\": \"underline\"\n    },\n    \"highlightColor\": {\n      \"primary\": \"#ff0000\",\n      \"secondary\": \"#00ff00\"\n    },\n    \"layoutAspectRatio\": \"portrait\",\n    \"enableBroll\": false\n  },\n  \"refundStatus\": \"string\",\n  \"importPref\": {\n    \"sourceLang\": \"en\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ee5abad7-4390-46dd-904e-357d61d3ca23",
+          "name": "Clip Project Controller get Clip Project Detail",
+          "request": {
+            "name": "Clip Project Controller get Clip Project Detail",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "clip-projects",
+                ":projectId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "fc932b23-6819-4e3e-9aaf-48bcc4112cd8",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "clip-projects",
+                    ":projectId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"P0000000demo\",\n  \"userId\": \"google-oauth2|100000000000000000001\",\n  \"orgId\": \"org_Example00000001\",\n  \"isDeleted\": false,\n  \"isPurged\": false,\n  \"projectId\": \"P0000000demo\",\n  \"sourcePlatform\": \"YOUTUBE\",\n  \"sourceId\": \"YT_tEXaoozFRes\",\n  \"labels\": [],\n  \"productTier\": \"PRO\",\n  \"stage\": \"QUEUED\",\n  \"storageSize\": 0,\n  \"storageStatus\": \"TEMPORARY\",\n  \"storageExpireAt\": \"2024-12-19T08:17:42.832Z\",\n  \"createdAt\": \"2024-11-19T08:17:42.832Z\",\n  \"updatedAt\": \"2024-11-19T08:17:42.860Z\",\n  \"clusterJobId\": \"FP.P0000000demo:20241119081742853.FP\",\n  \"cluster\": \"gold\",\n  \"visibility\": \"DEFAULT\",\n  \"permissions\": [\n    \"PROJECT_SHARE\",\n    \"PROJECT_EDIT\",\n    \"PROJECT_VIEW\"\n  ],\n  \"promptRecommendations\": [\n    \"Foo\",\n    \"Boo\"\n  ],\n  \"sourceUri\": \"string\",\n  \"model\": \"ClipBasic\",\n  \"error\": \"string\",\n  \"stallCount\": 1198.2252400996485,\n  \"workerUrl\": \"string\",\n  \"curationPref\": {\n    \"clipDurations\": [\n      [\n        0,\n        30\n      ],\n      [\n        30,\n        60\n      ],\n      [\n        60,\n        90\n      ],\n      [\n        90,\n        180\n      ]\n    ],\n    \"topicKeywords\": [\n      \"Fancy Words\"\n    ],\n    \"range\": {\n      \"startSec\": 106,\n      \"endSec\": 204\n    },\n    \"genre\": \"Auto\"\n  },\n  \"renderPref\": {\n    \"enableAutoLayout\": false,\n    \"enableScreenLayout\": true,\n    \"enableCrop\": true,\n    \"enableCaption\": true,\n    \"enableUppercase\": true,\n    \"enableHighlight\": true,\n    \"enableEmoji\": true,\n    \"enableFillLayout\": false,\n    \"enableSplitLayout\": true,\n    \"enableThreeLayout\": true,\n    \"enableFourLayout\": true,\n    \"enableFitLayout\": false,\n    \"fitLayoutCropRatio\": \"4:3\",\n    \"enableVisualHook\": false,\n    \"enableWatermark\": false,\n    \"font\": {\n      \"color\": \"#ffffff\",\n      \"style\": [\n        \"900\"\n      ],\n      \"family\": \"Komika-axis\",\n      \"stroke\": {\n        \"enabled\": false,\n        \"color\": \"#000000FF\",\n        \"width\": 16\n      },\n      \"shadow\": {\n        \"enabled\": true,\n        \"color\": \"#FFFFFFFF\",\n        \"x\": 2,\n        \"y\": 2,\n        \"blur\": 16\n      },\n      \"id\": \"font123\",\n      \"type\": \"CustomizedFont\",\n      \"name\": \"Arial\",\n      \"path\": \"/fonts/arial.ttf\",\n      \"size\": \"Large\",\n      \"numericalSize\": 50,\n      \"textDecoration\": \"underline\"\n    },\n    \"highlightColor\": {\n      \"primary\": \"#ff0000\",\n      \"secondary\": \"#00ff00\"\n    },\n    \"layoutAspectRatio\": \"portrait\",\n    \"enableBroll\": false\n  },\n  \"refundStatus\": \"string\",\n  \"importPref\": {\n    \"sourceLang\": \"en\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea13116c-8ebc-42ea-9de2-91aeb5b15033",
+          "name": "Clip Project Controller update Clip Project Visibility",
+          "request": {
+            "name": "Clip Project Controller update Clip Project Visibility",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "clip-projects",
+                ":projectId",
+                "update-visibility"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "projectId",
+                  "description": "(Required) "
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"visibility\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "c0c70ac8-f730-4e4d-a095-8bb079c9e37f",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "clip-projects",
+                    ":projectId",
+                    "update-visibility"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "projectId",
+                      "description": "(Required) "
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"visibility\": \"PUBLIC\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"id\": \"P0000000demo\",\n  \"userId\": \"google-oauth2|100000000000000000001\",\n  \"orgId\": \"org_Example00000001\",\n  \"isDeleted\": false,\n  \"isPurged\": false,\n  \"projectId\": \"P0000000demo\",\n  \"sourcePlatform\": \"YOUTUBE\",\n  \"sourceId\": \"YT_tEXaoozFRes\",\n  \"labels\": [],\n  \"productTier\": \"PRO\",\n  \"stage\": \"QUEUED\",\n  \"storageSize\": 0,\n  \"storageStatus\": \"TEMPORARY\",\n  \"storageExpireAt\": \"2024-12-19T08:17:42.832Z\",\n  \"createdAt\": \"2024-11-19T08:17:42.832Z\",\n  \"updatedAt\": \"2024-11-19T08:17:42.860Z\",\n  \"clusterJobId\": \"FP.P0000000demo:20241119081742853.FP\",\n  \"cluster\": \"gold\",\n  \"visibility\": \"DEFAULT\",\n  \"permissions\": [\n    \"PROJECT_SHARE\",\n    \"PROJECT_EDIT\",\n    \"PROJECT_VIEW\"\n  ],\n  \"promptRecommendations\": [\n    \"Foo\",\n    \"Boo\"\n  ],\n  \"sourceUri\": \"string\",\n  \"model\": \"ClipBasic\",\n  \"error\": \"string\",\n  \"stallCount\": 1198.2252400996485,\n  \"workerUrl\": \"string\",\n  \"curationPref\": {\n    \"clipDurations\": [\n      [\n        0,\n        30\n      ],\n      [\n        30,\n        60\n      ],\n      [\n        60,\n        90\n      ],\n      [\n        90,\n        180\n      ]\n    ],\n    \"topicKeywords\": [\n      \"Fancy Words\"\n    ],\n    \"range\": {\n      \"startSec\": 106,\n      \"endSec\": 204\n    },\n    \"genre\": \"Auto\"\n  },\n  \"renderPref\": {\n    \"enableAutoLayout\": false,\n    \"enableScreenLayout\": true,\n    \"enableCrop\": true,\n    \"enableCaption\": true,\n    \"enableUppercase\": true,\n    \"enableHighlight\": true,\n    \"enableEmoji\": true,\n    \"enableFillLayout\": false,\n    \"enableSplitLayout\": true,\n    \"enableThreeLayout\": true,\n    \"enableFourLayout\": true,\n    \"enableFitLayout\": false,\n    \"fitLayoutCropRatio\": \"4:3\",\n    \"enableVisualHook\": false,\n    \"enableWatermark\": false,\n    \"font\": {\n      \"color\": \"#ffffff\",\n      \"style\": [\n        \"900\"\n      ],\n      \"family\": \"Komika-axis\",\n      \"stroke\": {\n        \"enabled\": false,\n        \"color\": \"#000000FF\",\n        \"width\": 16\n      },\n      \"shadow\": {\n        \"enabled\": true,\n        \"color\": \"#FFFFFFFF\",\n        \"x\": 2,\n        \"y\": 2,\n        \"blur\": 16\n      },\n      \"id\": \"font123\",\n      \"type\": \"CustomizedFont\",\n      \"name\": \"Arial\",\n      \"path\": \"/fonts/arial.ttf\",\n      \"size\": \"Large\",\n      \"numericalSize\": 50,\n      \"textDecoration\": \"underline\"\n    },\n    \"highlightColor\": {\n      \"primary\": \"#ff0000\",\n      \"secondary\": \"#00ff00\"\n    },\n    \"layoutAspectRatio\": \"portrait\",\n    \"enableBroll\": false\n  },\n  \"refundStatus\": \"string\",\n  \"importPref\": {\n    \"sourceLang\": \"en\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "d6e07ff6-eda8-45a6-b82b-3b548f8f176b",
+          "name": "Exportable Clip Controller query Exportable Clips",
+          "request": {
+            "name": "Exportable Clip Controller query Exportable Clips",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "exportable-clips"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Query type"
+                },
+                {
+                  "disabled": false,
+                  "key": "projectId",
+                  "value": "<string>",
+                  "description": "Project ID, required when q=findByProjectId"
+                },
+                {
+                  "disabled": false,
+                  "key": "collectionId",
+                  "value": "<string>",
+                  "description": "Collection ID, required when q=findByCollectionId"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageNum",
+                  "value": "<number>",
+                  "description": "Page Num, started with 1"
+                },
+                {
+                  "disabled": false,
+                  "key": "pageSize",
+                  "value": "<number>",
+                  "description": "Page Size"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "disabled": false,
+                "description": "Organization ID. Required for users with multiple organizations.",
+                "key": "x-opus-org-id",
+                "value": "<string>"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "6335ac24-6e1b-4cfa-ad35-c4af4be62cd7",
+              "name": "Successfully retrieved exportable clips",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "exportable-clips"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "findByProjectId"
+                    },
+                    {
+                      "key": "projectId",
+                      "value": "P0000000demo"
+                    },
+                    {
+                      "key": "collectionId",
+                      "value": "xmAwhhFi0IJt"
+                    },
+                    {
+                      "key": "pageNum",
+                      "value": "1"
+                    },
+                    {
+                      "key": "pageSize",
+                      "value": "10"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "Organization ID. Required for users with multiple organizations.",
+                    "key": "x-opus-org-id",
+                    "value": "org_Example00000001"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "[\n  {\n    \"id\": \"P0000000demo.CUexample1\",\n    \"projectId\": \"P0000000demo\",\n    \"runId\": \"20241113071229217.FP\",\n    \"curationId\": \"CUexample1\",\n    \"orgId\": \"org_Example00000001\",\n    \"userId\": \"google-oauth2|100000000000000000001\",\n    \"storageUsed\": 15537888,\n    \"durationMs\": 19478,\n    \"title\": \"Connect Through Passion: The Power of Ensemble Performance\",\n    \"text\": \"Clip text content\",\n    \"createdAt\": \"2024-11-13T07:18:22.811Z\",\n    \"updatedAt\": \"2024-11-13T07:18:22.811Z\",\n    \"productTier\": \"PRO\",\n    \"renderPref\": {\n      \"enableAutoLayout\": false,\n      \"enableScreenLayout\": true,\n      \"enableCrop\": true,\n      \"enableCaption\": true,\n      \"enableUppercase\": true,\n      \"enableHighlight\": true,\n      \"enableEmoji\": true,\n      \"enableFillLayout\": false,\n      \"enableSplitLayout\": true,\n      \"enableThreeLayout\": true,\n      \"enableFourLayout\": true,\n      \"enableFitLayout\": false,\n      \"fitLayoutCropRatio\": \"4:3\",\n      \"enableVisualHook\": false,\n      \"enableWatermark\": false,\n      \"font\": {\n        \"color\": \"#ffffff\",\n        \"style\": [\n          \"900\"\n        ],\n        \"family\": \"Komika-axis\",\n        \"stroke\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"shadow\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"font123\",\n        \"type\": \"CustomizedFont\",\n        \"name\": \"Arial\",\n        \"path\": \"/fonts/arial.ttf\",\n        \"size\": \"Large\",\n        \"numericalSize\": 50,\n        \"textDecoration\": \"underline\"\n      },\n      \"highlightColor\": {\n        \"primary\": \"#ff0000\",\n        \"secondary\": \"#00ff00\"\n      },\n      \"layoutAspectRatio\": \"portrait\",\n      \"enableBroll\": false\n    },\n    \"uriForPreview\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/esd.mp4?v=1731482302577650\",\n    \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/ehd.mp4?v=1731482302564330\",\n    \"timeRanges\": [\n      [\n        192170,\n        211630\n      ]\n    ],\n    \"keywords\": [\n      \"Q&A\"\n    ],\n    \"promptName\": \"Q&A\",\n    \"description\": \"Experience the magic of live performance as our talented cellist captivates the audience with her passionate playing. Witness the seamless coordination of the ensemble in a breathtaking display of musical artistry that will leave you inspired!\",\n    \"hashtags\": \"#ClassicalMusic #CelloPerformance #EnsembleMusic #LiveConcert #MusicPassion #CoordinatedPerformance #MusicalArtistry #Cellist #AudienceEngagement #StageMagic\",\n    \"genre\": \"Auto\",\n    \"subgenre\": \"general\",\n    \"clipCopilotTaskId\": \"taskid\"\n  },\n  {\n    \"id\": \"P0000000demo.CUexample1\",\n    \"projectId\": \"P0000000demo\",\n    \"runId\": \"20241113071229217.FP\",\n    \"curationId\": \"CUexample1\",\n    \"orgId\": \"org_Example00000001\",\n    \"userId\": \"google-oauth2|100000000000000000001\",\n    \"storageUsed\": 15537888,\n    \"durationMs\": 19478,\n    \"title\": \"Connect Through Passion: The Power of Ensemble Performance\",\n    \"text\": \"Clip text content\",\n    \"createdAt\": \"2024-11-13T07:18:22.811Z\",\n    \"updatedAt\": \"2024-11-13T07:18:22.811Z\",\n    \"productTier\": \"PRO\",\n    \"renderPref\": {\n      \"enableAutoLayout\": false,\n      \"enableScreenLayout\": true,\n      \"enableCrop\": true,\n      \"enableCaption\": true,\n      \"enableUppercase\": true,\n      \"enableHighlight\": true,\n      \"enableEmoji\": true,\n      \"enableFillLayout\": false,\n      \"enableSplitLayout\": true,\n      \"enableThreeLayout\": true,\n      \"enableFourLayout\": true,\n      \"enableFitLayout\": false,\n      \"fitLayoutCropRatio\": \"4:3\",\n      \"enableVisualHook\": false,\n      \"enableWatermark\": false,\n      \"font\": {\n        \"color\": \"#ffffff\",\n        \"style\": [\n          \"900\"\n        ],\n        \"family\": \"Komika-axis\",\n        \"stroke\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"shadow\": {\n          \"value\": \"<Error: Too many levels of nesting to fake this schema>\"\n        },\n        \"id\": \"font123\",\n        \"type\": \"CustomizedFont\",\n        \"name\": \"Arial\",\n        \"path\": \"/fonts/arial.ttf\",\n        \"size\": \"Large\",\n        \"numericalSize\": 50,\n        \"textDecoration\": \"underline\"\n      },\n      \"highlightColor\": {\n        \"primary\": \"#ff0000\",\n        \"secondary\": \"#00ff00\"\n      },\n      \"layoutAspectRatio\": \"portrait\",\n      \"enableBroll\": false\n    },\n    \"uriForPreview\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/esd.mp4?v=1731482302577650\",\n    \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample1/ehd.mp4?v=1731482302564330\",\n    \"timeRanges\": [\n      [\n        192170,\n        211630\n      ]\n    ],\n    \"keywords\": [\n      \"Q&A\"\n    ],\n    \"promptName\": \"Q&A\",\n    \"description\": \"Experience the magic of live performance as our talented cellist captivates the audience with her passionate playing. Witness the seamless coordination of the ensemble in a breathtaking display of musical artistry that will leave you inspired!\",\n    \"hashtags\": \"#ClassicalMusic #CelloPerformance #EnsembleMusic #LiveConcert #MusicPassion #CoordinatedPerformance #MusicalArtistry #Cellist #AudienceEngagement #StageMagic\",\n    \"genre\": \"Auto\",\n    \"subgenre\": \"general\",\n    \"clipCopilotTaskId\": \"taskid\"\n  }\n]",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "be47ef72-02dd-4837-9b9a-9155be2ad019",
+          "name": "Collection Content Controller delete Collection Contents",
+          "request": {
+            "name": "Collection Content Controller delete Collection Contents",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collection-contents",
+                "delete-collection-contents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"q\": \"<string>\",\n  \"collectionId\": \"<string>\",\n  \"contentId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "936944b1-7457-4f06-915a-1594e62221df",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collection-contents",
+                    "delete-collection-contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"q\": \"<string>\",\n  \"collectionId\": \"xmAwhhFi0IJt\",\n  \"contentId\": \"P0000000demo.CUexample2\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "bf44665a-bfd7-4ee2-8d60-3f0986a83da6",
+          "name": "Collection Content Controller create Collection Content",
+          "request": {
+            "name": "Collection Content Controller create Collection Content",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collection-contents"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collectionId\": \"<string>\",\n  \"contentId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "0ce1cfa3-bd0b-4f88-93fa-0b20357cfab0",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collection-contents"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collectionId\": \"xmAwhhFi0IJt\",\n  \"contentId\": \"P0000000demo.CUexample2\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"collectionId\": \"xmAwhhFi0IJt\",\n    \"contentId\": \"P0000000demo.CUexample2\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ed5b11a5-c518-43f0-90a2-31725c8941cf",
+          "name": "Collection Controller delete",
+          "request": {
+            "name": "Collection Controller delete",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections",
+                ":collectionId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) The unique collection ID of the collection that you want to delete."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c878e4ec-fefc-4279-9048-dcb97c4f6f83",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections",
+                    ":collectionId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) The unique collection ID of the collection that you want to delete."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": \"xmAwhhFi0IJt\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "738b669b-4cf1-45c3-9052-0a04361db804",
+          "name": "Collection Controller create",
+          "request": {
+            "name": "Collection Controller create",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"collectionName\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "de342eef-27a0-4383-8e6d-bd6d58a4ca1c",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collectionName\": \"Opus demo clips\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"collectionId\": \"xmAwhhFi0IJt\",\n    \"collectionName\": \"Opus demo clips\",\n    \"createdAt\": \"1968-07-15T00:38:00.384Z\",\n    \"updatedAt\": \"1984-01-01T08:09:02.519Z\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c28bf234-30c1-4867-9bc3-384c06b4fc20",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"collectionName\": \"Opus demo clips\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Payment Required",
+              "code": 402,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorName\": \"QuotaExceed\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b61789c9-e4a1-46f1-9dce-96cfc4bf84de",
+          "name": "Collection Controller list",
+          "request": {
+            "name": "Collection Controller list",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) **Query type**\n `q = mine` means list collections of your account.\n `q = findByContentId` means list collections contained the specific content(clip)."
+                },
+                {
+                  "disabled": false,
+                  "key": "contentId",
+                  "value": "<string>",
+                  "description": "If specified, will only return collections that contain the clip with this contentID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "425dc0f9-09fa-4896-9286-0911044d8502",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "mine"
+                    },
+                    {
+                      "key": "contentId",
+                      "value": "P0000000demo.CUexample2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"list\": [\n      {\n        \"collectionId\": \"xmAwhhFi0IJt\",\n        \"collectionName\": \"Opus demo clips\",\n        \"createdAt\": \"2002-12-06T03:07:18.254Z\",\n        \"updatedAt\": \"2010-12-22T15:51:14.446Z\"\n      },\n      {\n        \"collectionId\": \"xmAwhhFi0IJt\",\n        \"collectionName\": \"Opus demo clips\",\n        \"createdAt\": \"1975-05-20T08:36:21.258Z\",\n        \"updatedAt\": \"2000-06-25T04:39:58.805Z\"\n      }\n    ],\n    \"total\": 7554.120783164113,\n    \"next\": \"string\",\n    \"limit\": 416.29945603414484\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "77d6b4d9-54da-4336-acd2-efe94f652813",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "mine"
+                    },
+                    {
+                      "key": "contentId",
+                      "value": "P0000000demo.CUexample2"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"errorName\": \"Bad Request\",\n  \"errorMessage\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "30bd66ad-15f0-464a-a242-ea0358ca3ca4",
+          "name": "Collection Controller export",
+          "request": {
+            "name": "Collection Controller export",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "collections",
+                ":collectionId",
+                "export"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "collectionId",
+                  "description": "(Required) The collectionID of the collection that you want to export"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4a61d3b8-e0b6-46ba-a2d7-104de82d3add",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "collections",
+                    ":collectionId",
+                    "export"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "collectionId",
+                      "description": "(Required) The collectionID of the collection that you want to export"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"contentList\": [\n      {\n        \"contentId\": \"P0000000demo.CUexample2\",\n        \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436\"\n      },\n      {\n        \"contentId\": \"P0000000demo.CUexample2\",\n        \"uriForExport\": \"https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "fd4992be-c0bc-4c49-832e-6f0f7bec57fa",
+          "name": "Censor Job Controller create Censor Job",
+          "request": {
+            "name": "Censor Job Controller create Censor Job",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "censor-jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": \"<string>\",\n  \"clipId\": \"<string>\",\n  \"options\": {\n    \"beepSound\": \"<boolean>\"\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "34d29afc-15d3-4e3a-a26e-cfc93083f574",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "censor-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectId\": \"P0000000demo\",\n  \"clipId\": \"lDIOHRzdac\",\n  \"options\": {\n    \"beepSound\": false\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"jobId\": \"string\",\n  \"message\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "679da21b-57ec-4b12-b2ef-d1bf139bf858",
+          "name": "Censor Job Controller get Censor Job",
+          "request": {
+            "name": "Censor Job Controller get Censor Job",
+            "description": {},
+            "url": {
+              "path": [
+                "api",
+                "censor-jobs",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) The jobId that you want to get the status of."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "c6941150-17ea-4197-a409-b963ab807b90",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "censor-jobs",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) The jobId that you want to get the status of."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"FAILED\",\n  \"error\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "87de6e55-4f6a-43f9-8b14-8129441a9b83",
+          "name": "Social Account Controller get Social Accounts",
+          "request": {
+            "name": "Social Account Controller get Social Accounts",
+            "description": {
+              "content": "Retrieve the connected social destinations available for social posting.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "social-accounts"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Query type"
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "da27ab79-a3d0-415a-bd55-b8a7b301dd16",
+              "name": "Successfully retrieved social accounts",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "social-accounts"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "mine"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"postAccountId\": \"postAccountId_xxx1\",\n      \"subAccountId\": \"subAccountId_xxx1\",\n      \"platform\": \"FACEBOOK_PAGE\",\n      \"extUserId\": \"extUserId_xxx\",\n      \"extUserName\": \"Page Name\",\n      \"extUserPictureLink\": \"https://example.com/avatar.png\",\n      \"extUserProfileLink\": \"https://www.facebook.com/page_id\"\n    },\n    {\n      \"postAccountId\": \"postAccountId_xxx2\",\n      \"platform\": \"TIKTOK_BUSINESS\",\n      \"extUserId\": \"extUserId_xxx\",\n      \"extUserName\": \"tiktok_account\",\n      \"extUserPictureLink\": \"https://example.com/avatar.jpeg\",\n      \"extUserProfileLink\": \"https://www.tiktok.com/@username\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "cd649aea-46ab-435b-8162-dfc5a77655aa",
+          "name": "Social Copy Job Controller create Social Copy Job",
+          "request": {
+            "name": "Social Copy Job Controller create Social Copy Job",
+            "description": {
+              "content": "Create an asynchronous social copy generation job for a specific clip and destination account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "social-copy-jobs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": \"<string>\",\n  \"clipId\": \"<string>\",\n  \"postAccountId\": \"<string>\",\n  \"subAccountId\": \"<string>\",\n  \"prompt\": \"<string>\",\n  \"forceRegenerate\": \"<boolean>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "1d90d8f9-8655-42d2-a1c4-266b1bf111a8",
+              "name": "Successfully created a social copy generation job",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "social-copy-jobs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectId\": \"P0000000demo\",\n  \"clipId\": \"CUexample1\",\n  \"postAccountId\": \"postAccountId_xxx1\",\n  \"subAccountId\": \"subAccountId_xxx1\",\n  \"prompt\": \"Write the caption in a playful, witty tone that uses humor to keep the audience engaged, while ending with a clear call to action.\",\n  \"forceRegenerate\": false\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"jobId\": \"96e3d68c-49ef-4c19-b3b6-595f9564537c\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1c8c42ed-47c0-45b0-bea2-06ecf8d05f9a",
+          "name": "Social Copy Job Controller get Social Copy Job",
+          "request": {
+            "name": "Social Copy Job Controller get Social Copy Job",
+            "description": {
+              "content": "Get the current status and generated copy for a social copy generation job.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "social-copy-jobs",
+                ":jobId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "jobId",
+                  "description": "(Required) Unique ID of the social copy generation job"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "658b8316-9fdd-439f-ae42-3b4b36a73299",
+              "name": "Successfully retrieved the social copy generation result",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "social-copy-jobs",
+                    ":jobId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "jobId",
+                      "description": "(Required) Unique ID of the social copy generation job"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"jobId\": \"96e3d68c-49ef-4c19-b3b6-595f9564537c\",\n    \"status\": \"COMPLETED\",\n    \"cached\": false,\n    \"title\": \"My Daughter's 'Gift' at 3 AM\",\n    \"description\": \"Thought I was losing my mind. Hear walking at 3 AM, check the house - everyone's asleep. Then I see it... my daughter's 'gift' moved. My wife has some explaining to do!\",\n    \"hashtags\": \"#ParentingFails #CreepyKids #MomLife #FunnyParenting #WhatDidISignUpFor\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "91ba7c13-a6b0-4cbb-9a8e-a1df951617c1",
+          "name": "Post Task Controller create Post Task",
+          "request": {
+            "name": "Post Task Controller create Post Task",
+            "description": {
+              "content": "Publish a clip immediately to a connected social account. Each X (formerly Twitter) post costs 1 credit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "post-tasks"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": \"<string>\",\n  \"clipId\": \"<string>\",\n  \"postAccountId\": \"<string>\",\n  \"postDetail\": {\n    \"title\": \"<string>\",\n    \"mediaType\": \"<string>\",\n    \"custom\": {\n      \"description\": \"<string>\",\n      \"privacy\": \"<string>\"\n    }\n  },\n  \"subAccountId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "41322848-044b-47f2-bd65-2644c4d94e85",
+              "name": "Successfully created a post task",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "post-tasks"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectId\": \"P0000000demo\",\n  \"clipId\": \"qU3iVMSO77\",\n  \"postAccountId\": \"postAccountId_xxx1\",\n  \"subAccountId\": \"subAccountId_xxx1\",\n  \"postDetail\": {\n    \"title\": \"My Daughter's Creepy 3 AM Visitor\",\n    \"custom\": {\n      \"description\": \"Okay, so my daughter got a doll that can apparently move on its own. Last night at 3 AM, I heard footsteps, went to check, and this thing had moved! Totally thought I was losing my mind. Anyone else's toys play tricks? #CreepyDoll #HauntedHouse #MomLife #ParentingFails #ScaryStories\",\n      \"privacy\": \"public\"\n    },\n    \"mediaType\": \"video\"\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"postId\": \"17722461986440WKW-FACEBOOK_PAGE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "545ba892-3035-46f0-a475-11578fdee453",
+          "name": "Publish Schedule Controller create Publish Schedule",
+          "request": {
+            "name": "Publish Schedule Controller create Publish Schedule",
+            "description": {
+              "content": "Schedule a clip to be published later. The `publishAt` value must be a future UTC ISO 8601 timestamp. Each X (formerly Twitter) post costs 1 credit.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "publish-schedules"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"projectId\": \"<string>\",\n  \"clipId\": \"<string>\",\n  \"postAccountId\": \"<string>\",\n  \"postDetail\": {\n    \"title\": \"<string>\",\n    \"mediaType\": \"<string>\",\n    \"custom\": {\n      \"description\": \"<string>\",\n      \"privacy\": \"<string>\"\n    }\n  },\n  \"publishAt\": \"<string>\",\n  \"subAccountId\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "04f54805-a206-4d16-8c93-f9c7294752a8",
+              "name": "Successfully created a publish schedule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "publish-schedules"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"projectId\": \"P0000000demo\",\n  \"clipId\": \"qU3iVMSO77\",\n  \"postAccountId\": \"postAccountId_xxx1\",\n  \"subAccountId\": \"subAccountId_xxx1\",\n  \"postDetail\": {\n    \"title\": \"My Daughter's Creepy 3 AM Visitor\",\n    \"custom\": {\n      \"description\": \"Okay, so my daughter got a doll that can apparently move on its own. Last night at 3 AM, I heard footsteps, went to check, and this thing had moved! Totally thought I was losing my mind. Anyone else's toys play tricks? #CreepyDoll #HauntedHouse #MomLife #ParentingFails #ScaryStories\",\n      \"privacy\": \"public\"\n    },\n    \"mediaType\": \"video\"\n  },\n  \"publishAt\": \"2026-03-01T16:00:00.000Z\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"scheduleId\": \"1772177588135sHuZ-FACEBOOK_PAGE\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f40dbdb5-d20d-4bdd-a997-4d89f6456e29",
+          "name": "Publish Schedule Controller cancel Publish Schedule",
+          "request": {
+            "name": "Publish Schedule Controller cancel Publish Schedule",
+            "description": {
+              "content": "Cancel a scheduled publish task before its publish time.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "api",
+                "publish-schedules",
+                ":scheduleId"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "scheduleId",
+                  "description": "(Required) Unique ID of the schedule task to cancel"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "DELETE",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            }
+          },
+          "response": [
+            {
+              "id": "810c49ea-2fdf-4379-825a-59c74e68bf08",
+              "name": "Successfully canceled the publish schedule",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "api",
+                    "publish-schedules",
+                    ":scheduleId"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "scheduleId",
+                      "description": "(Required) Unique ID of the schedule task to cancel"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.opus.pro",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "a2424cf7-621e-439a-b3e5-fba0a7526589",
+    "name": "Clip brand-templates enterprise API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Clip API documentation",
+      "type": "text/plain"
+    }
+  }
+}

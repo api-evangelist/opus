@@ -1,0 +1,54 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates collection-content API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "collection-content",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CollectionContentController_deleteCollectionContents",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/collection-contents/delete-collection-contents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CollectionContentController_createCollectionContent",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/collection-contents",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

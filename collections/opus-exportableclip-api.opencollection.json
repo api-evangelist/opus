@@ -1,0 +1,70 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates ExportableClip API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "ExportableClip",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "ExportableClipController_queryExportableClips",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/exportable-clips",
+            "headers": [
+              {
+                "name": "x-opus-org-id",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query type"
+              },
+              {
+                "name": "projectId",
+                "value": "",
+                "type": "query",
+                "description": "Project ID, required when q=findByProjectId"
+              },
+              {
+                "name": "collectionId",
+                "value": "",
+                "type": "query",
+                "description": "Collection ID, required when q=findByCollectionId"
+              },
+              {
+                "name": "pageNum",
+                "value": "",
+                "type": "query",
+                "description": "Page Num, started with 1"
+              },
+              {
+                "name": "pageSize",
+                "value": "",
+                "type": "query",
+                "description": "Page Size"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

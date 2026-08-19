@@ -1,0 +1,144 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates social-posting API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "social-posting",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "SocialAccountController_getSocialAccounts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/social-accounts",
+            "params": [
+              {
+                "name": "q",
+                "value": "",
+                "type": "query",
+                "description": "Query type"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Retrieve the connected social destinations available for social posting."
+        },
+        {
+          "info": {
+            "name": "SocialCopyJobController_createSocialCopyJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/social-copy-jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Create an asynchronous social copy generation job for a specific clip and destination account."
+        },
+        {
+          "info": {
+            "name": "SocialCopyJobController_getSocialCopyJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/social-copy-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID of the social copy generation job"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Get the current status and generated copy for a social copy generation job."
+        },
+        {
+          "info": {
+            "name": "PostTaskController_createPostTask",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/post-tasks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Publish a clip immediately to a connected social account. Each X (formerly Twitter) post costs 1 credit."
+        },
+        {
+          "info": {
+            "name": "PublishScheduleController_createPublishSchedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/publish-schedules",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Schedule a clip to be published later. The `publishAt` value must be a future UTC ISO 8601 timestamp. Each X (formerly Twitter) post costs 1 credit."
+        },
+        {
+          "info": {
+            "name": "PublishScheduleController_cancelPublishSchedule",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://api.opus.pro/api/publish-schedules/:scheduleId",
+            "params": [
+              {
+                "name": "scheduleId",
+                "value": "",
+                "type": "path",
+                "description": "Unique ID of the schedule task to cancel"
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Cancel a scheduled publish task before its publish time."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

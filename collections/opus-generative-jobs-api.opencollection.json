@@ -1,0 +1,60 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates generative-jobs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "generative-jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create a thumbnail generation job",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/generative-jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Experimental. Subject to change; daily caps apply and the endpoint may be temporarily disabled via a runtime kill switch. Currently the only published `jobType` is `thumbnail` (7 credits/call, charged on success and refunded on failure)."
+        },
+        {
+          "info": {
+            "name": "Get a generative job",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/generative-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The jobId returned by `POST /api/generative-jobs`."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Experimental. Returns status, progress, and result for a job created via `POST /api/generative-jobs`. For `thumbnail` jobs, the `result.generatedThumbnailUris` array contains the CDN URLs of the produced thumbnails when `status` is `CONCLUDED`."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

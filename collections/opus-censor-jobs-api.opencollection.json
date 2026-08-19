@@ -1,0 +1,58 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Clip brand-templates censor-jobs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "censor-jobs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "CensorJobController_createCensorJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.opus.pro/api/censor-jobs",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "CensorJobController_getCensorJob",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.opus.pro/api/censor-jobs/:jobId",
+            "params": [
+              {
+                "name": "jobId",
+                "value": "",
+                "type": "path",
+                "description": "The jobId that you want to get the status of."
+              }
+            ],
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          }
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
