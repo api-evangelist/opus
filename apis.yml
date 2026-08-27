@@ -158,48 +158,6 @@ apis:
     url: https://help.opus.pro/api-reference/webhook
   - type: Authentication
     url: authentication/opus-authentication.yml
-- aid: opus:opus-enterprise-api
-  name: Opus enterprise API
-  description: The enterprise API from Opus — 18 operation(s) for enterprise.
-  humanURL: https://help.opus.pro/api-reference/overview
-  baseURL: https://api.opus.pro
-  tags:
-  - Enterprise
-  tags_raw:
-  - enterprise
-  properties:
-  - type: OpenAPI
-    url: openapi/opus-enterprise-api-openapi.yml
-  - type: Documentation
-    url: https://help.opus.pro/api-reference/overview
-  - type: APIReference
-    url: https://help.opus.pro/api-reference/overview
-  - type: Quickstart
-    url: https://help.opus.pro/api-reference/quickstart
-  - type: Webhooks
-    url: https://help.opus.pro/api-reference/webhook
-  - type: Authentication
-    url: authentication/opus-authentication.yml
-- aid: opus:opus-exportable-clips-api
-  name: Opus exportable-clips API
-  description: The exportable-clips API from Opus — 1 operation(s) for exportable-clips.
-  humanURL: https://help.opus.pro/api-reference/overview
-  baseURL: https://api.opus.pro
-  tags:
-  - exportable-clips
-  properties:
-  - type: OpenAPI
-    url: openapi/opus-exportable-clips-api-openapi.yml
-  - type: Documentation
-    url: https://help.opus.pro/api-reference/overview
-  - type: APIReference
-    url: https://help.opus.pro/api-reference/overview
-  - type: Quickstart
-    url: https://help.opus.pro/api-reference/quickstart
-  - type: Webhooks
-    url: https://help.opus.pro/api-reference/webhook
-  - type: Authentication
-    url: authentication/opus-authentication.yml
 - aid: opus:opus-exportableclip-api
   name: Opus ExportableClip API
   description: The ExportableClip API from Opus — 1 operation(s) for exportableclip.
