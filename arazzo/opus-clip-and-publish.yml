@@ -4,8 +4,14 @@ info:
   version: 1.0.0
   summary: Clip a video, generate social copy, and publish a clip to a connected social account.
 sourceDescriptions:
-- name: opus
-  url: ../openapi/opus-openapi-original.json
+- name: clipProjectApi
+  url: ../openapi/opus-clip-project-api-openapi.yml
+  type: openapi
+- name: exportableclipApi
+  url: ../openapi/opus-exportableclip-api-openapi.yml
+  type: openapi
+- name: socialPostingApi
+  url: ../openapi/opus-social-posting-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: clipAndPublish

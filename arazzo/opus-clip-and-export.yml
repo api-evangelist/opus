@@ -4,8 +4,11 @@ info:
   version: 1.0.0
   summary: Submit a long-form video, wait for clipping, list clips, and export a collection.
 sourceDescriptions:
-- name: opus
-  url: ../openapi/opus-openapi-original.json
+- name: clipProjectApi
+  url: ../openapi/opus-clip-project-api-openapi.yml
+  type: openapi
+- name: exportableclipApi
+  url: ../openapi/opus-exportableclip-api-openapi.yml
   type: openapi
 workflows:
 - workflowId: clipAndExport
