@@ -16,7 +16,14 @@
       "type": "application/vnd.mcp+json",
       "url": "https://api.opus.pro/api/mcp",
       "description": "Turn long video into ready-to-post vertical clips with viral scoring, captions, reframes, B-roll, translation, and scheduled posting. Callable from any MCP client (Claude, Cursor, Cline, Continue, ChatGPT).",
-      "tags": ["video", "clipping", "captions", "repurposing", "social-scheduling", "mcp"],
+      "tags": [
+        "video",
+        "clipping",
+        "captions",
+        "repurposing",
+        "social-scheduling",
+        "mcp"
+      ],
       "capabilities": [
         "clip",
         "reframe",
