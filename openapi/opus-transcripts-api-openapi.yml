@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Clip brand-templates transcripts API
+  title: Clip Transcripts API
   description: Clip API documentation
   version: '1.0'
   contact: {}
@@ -8,7 +8,7 @@ servers:
 - url: https://api.opus.pro
   description: OpusClip Open API Production Server
 tags:
-- name: transcripts
+- name: Transcripts
 paths:
   /api/transcripts:
     get:
@@ -41,20 +41,9 @@ paths:
       security:
       - bearer: []
       tags:
-      - transcripts
+      - Transcripts
 components:
   schemas:
-    TranscriptResponse:
-      type: object
-      description: Wrapper for the transcript response. `data[0]` is the transcript, or `null` when the project has no transcript yet.
-      properties:
-        data:
-          type: array
-          items:
-            type: array
-            nullable: true
-            items:
-              $ref: '#/components/schemas/TranscriptExportParagraph'
     TranscriptExportWord:
       type: object
       description: A single word with start/end timings and optional filler-word flag.
@@ -114,6 +103,18 @@ components:
       - end
       - text
       - words
+    TranscriptResponse:
+      type: object
+      description: Wrapper for the transcript response. `data[0]` is the transcript, or `null` when the project has no transcript yet.
+      properties:
+        data:
+          type: array
+          items:
+            type:
+            - array
+            - 'null'
+            items:
+              $ref: '#/components/schemas/TranscriptExportParagraph'
   securitySchemes:
     bearer:
       scheme: bearer

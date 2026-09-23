@@ -1,0 +1,30 @@
+# Front Door AI Index — opus — 2026-09-17
+# AI vocabulary counted on the provider's root page. Generated; do not edit.
+# `score` is null unless ownership is `own` — see front_door_ai.py.
+front_door_ai:
+  slug: opus
+  lexicon_version: '1.0'
+  probed_at: '2026-09-17'
+  host: www.opus.pro
+  final_host: www.opus.pro
+  ownership: own
+  owner: opus
+  shares_host_with:
+  - opusclip
+  inherited_from: null
+  verdict: scored
+  score: 24
+  host_score: 24
+  density: 10.32
+  words: 2326
+  tiers:
+    agentic: 4
+    core: 20
+    model: 0
+  ambiguous: 2
+  top_terms:
+    AI: 20
+    AI agent: 2
+    agent: 2
+    MCP: 1
+    prompts: 1

@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Clip brand-templates API
+  title: Clip Brand Templates API
   description: Clip API documentation
   version: '1.0'
   contact: {}
@@ -8,7 +8,7 @@ servers:
 - url: https://api.opus.pro
   description: OpusClip Open API Production Server
 tags:
-- name: brand-templates
+- name: Brand Templates
 paths:
   /api/brand-templates:
     get:
@@ -33,42 +33,92 @@ paths:
       security:
       - bearer: []
       tags:
-      - brand-templates
+      - Brand Templates
+      summary: Brand template controller get templates
+      x-summary-source: derived
 components:
   schemas:
-    ShadowDto:
+    FontDto:
       type: object
       properties:
-        enabled:
-          type: boolean
-          description: Indicates if the shadow is enabled.
-          example: true
         color:
           type: string
-          description: The color of the shadow.
-          example: '#FFFFFFFF'
-        x:
+          description: The color of the font.
+          example: '#ffffff'
+        style:
+          description: The style of the font.
+          example:
+          - '900'
+          type: array
+          items:
+            type: string
+        family:
+          type: string
+          description: The family of the font.
+          example: Komika-axis
+        stroke:
+          description: The stroke settings of the font.
+          example:
+            enabled: false
+            color: '#000000FF'
+            width: 16
+          allOf:
+          - $ref: '#/components/schemas/StrokeDto'
+        shadow:
+          description: The shadow settings of the font.
+          example:
+            enabled: true
+            color: '#FFFFFFFF'
+            x: 2
+            y: 2
+            blur: 16
+          allOf:
+          - $ref: '#/components/schemas/ShadowDto'
+        id:
+          type: string
+          description: The ID of the font.
+          example: font123
+        type:
+          type: string
+          description: The type of the font.
+          example: CustomizedFont
+          enum:
+          - CustomizedFont
+          - System
+        name:
+          type: string
+          description: The name of the font.
+          example: Arial
+        path:
+          type: string
+          description: The storage path of the font.
+          example: /fonts/arial.ttf
+        size:
+          type: string
+          description: The size of the font.
+          example: Large
+          enum:
+          - Large
+          - Middle
+          - Small
+        numericalSize:
           type: number
-          description: The x offset of the shadow.
-          example: 2
-        y:
-          type: number
-          description: The y offset of the shadow.
-          example: 2
-        blur:
-          type: number
-          description: The blur radius of the shadow.
-          example: 16
-        useWordHighlightColor:
-          type: boolean
-          description: Indicates if the word highlight color should be used for the shadow.
-          example: false
+          description: The numerical size of the font.
+          example: 50
+        textDecoration:
+          type: string
+          description: The text decoration of the font.
+          example: underline
+          enum:
+          - line-through
+          - underline
+          - ''
       required:
-      - enabled
       - color
-      - x
-      - y
-      - blur
+      - style
+      - family
+      - stroke
+      - shadow
     HighlightColorDto:
       type: object
       properties:
@@ -83,6 +133,74 @@ components:
       required:
       - primary
       - secondary
+    BrandTemplateRepresentation:
+      type: object
+      properties:
+        templateId:
+          type: string
+          description: Template ID
+          example: cm32g2poc0002t5bnhmg2kfyx
+        name:
+          type: string
+          description: Template name
+          example: Karaoke Template
+        isDefault:
+          type: boolean
+          description: Is default template
+          example: true
+        preferences:
+          description: Render preference
+          example:
+            enableAutoLayout: false
+            enableFillLayout: false
+            enableFitLayout: false
+            fitLayoutCropRatio: '4:3'
+            enableSplitLayout: true
+            enableThreeLayout: true
+            enableFourLayout: true
+            enableScreenLayout: true
+            enableVisualHook: false
+            enableWatermark: false
+            enableCrop: true
+            enableCaption: true
+            enableUppercase: true
+            enableHighlight: true
+            enableEmoji: true
+            font:
+              color: '#ffffff'
+              style:
+              - '900'
+              family: Komika-axis
+              stroke:
+                enabled: false
+                color: '#000000FF'
+                width: 16
+              shadow:
+                enabled: true
+                color: '#FFFFFFFF'
+                x: 2
+                y: 2
+                blur: 16
+            highlightColor:
+              primary: '#04f827'
+              secondary: '#FFFD03'
+          allOf:
+          - $ref: '#/components/schemas/RenderPreferenceDto'
+        type:
+          type: string
+          description: Type of template
+          example: PresetOverwrite
+      required:
+      - templateId
+      - name
+      - isDefault
+      - preferences
+    LayoutAspectRatio:
+      type: string
+      enum:
+      - portrait
+      - landscape
+      - square
     RenderPreferenceDto:
       type: object
       properties:
@@ -216,68 +334,6 @@ components:
       - enableWatermark
       - font
       - highlightColor
-    BrandTemplateRepresentation:
-      type: object
-      properties:
-        templateId:
-          type: string
-          description: Template ID
-          example: cm32g2poc0002t5bnhmg2kfyx
-        name:
-          type: string
-          description: Template name
-          example: Karaoke Template
-        isDefault:
-          type: boolean
-          description: Is default template
-          example: true
-        preferences:
-          description: Render preference
-          example:
-            enableAutoLayout: false
-            enableFillLayout: false
-            enableFitLayout: false
-            fitLayoutCropRatio: '4:3'
-            enableSplitLayout: true
-            enableThreeLayout: true
-            enableFourLayout: true
-            enableScreenLayout: true
-            enableVisualHook: false
-            enableWatermark: false
-            enableCrop: true
-            enableCaption: true
-            enableUppercase: true
-            enableHighlight: true
-            enableEmoji: true
-            font:
-              color: '#ffffff'
-              style:
-              - '900'
-              family: Komika-axis
-              stroke:
-                enabled: false
-                color: '#000000FF'
-                width: 16
-              shadow:
-                enabled: true
-                color: '#FFFFFFFF'
-                x: 2
-                y: 2
-                blur: 16
-            highlightColor:
-              primary: '#04f827'
-              secondary: '#FFFD03'
-          allOf:
-          - $ref: '#/components/schemas/RenderPreferenceDto'
-        type:
-          type: string
-          description: Type of template
-          example: PresetOverwrite
-      required:
-      - templateId
-      - name
-      - isDefault
-      - preferences
     StrokeDto:
       type: object
       properties:
@@ -297,93 +353,39 @@ components:
       - enabled
       - color
       - width
-    FontDto:
+    ShadowDto:
       type: object
       properties:
+        enabled:
+          type: boolean
+          description: Indicates if the shadow is enabled.
+          example: true
         color:
           type: string
-          description: The color of the font.
-          example: '#ffffff'
-        style:
-          description: The style of the font.
-          example:
-          - '900'
-          type: array
-          items:
-            type: string
-        family:
-          type: string
-          description: The family of the font.
-          example: Komika-axis
-        stroke:
-          description: The stroke settings of the font.
-          example:
-            enabled: false
-            color: '#000000FF'
-            width: 16
-          allOf:
-          - $ref: '#/components/schemas/StrokeDto'
-        shadow:
-          description: The shadow settings of the font.
-          example:
-            enabled: true
-            color: '#FFFFFFFF'
-            x: 2
-            y: 2
-            blur: 16
-          allOf:
-          - $ref: '#/components/schemas/ShadowDto'
-        id:
-          type: string
-          description: The ID of the font.
-          example: font123
-        type:
-          type: string
-          description: The type of the font.
-          example: CustomizedFont
-          enum:
-          - CustomizedFont
-          - System
-        name:
-          type: string
-          description: The name of the font.
-          example: Arial
-        path:
-          type: string
-          description: The storage path of the font.
-          example: /fonts/arial.ttf
-        size:
-          type: string
-          description: The size of the font.
-          example: Large
-          enum:
-          - Large
-          - Middle
-          - Small
-        numericalSize:
+          description: The color of the shadow.
+          example: '#FFFFFFFF'
+        x:
           type: number
-          description: The numerical size of the font.
-          example: 50
-        textDecoration:
-          type: string
-          description: The text decoration of the font.
-          example: underline
-          enum:
-          - line-through
-          - underline
-          - ''
+          description: The x offset of the shadow.
+          example: 2
+        y:
+          type: number
+          description: The y offset of the shadow.
+          example: 2
+        blur:
+          type: number
+          description: The blur radius of the shadow.
+          example: 16
+        useWordHighlightColor:
+          type: boolean
+          description: Indicates if the word highlight color should be used for the shadow.
+          example: false
       required:
+      - enabled
       - color
-      - style
-      - family
-      - stroke
-      - shadow
-    LayoutAspectRatio:
-      type: string
-      enum:
-      - portrait
-      - landscape
-      - square
+      - x
+      - y
+      - blur
   securitySchemes:
     bearer:
       scheme: bearer

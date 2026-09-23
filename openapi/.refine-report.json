@@ -1,27 +1,15 @@
 {
   "provider": "opus",
   "sources": [
-    "opus-brand-templates-api-openapi.yml",
-    "opus-censor-jobs-api-openapi.yml",
-    "opus-clip-project-api-openapi.yml",
-    "opus-collection-api-openapi.yml",
-    "opus-collection-content-api-openapi.yml",
-    "opus-enterprise-api-openapi.yml",
-    "opus-exportable-clips-api-openapi.yml",
-    "opus-exportableclip-api-openapi.yml",
-    "opus-generative-jobs-api-openapi.yml",
-    "opus-social-posting-api-openapi.yml",
-    "opus-transcripts-api-openapi.yml"
+    "_original/opus-openapi-original.json"
   ],
   "outputs": [
+    "opus-exportableclip-api-openapi.yml",
     "opus-brand-templates-api-openapi.yml",
     "opus-censor-jobs-api-openapi.yml",
     "opus-clip-project-api-openapi.yml",
     "opus-collection-api-openapi.yml",
     "opus-collection-content-api-openapi.yml",
-    "opus-enterprise-api-openapi.yml",
-    "opus-exportable-clips-api-openapi.yml",
-    "opus-exportableclip-api-openapi.yml",
     "opus-generative-jobs-api-openapi.yml",
     "opus-social-posting-api-openapi.yml",
     "opus-transcripts-api-openapi.yml"
@@ -29,6 +17,32 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "opus-openapi-original.json: upgraded openapi 3.0.0 -> OpenAPI 3.2.0",
+    "opus-openapi-original.json: declared missing tag: ExportableClip",
+    "opus-openapi-original.json: declared missing tag: brand-templates",
+    "opus-openapi-original.json: declared missing tag: censor-jobs",
+    "opus-openapi-original.json: declared missing tag: clip-project",
+    "opus-openapi-original.json: declared missing tag: collection",
+    "opus-openapi-original.json: declared missing tag: collection-content",
+    "opus-openapi-original.json: declared missing tag: enterprise",
+    "opus-openapi-original.json: declared missing tag: exportable-clips",
+    "opus-openapi-original.json: declared missing tag: generative-jobs",
+    "opus-openapi-original.json: declared missing tag: social-posting",
+    "opus-openapi-original.json: declared missing tag: transcripts",
+    "opus-openapi-original.json: multi-axis tagging (11 tags, 9 first tags, 1.91x duplication over 22 operations) \u2014 split on first tag, 19 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "opus-brand-templates-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-censor-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-clip-project-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-collection-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-collection-content-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-exportableclip-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-generative-jobs-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-social-posting-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "opus-transcripts-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

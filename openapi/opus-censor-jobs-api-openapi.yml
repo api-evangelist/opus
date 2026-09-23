@@ -1,6 +1,6 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
-  title: Clip brand-templates censor-jobs API
+  title: Clip Censor Jobs API
   description: Clip API documentation
   version: '1.0'
   contact: {}
@@ -31,6 +31,8 @@ paths:
       - bearer: []
       tags:
       - censor-jobs
+      summary: Censor job controller create censor job
+      x-summary-source: derived
   /api/censor-jobs/{jobId}:
     get:
       operationId: CensorJobController_getCensorJob
@@ -52,24 +54,10 @@ paths:
       - bearer: []
       tags:
       - censor-jobs
+      summary: Censor job controller get censor job
+      x-summary-source: derived
 components:
   schemas:
-    CensorJobOptions:
-      type: object
-      properties:
-        beepSound:
-          type: boolean
-          description: Use beep sound instead of the censored words.
-          example: true
-    CensorJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-          description: If the job was created successfully, this will contain the job ID.
-        message:
-          type: string
-          description: A message indicating the result of the job creation.
     CensorJobStatusResponse:
       type: object
       properties:
@@ -87,6 +75,13 @@ components:
           description: Error message.
       required:
       - status
+    CensorJobOptions:
+      type: object
+      properties:
+        beepSound:
+          type: boolean
+          description: Use beep sound instead of the censored words.
+          example: true
     CensorJobRequest:
       type: object
       properties:
@@ -107,6 +102,15 @@ components:
       required:
       - projectId
       - clipId
+    CensorJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: If the job was created successfully, this will contain the job ID.
+        message:
+          type: string
+          description: A message indicating the result of the job creation.
   securitySchemes:
     bearer:
       scheme: bearer
