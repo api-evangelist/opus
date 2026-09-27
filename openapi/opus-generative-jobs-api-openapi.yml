@@ -58,42 +58,6 @@ paths:
       - generative-jobs
 components:
   schemas:
-    GenerativeJobResult:
-      type: object
-      description: Result payload. For `thumbnail` jobs, includes `generatedThumbnailUris`.
-      properties:
-        generatedThumbnailUris:
-          type: array
-          items:
-            type: string
-          description: CDN URLs of the produced thumbnails. Typically 4 images per successful thumbnail job.
-    GenerativeThumbnailJobRequest:
-      type: object
-      properties:
-        jobType:
-          type: string
-          enum:
-          - thumbnail
-          description: The type of generative job to create. Currently the only published value is `thumbnail`.
-        sourceUri:
-          type: string
-          description: URL of the source video to extract thumbnails from.
-          example: https://youtube.com/watch?v=...
-        referenceImageUri:
-          type: string
-          description: 'Optional reference image URL. The thumbnail composition draws stylistic cues from this image. Upload via `POST /api/upload-links` with `usecase: ''FreeToolMedia''`, then pass the returned `cdnUrl` here.'
-          example: https://cdn.opus.pro/uploads/.../ref.png
-        maskImageUri:
-          type: string
-          description: Optional mask image URL for inpainting.
-          example: https://cdn.opus.pro/uploads/.../mask.png
-        prompt:
-          type: string
-          description: Optional text prompt steering the thumbnail composition.
-          example: punchy red overlay, bold sans-serif title
-      required:
-      - jobType
-      - sourceUri
     GenerativeJobStatusResponse:
       type: object
       properties:
@@ -126,6 +90,52 @@ components:
           example: thumbnail-aB3xR7nQ8z
       required:
       - jobId
+    GenerativeThumbnailJobRequest:
+      type: object
+      properties:
+        jobType:
+          type: string
+          enum:
+          - thumbnail
+          description: The type of generative job to create. Currently the only published value is `thumbnail`.
+        sourceUri:
+          type: string
+          description: URL of the source video to extract thumbnails from.
+          example: https://youtube.com/watch?v=...
+        referenceImageUri:
+          type: string
+          description: 'Optional reference image URL. The thumbnail composition draws stylistic cues from this image. Upload via `POST /api/upload-links` with `usecase: ''FreeToolMedia''`, then pass the returned `cdnUrl` here.'
+          example: https://cdn.opus.pro/uploads/.../ref.png
+        maskImageUri:
+          type: string
+          description: Optional mask image URL for inpainting.
+          example: https://cdn.opus.pro/uploads/.../mask.png
+        prompt:
+          type: string
+          description: Optional text prompt steering the thumbnail composition.
+          example: punchy red overlay, bold sans-serif title
+      required:
+      - jobType
+      - sourceUri
+    GenerativeJobError:
+      type: object
+      description: User-facing error info for a failed generative job.
+      properties:
+        type:
+          type: string
+          description: Error type identifier.
+        message:
+          type: string
+          description: Human-readable error message.
+    GenerativeJobResult:
+      type: object
+      description: Result payload. For `thumbnail` jobs, includes `generatedThumbnailUris`.
+      properties:
+        generatedThumbnailUris:
+          type: array
+          items:
+            type: string
+          description: CDN URLs of the produced thumbnails. Typically 4 images per successful thumbnail job.
     GenerativeJobProgress:
       type: object
       description: Progress snapshot for an in-flight or completed generative job.
@@ -143,16 +153,6 @@ components:
           description: Coarse progress between 0 and 1.
           minimum: 0
           maximum: 1
-    GenerativeJobError:
-      type: object
-      description: User-facing error info for a failed generative job.
-      properties:
-        type:
-          type: string
-          description: Error type identifier.
-        message:
-          type: string
-          description: Human-readable error message.
   securitySchemes:
     bearer:
       scheme: bearer

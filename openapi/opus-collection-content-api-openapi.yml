@@ -81,6 +81,26 @@ components:
       required:
       - collectionId
       - contentId
+    DeleteCollectionContentCmd:
+      type: object
+      properties:
+        q:
+          type: string
+          description: "**Query type**\n `findByCollectionIdAndContentId` is the only valid value, means delete relation by collectionId + contentId"
+          enum:
+          - findByCollectionIdAndContentId
+        collectionId:
+          type: string
+          description: The collectionID of the collection that you want to remove the clip from.
+          example: xmAwhhFi0IJt
+        contentId:
+          type: string
+          description: 'The ID of the clip that you want to remove from the collection. FullClipId: {projectId}.{curationId}'
+          example: P0000000demo.CUexample2
+      required:
+      - q
+      - collectionId
+      - contentId
     SuccessResponse:
       type: object
       properties:
@@ -100,26 +120,6 @@ components:
           description: 'The ID of the clip that has been added to the collection. FullClipId: {projectId}.{curationId}'
           example: P0000000demo.CUexample2
       required:
-      - collectionId
-      - contentId
-    DeleteCollectionContentCmd:
-      type: object
-      properties:
-        q:
-          type: string
-          description: "**Query type**\n `findByCollectionIdAndContentId` is the only valid value, means delete relation by collectionId + contentId"
-          enum:
-          - findByCollectionIdAndContentId
-        collectionId:
-          type: string
-          description: The collectionID of the collection that you want to remove the clip from.
-          example: xmAwhhFi0IJt
-        contentId:
-          type: string
-          description: 'The ID of the clip that you want to remove from the collection. FullClipId: {projectId}.{curationId}'
-          example: P0000000demo.CUexample2
-      required:
-      - q
       - collectionId
       - contentId
   securitySchemes:

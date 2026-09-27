@@ -55,7 +55,7 @@ tags:
 - Video Editing
 - Short-Form Video
 - Content Creation
-- Social-Media
+- Social Media
 - Media
 - Agents
 tags_raw:
@@ -69,9 +69,10 @@ tags_raw:
 - Social Media
 - Media
 - Agents
+- Social-Media
 apis:
 - aid: opus:opus-brand-templates-api
-  name: Opus brand-templates API
+  name: Opus Brand Templates API
   description: The brand-templates API from Opus — 1 operation(s) for brand-templates.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro
@@ -91,7 +92,7 @@ apis:
   - type: Authentication
     url: authentication/opus-authentication.yml
 - aid: opus:opus-censor-jobs-api
-  name: Opus censor-jobs API
+  name: Opus Censor Jobs API
   description: The censor-jobs API from Opus — 2 operation(s) for censor-jobs.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro
@@ -111,7 +112,7 @@ apis:
   - type: Authentication
     url: authentication/opus-authentication.yml
 - aid: opus:opus-clip-project-api
-  name: Opus clip-project API
+  name: Opus Clip Project API
   description: The clip-project API from Opus — 3 operation(s) for clip-project.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro
@@ -131,7 +132,7 @@ apis:
   - type: Authentication
     url: authentication/opus-authentication.yml
 - aid: opus:opus-collection-api
-  name: Opus collection API
+  name: Opus Collection API
   description: The collection API from Opus — 3 operation(s) for collection.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro
@@ -153,7 +154,7 @@ apis:
   - type: Authentication
     url: authentication/opus-authentication.yml
 - aid: opus:opus-collection-content-api
-  name: Opus collection-content API
+  name: Opus Collection Content API
   description: The collection-content API from Opus — 2 operation(s) for collection-content.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro
@@ -193,7 +194,7 @@ apis:
   - type: Authentication
     url: authentication/opus-authentication.yml
 - aid: opus:opus-generative-jobs-api
-  name: Opus generative-jobs API
+  name: Opus Generative Jobs API
   description: The generative-jobs API from Opus — 2 operation(s) for generative-jobs.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro
@@ -213,7 +214,7 @@ apis:
   - type: Authentication
     url: authentication/opus-authentication.yml
 - aid: opus:opus-social-posting-api
-  name: Opus social-posting API
+  name: Opus Social Posting API
   description: The social-posting API from Opus — 6 operation(s) for social-posting.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro
@@ -233,7 +234,7 @@ apis:
   - type: Authentication
     url: authentication/opus-authentication.yml
 - aid: opus:opus-transcripts-api
-  name: Opus transcripts API
+  name: Opus Transcripts API
   description: The transcripts API from Opus — 1 operation(s) for transcripts.
   humanURL: https://help.opus.pro/api-reference/overview
   baseURL: https://api.opus.pro

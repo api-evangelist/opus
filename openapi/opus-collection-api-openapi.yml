@@ -188,6 +188,19 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CollectionExportedDto:
+      type: object
+      properties:
+        contentList:
+          description: A list of download links for all the clips in that collection.
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentExportedDto'
+      required:
+      - contentList
+    EmptyDto:
+      type: object
+      properties: {}
     SuccessResponse:
       type: object
       properties:
@@ -195,6 +208,20 @@ components:
           type: object
       required:
       - data
+    ContentExportedDto:
+      type: object
+      properties:
+        contentId:
+          type: string
+          description: Content ID
+          example: P0000000demo.CUexample2
+        uriForExport:
+          type: string
+          description: Export url
+          example: https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436
+      required:
+      - contentId
+      - uriForExport
     CollectionDto:
       type: object
       properties:
@@ -226,33 +253,6 @@ components:
           example: Opus demo clips
       required:
       - collectionName
-    EmptyDto:
-      type: object
-      properties: {}
-    ContentExportedDto:
-      type: object
-      properties:
-        contentId:
-          type: string
-          description: Content ID
-          example: P0000000demo.CUexample2
-        uriForExport:
-          type: string
-          description: Export url
-          example: https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436
-      required:
-      - contentId
-      - uriForExport
-    CollectionExportedDto:
-      type: object
-      properties:
-        contentList:
-          description: A list of download links for all the clips in that collection.
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentExportedDto'
-      required:
-      - contentList
   securitySchemes:
     bearer:
       scheme: bearer
