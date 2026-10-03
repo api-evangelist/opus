@@ -58,6 +58,26 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CensorJobRequest:
+      type: object
+      properties:
+        projectId:
+          type: string
+          description: The project id that you want to censor.
+          example: P0000000demo
+        clipId:
+          type: string
+          description: The clip id that you want to censor.
+          example: lDIOHRzdac
+        options:
+          description: Some options for the censor job.
+          example:
+            beepSound: false
+          allOf:
+          - $ref: '#/components/schemas/CensorJobOptions'
+      required:
+      - projectId
+      - clipId
     CensorJobStatusResponse:
       type: object
       properties:
@@ -82,26 +102,6 @@ components:
           type: boolean
           description: Use beep sound instead of the censored words.
           example: true
-    CensorJobRequest:
-      type: object
-      properties:
-        projectId:
-          type: string
-          description: The project id that you want to censor.
-          example: P0000000demo
-        clipId:
-          type: string
-          description: The clip id that you want to censor.
-          example: lDIOHRzdac
-        options:
-          description: Some options for the censor job.
-          example:
-            beepSound: false
-          allOf:
-          - $ref: '#/components/schemas/CensorJobOptions'
-      required:
-      - projectId
-      - clipId
     CensorJobResponse:
       type: object
       properties:

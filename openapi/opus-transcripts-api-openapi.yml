@@ -44,6 +44,18 @@ paths:
       - Transcripts
 components:
   schemas:
+    TranscriptResponse:
+      type: object
+      description: Wrapper for the transcript response. `data[0]` is the transcript, or `null` when the project has no transcript yet.
+      properties:
+        data:
+          type: array
+          items:
+            type:
+            - array
+            - 'null'
+            items:
+              $ref: '#/components/schemas/TranscriptExportParagraph'
     TranscriptExportParagraph:
       type: object
       description: A paragraph of the transcript with timing and optional speaker attribution.
@@ -103,18 +115,6 @@ components:
       - word
       - start
       - end
-    TranscriptResponse:
-      type: object
-      description: Wrapper for the transcript response. `data[0]` is the transcript, or `null` when the project has no transcript yet.
-      properties:
-        data:
-          type: array
-          items:
-            type:
-            - array
-            - 'null'
-            items:
-              $ref: '#/components/schemas/TranscriptExportParagraph'
   securitySchemes:
     bearer:
       scheme: bearer

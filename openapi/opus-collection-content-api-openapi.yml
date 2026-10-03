@@ -67,16 +67,16 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    CreateCollectionContentCmd:
+    CollectionContentDto:
       type: object
       properties:
         collectionId:
           type: string
-          description: The collectionID of the collection that you want to add the clip to.
+          description: The collectionID of the collection that the clip was added to.
           example: xmAwhhFi0IJt
         contentId:
           type: string
-          description: 'The ID of the clip that you want to add to the collection. FullClipId: {projectId}.{curationId}'
+          description: 'The ID of the clip that has been added to the collection. FullClipId: {projectId}.{curationId}'
           example: P0000000demo.CUexample2
       required:
       - collectionId
@@ -101,6 +101,20 @@ components:
       - q
       - collectionId
       - contentId
+    CreateCollectionContentCmd:
+      type: object
+      properties:
+        collectionId:
+          type: string
+          description: The collectionID of the collection that you want to add the clip to.
+          example: xmAwhhFi0IJt
+        contentId:
+          type: string
+          description: 'The ID of the clip that you want to add to the collection. FullClipId: {projectId}.{curationId}'
+          example: P0000000demo.CUexample2
+      required:
+      - collectionId
+      - contentId
     SuccessResponse:
       type: object
       properties:
@@ -108,20 +122,6 @@ components:
           type: object
       required:
       - data
-    CollectionContentDto:
-      type: object
-      properties:
-        collectionId:
-          type: string
-          description: The collectionID of the collection that the clip was added to.
-          example: xmAwhhFi0IJt
-        contentId:
-          type: string
-          description: 'The ID of the clip that has been added to the collection. FullClipId: {projectId}.{curationId}'
-          example: P0000000demo.CUexample2
-      required:
-      - collectionId
-      - contentId
   securitySchemes:
     bearer:
       scheme: bearer

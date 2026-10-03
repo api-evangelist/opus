@@ -38,6 +38,121 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    HighlightColorDto:
+      type: object
+      properties:
+        primary:
+          type: string
+          description: Primary highlight color.
+          example: '#ff0000'
+        secondary:
+          type: string
+          description: Secondary highlight color.
+          example: '#00ff00'
+      required:
+      - primary
+      - secondary
+    LayoutAspectRatio:
+      type: string
+      enum:
+      - portrait
+      - landscape
+      - square
+    ShadowDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the shadow is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the shadow.
+          example: '#FFFFFFFF'
+        x:
+          type: number
+          description: The x offset of the shadow.
+          example: 2
+        y:
+          type: number
+          description: The y offset of the shadow.
+          example: 2
+        blur:
+          type: number
+          description: The blur radius of the shadow.
+          example: 16
+        useWordHighlightColor:
+          type: boolean
+          description: Indicates if the word highlight color should be used for the shadow.
+          example: false
+      required:
+      - enabled
+      - color
+      - x
+      - y
+      - blur
+    BrandTemplateRepresentation:
+      type: object
+      properties:
+        templateId:
+          type: string
+          description: Template ID
+          example: cm32g2poc0002t5bnhmg2kfyx
+        name:
+          type: string
+          description: Template name
+          example: Karaoke Template
+        isDefault:
+          type: boolean
+          description: Is default template
+          example: true
+        preferences:
+          description: Render preference
+          example:
+            enableAutoLayout: false
+            enableFillLayout: false
+            enableFitLayout: false
+            fitLayoutCropRatio: '4:3'
+            enableSplitLayout: true
+            enableThreeLayout: true
+            enableFourLayout: true
+            enableScreenLayout: true
+            enableVisualHook: false
+            enableWatermark: false
+            enableCrop: true
+            enableCaption: true
+            enableUppercase: true
+            enableHighlight: true
+            enableEmoji: true
+            font:
+              color: '#ffffff'
+              style:
+              - '900'
+              family: Komika-axis
+              stroke:
+                enabled: false
+                color: '#000000FF'
+                width: 16
+              shadow:
+                enabled: true
+                color: '#FFFFFFFF'
+                x: 2
+                y: 2
+                blur: 16
+            highlightColor:
+              primary: '#04f827'
+              secondary: '#FFFD03'
+          allOf:
+          - $ref: '#/components/schemas/RenderPreferenceDto'
+        type:
+          type: string
+          description: Type of template
+          example: PresetOverwrite
+      required:
+      - templateId
+      - name
+      - isDefault
+      - preferences
     RenderPreferenceDto:
       type: object
       properties:
@@ -171,12 +286,6 @@ components:
       - enableWatermark
       - font
       - highlightColor
-    LayoutAspectRatio:
-      type: string
-      enum:
-      - portrait
-      - landscape
-      - square
     StrokeDto:
       type: object
       properties:
@@ -196,115 +305,6 @@ components:
       - enabled
       - color
       - width
-    HighlightColorDto:
-      type: object
-      properties:
-        primary:
-          type: string
-          description: Primary highlight color.
-          example: '#ff0000'
-        secondary:
-          type: string
-          description: Secondary highlight color.
-          example: '#00ff00'
-      required:
-      - primary
-      - secondary
-    BrandTemplateRepresentation:
-      type: object
-      properties:
-        templateId:
-          type: string
-          description: Template ID
-          example: cm32g2poc0002t5bnhmg2kfyx
-        name:
-          type: string
-          description: Template name
-          example: Karaoke Template
-        isDefault:
-          type: boolean
-          description: Is default template
-          example: true
-        preferences:
-          description: Render preference
-          example:
-            enableAutoLayout: false
-            enableFillLayout: false
-            enableFitLayout: false
-            fitLayoutCropRatio: '4:3'
-            enableSplitLayout: true
-            enableThreeLayout: true
-            enableFourLayout: true
-            enableScreenLayout: true
-            enableVisualHook: false
-            enableWatermark: false
-            enableCrop: true
-            enableCaption: true
-            enableUppercase: true
-            enableHighlight: true
-            enableEmoji: true
-            font:
-              color: '#ffffff'
-              style:
-              - '900'
-              family: Komika-axis
-              stroke:
-                enabled: false
-                color: '#000000FF'
-                width: 16
-              shadow:
-                enabled: true
-                color: '#FFFFFFFF'
-                x: 2
-                y: 2
-                blur: 16
-            highlightColor:
-              primary: '#04f827'
-              secondary: '#FFFD03'
-          allOf:
-          - $ref: '#/components/schemas/RenderPreferenceDto'
-        type:
-          type: string
-          description: Type of template
-          example: PresetOverwrite
-      required:
-      - templateId
-      - name
-      - isDefault
-      - preferences
-    ShadowDto:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Indicates if the shadow is enabled.
-          example: true
-        color:
-          type: string
-          description: The color of the shadow.
-          example: '#FFFFFFFF'
-        x:
-          type: number
-          description: The x offset of the shadow.
-          example: 2
-        y:
-          type: number
-          description: The y offset of the shadow.
-          example: 2
-        blur:
-          type: number
-          description: The blur radius of the shadow.
-          example: 16
-        useWordHighlightColor:
-          type: boolean
-          description: Indicates if the word highlight color should be used for the shadow.
-          example: false
-      required:
-      - enabled
-      - color
-      - x
-      - y
-      - blur
     FontDto:
       type: object
       properties:

@@ -76,164 +76,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    RenderPreferenceDto:
+    HighlightColorDto:
       type: object
       properties:
-        enableAutoLayout:
-          type: boolean
-          description: Enables automatic layout adjustment.
-          example: false
-          default: false
-        enableScreenLayout:
-          type: boolean
-          description: Enables screen layout for the video.
-          example: true
-          default: false
-        enableCrop:
-          type: boolean
-          description: Enables cropping of the video.
-          example: true
-          default: false
-        enableCaption:
-          type: boolean
-          description: Enables caption overlay on the video.
-          example: true
-          default: false
-        enableUppercase:
-          type: boolean
-          description: Converts all characters to uppercase in captions.
-          example: true
-          default: false
-        enableHighlight:
-          type: boolean
-          description: Enables keyword highlighting in captions.
-          example: true
-          default: false
-        enableEmoji:
-          type: boolean
-          description: Enables emoji overlay on the video.
-          example: true
-          default: false
-        enableFillLayout:
-          type: boolean
-          description: Enables fill layout for a single person.
-          example: false
-          default: false
-        enableSplitLayout:
-          type: boolean
-          description: Enables split layout for two people.
-          example: true
-          default: false
-        enableThreeLayout:
-          type: boolean
-          description: Enables layout for three people.
-          example: true
-          default: false
-        enableFourLayout:
-          type: boolean
-          description: Enables layout for four people.
-          example: true
-          default: false
-        enableFitLayout:
-          type: boolean
-          description: Enables fit layout for multiple people.
-          example: false
-          default: false
-        fitLayoutCropRatio:
+        primary:
           type: string
-          description: Specifies the crop ratio for fit layout.
-          example: '4:3'
-          default: '4:3'
-        enableVisualHook:
-          type: boolean
-          description: Enables visual hook overlay, deprecated and should always be false.
-          example: false
-          default: false
-        enableWatermark:
-          type: boolean
-          description: Enables watermark overlay.
-          example: false
-          default: false
-        layoutAspectRatio:
-          description: Specifies the layout aspect ratio.
-          example: portrait
-          default: portrait
-          allOf:
-          - $ref: '#/components/schemas/LayoutAspectRatio'
-        enableBroll:
-          type: boolean
-          description: Enables B-Roll overlay on the video.
-          example: false
-          default: false
-        font:
-          description: Font settings for captions.
-          example:
-            color: '#ffffff'
-            style:
-            - '900'
-            family: Komika-axis
-            stroke:
-              enabled: false
-              color: '#000000FF'
-              width: 16
-            shadow:
-              enabled: true
-              color: '#FFFFFFFF'
-              x: 2
-              y: 2
-              blur: 16
-          allOf:
-          - $ref: '#/components/schemas/FontDto'
-        highlightColor:
-          description: Highlight colors for keywords in captions.
-          example:
-            primary: '#ff0000'
-            secondary: '#00ff00'
-          allOf:
-          - $ref: '#/components/schemas/HighlightColorDto'
-      required:
-      - enableAutoLayout
-      - enableScreenLayout
-      - enableCrop
-      - enableCaption
-      - enableUppercase
-      - enableHighlight
-      - enableEmoji
-      - enableFillLayout
-      - enableSplitLayout
-      - enableThreeLayout
-      - enableFourLayout
-      - enableFitLayout
-      - fitLayoutCropRatio
-      - enableVisualHook
-      - enableWatermark
-      - font
-      - highlightColor
-    LayoutAspectRatio:
-      type: string
-      enum:
-      - portrait
-      - landscape
-      - square
-    StrokeDto:
-      type: object
-      properties:
-        enabled:
-          type: boolean
-          description: Indicates if the stroke is enabled.
-          example: true
-        color:
+          description: Primary highlight color.
+          example: '#ff0000'
+        secondary:
           type: string
-          description: The color of the stroke.
-          example: '#000000FF'
-        width:
-          type: number
-          description: The width of the stroke.
-          example: 16
+          description: Secondary highlight color.
+          example: '#00ff00'
       required:
-      - enabled
-      - color
-      - width
+      - primary
+      - secondary
     ExportableClipRepresentation:
       type: object
       properties:
@@ -389,20 +245,12 @@ components:
       - updatedAt
       - productTier
       - renderPref
-    HighlightColorDto:
-      type: object
-      properties:
-        primary:
-          type: string
-          description: Primary highlight color.
-          example: '#ff0000'
-        secondary:
-          type: string
-          description: Secondary highlight color.
-          example: '#00ff00'
-      required:
-      - primary
-      - secondary
+    LayoutAspectRatio:
+      type: string
+      enum:
+      - portrait
+      - landscape
+      - square
     ShadowDto:
       type: object
       properties:
@@ -436,6 +284,158 @@ components:
       - x
       - y
       - blur
+    RenderPreferenceDto:
+      type: object
+      properties:
+        enableAutoLayout:
+          type: boolean
+          description: Enables automatic layout adjustment.
+          example: false
+          default: false
+        enableScreenLayout:
+          type: boolean
+          description: Enables screen layout for the video.
+          example: true
+          default: false
+        enableCrop:
+          type: boolean
+          description: Enables cropping of the video.
+          example: true
+          default: false
+        enableCaption:
+          type: boolean
+          description: Enables caption overlay on the video.
+          example: true
+          default: false
+        enableUppercase:
+          type: boolean
+          description: Converts all characters to uppercase in captions.
+          example: true
+          default: false
+        enableHighlight:
+          type: boolean
+          description: Enables keyword highlighting in captions.
+          example: true
+          default: false
+        enableEmoji:
+          type: boolean
+          description: Enables emoji overlay on the video.
+          example: true
+          default: false
+        enableFillLayout:
+          type: boolean
+          description: Enables fill layout for a single person.
+          example: false
+          default: false
+        enableSplitLayout:
+          type: boolean
+          description: Enables split layout for two people.
+          example: true
+          default: false
+        enableThreeLayout:
+          type: boolean
+          description: Enables layout for three people.
+          example: true
+          default: false
+        enableFourLayout:
+          type: boolean
+          description: Enables layout for four people.
+          example: true
+          default: false
+        enableFitLayout:
+          type: boolean
+          description: Enables fit layout for multiple people.
+          example: false
+          default: false
+        fitLayoutCropRatio:
+          type: string
+          description: Specifies the crop ratio for fit layout.
+          example: '4:3'
+          default: '4:3'
+        enableVisualHook:
+          type: boolean
+          description: Enables visual hook overlay, deprecated and should always be false.
+          example: false
+          default: false
+        enableWatermark:
+          type: boolean
+          description: Enables watermark overlay.
+          example: false
+          default: false
+        layoutAspectRatio:
+          description: Specifies the layout aspect ratio.
+          example: portrait
+          default: portrait
+          allOf:
+          - $ref: '#/components/schemas/LayoutAspectRatio'
+        enableBroll:
+          type: boolean
+          description: Enables B-Roll overlay on the video.
+          example: false
+          default: false
+        font:
+          description: Font settings for captions.
+          example:
+            color: '#ffffff'
+            style:
+            - '900'
+            family: Komika-axis
+            stroke:
+              enabled: false
+              color: '#000000FF'
+              width: 16
+            shadow:
+              enabled: true
+              color: '#FFFFFFFF'
+              x: 2
+              y: 2
+              blur: 16
+          allOf:
+          - $ref: '#/components/schemas/FontDto'
+        highlightColor:
+          description: Highlight colors for keywords in captions.
+          example:
+            primary: '#ff0000'
+            secondary: '#00ff00'
+          allOf:
+          - $ref: '#/components/schemas/HighlightColorDto'
+      required:
+      - enableAutoLayout
+      - enableScreenLayout
+      - enableCrop
+      - enableCaption
+      - enableUppercase
+      - enableHighlight
+      - enableEmoji
+      - enableFillLayout
+      - enableSplitLayout
+      - enableThreeLayout
+      - enableFourLayout
+      - enableFitLayout
+      - fitLayoutCropRatio
+      - enableVisualHook
+      - enableWatermark
+      - font
+      - highlightColor
+    StrokeDto:
+      type: object
+      properties:
+        enabled:
+          type: boolean
+          description: Indicates if the stroke is enabled.
+          example: true
+        color:
+          type: string
+          description: The color of the stroke.
+          example: '#000000FF'
+        width:
+          type: number
+          description: The width of the stroke.
+          example: 16
+      required:
+      - enabled
+      - color
+      - width
     FontDto:
       type: object
       properties:
