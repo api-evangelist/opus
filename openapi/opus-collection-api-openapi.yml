@@ -188,13 +188,6 @@ paths:
       x-summary-source: derived
 components:
   schemas:
-    SuccessResponse:
-      type: object
-      properties:
-        data:
-          type: object
-      required:
-      - data
     CreateCollectionCmd:
       type: object
       properties:
@@ -226,6 +219,16 @@ components:
       required:
       - collectionId
       - collectionName
+    CollectionExportedDto:
+      type: object
+      properties:
+        contentList:
+          description: A list of download links for all the clips in that collection.
+          type: array
+          items:
+            $ref: '#/components/schemas/ContentExportedDto'
+      required:
+      - contentList
     ContentExportedDto:
       type: object
       properties:
@@ -240,16 +243,13 @@ components:
       required:
       - contentId
       - uriForExport
-    CollectionExportedDto:
+    SuccessResponse:
       type: object
       properties:
-        contentList:
-          description: A list of download links for all the clips in that collection.
-          type: array
-          items:
-            $ref: '#/components/schemas/ContentExportedDto'
+        data:
+          type: object
       required:
-      - contentList
+      - data
     EmptyDto:
       type: object
       properties: {}

@@ -67,6 +67,20 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CreateCollectionContentCmd:
+      type: object
+      properties:
+        collectionId:
+          type: string
+          description: The collectionID of the collection that you want to add the clip to.
+          example: xmAwhhFi0IJt
+        contentId:
+          type: string
+          description: 'The ID of the clip that you want to add to the collection. FullClipId: {projectId}.{curationId}'
+          example: P0000000demo.CUexample2
+      required:
+      - collectionId
+      - contentId
     CollectionContentDto:
       type: object
       properties:
@@ -99,20 +113,6 @@ components:
           example: P0000000demo.CUexample2
       required:
       - q
-      - collectionId
-      - contentId
-    CreateCollectionContentCmd:
-      type: object
-      properties:
-        collectionId:
-          type: string
-          description: The collectionID of the collection that you want to add the clip to.
-          example: xmAwhhFi0IJt
-        contentId:
-          type: string
-          description: 'The ID of the clip that you want to add to the collection. FullClipId: {projectId}.{curationId}'
-          example: P0000000demo.CUexample2
-      required:
       - collectionId
       - contentId
     SuccessResponse:

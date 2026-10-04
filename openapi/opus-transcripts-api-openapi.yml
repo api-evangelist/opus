@@ -56,6 +56,30 @@ components:
             - 'null'
             items:
               $ref: '#/components/schemas/TranscriptExportParagraph'
+    TranscriptExportWord:
+      type: object
+      description: A single word with start/end timings and optional filler-word flag.
+      properties:
+        word:
+          type: string
+          description: The word.
+          example: hello
+        start:
+          type: number
+          description: Start time in seconds.
+          example: 0.12
+        end:
+          type: number
+          description: End time in seconds.
+          example: 0.48
+        isFillerWord:
+          type: boolean
+          description: True if the word is a filler (um, uh, ...).
+          example: false
+      required:
+      - word
+      - start
+      - end
     TranscriptExportParagraph:
       type: object
       description: A paragraph of the transcript with timing and optional speaker attribution.
@@ -91,30 +115,6 @@ components:
       - end
       - text
       - words
-    TranscriptExportWord:
-      type: object
-      description: A single word with start/end timings and optional filler-word flag.
-      properties:
-        word:
-          type: string
-          description: The word.
-          example: hello
-        start:
-          type: number
-          description: Start time in seconds.
-          example: 0.12
-        end:
-          type: number
-          description: End time in seconds.
-          example: 0.48
-        isFillerWord:
-          type: boolean
-          description: True if the word is a filler (um, uh, ...).
-          example: false
-      required:
-      - word
-      - start
-      - end
   securitySchemes:
     bearer:
       scheme: bearer

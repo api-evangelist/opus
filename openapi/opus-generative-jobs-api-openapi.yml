@@ -58,16 +58,6 @@ paths:
       - generative-jobs
 components:
   schemas:
-    GenerativeJobError:
-      type: object
-      description: User-facing error info for a failed generative job.
-      properties:
-        type:
-          type: string
-          description: Error type identifier.
-        message:
-          type: string
-          description: Human-readable error message.
     GenerativeJobResult:
       type: object
       description: Result payload. For `thumbnail` jobs, includes `generatedThumbnailUris`.
@@ -104,6 +94,33 @@ components:
       required:
       - jobType
       - sourceUri
+    GenerativeJobProgress:
+      type: object
+      description: Progress snapshot for an in-flight or completed generative job.
+      properties:
+        status:
+          type: string
+          enum:
+          - QUEUED
+          - PROCESSING
+          - CONCLUDED
+          - FAILED
+          - UNKNOWN
+        percentage:
+          type: number
+          description: Coarse progress between 0 and 1.
+          minimum: 0
+          maximum: 1
+    GenerativeJobError:
+      type: object
+      description: User-facing error info for a failed generative job.
+      properties:
+        type:
+          type: string
+          description: Error type identifier.
+        message:
+          type: string
+          description: Human-readable error message.
     GenerativeJobStatusResponse:
       type: object
       properties:
@@ -127,23 +144,6 @@ components:
           description: Present when `status` is `FAILED` or when result extraction failed for a `CONCLUDED` job.
       required:
       - status
-    GenerativeJobProgress:
-      type: object
-      description: Progress snapshot for an in-flight or completed generative job.
-      properties:
-        status:
-          type: string
-          enum:
-          - QUEUED
-          - PROCESSING
-          - CONCLUDED
-          - FAILED
-          - UNKNOWN
-        percentage:
-          type: number
-          description: Coarse progress between 0 and 1.
-          minimum: 0
-          maximum: 1
     GenerativeJobCreateResponse:
       type: object
       properties:

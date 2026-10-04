@@ -58,6 +58,23 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CensorJobStatusResponse:
+      type: object
+      properties:
+        status:
+          type: string
+          enum:
+          - CONCLUDED
+          - FAILED
+          - PROCESSING
+          - QUEUED
+          - UNKNOWN
+          description: The status of the censor job.
+        error:
+          type: string
+          description: Error message.
+      required:
+      - status
     CensorJobRequest:
       type: object
       properties:
@@ -78,30 +95,6 @@ components:
       required:
       - projectId
       - clipId
-    CensorJobStatusResponse:
-      type: object
-      properties:
-        status:
-          type: string
-          enum:
-          - CONCLUDED
-          - FAILED
-          - PROCESSING
-          - QUEUED
-          - UNKNOWN
-          description: The status of the censor job.
-        error:
-          type: string
-          description: Error message.
-      required:
-      - status
-    CensorJobOptions:
-      type: object
-      properties:
-        beepSound:
-          type: boolean
-          description: Use beep sound instead of the censored words.
-          example: true
     CensorJobResponse:
       type: object
       properties:
@@ -111,6 +104,13 @@ components:
         message:
           type: string
           description: A message indicating the result of the job creation.
+    CensorJobOptions:
+      type: object
+      properties:
+        beepSound:
+          type: boolean
+          description: Use beep sound instead of the censored words.
+          example: true
   securitySchemes:
     bearer:
       scheme: bearer
