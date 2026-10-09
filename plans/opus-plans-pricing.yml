@@ -1,0 +1,89 @@
+# Pricing transcribed from the provider's own page — see provenance. Numbers are quoted, not derived.
+generated: '2026-10-07'
+method: searched
+source: https://www.opus.pro/pricing
+sources:
+- https://www.opus.pro/pricing
+provenance:
+  tool: all/0-working/economics/harvest_pricing.py
+  run: 20261007T104522
+  grounding: every price_text was found verbatim in the fetched page text
+audience: business-product
+pricing_basis: tiered-subscription
+delivery:
+  delivery: managed
+  method: page
+  read: '2026-10-07'
+  managed_tier: Starter
+published: true
+note: OpusClip consumer/business video tool pricing with monthly and yearly tiers; Business tier is custom.
+plan_count: 4
+currency: USD
+plans:
+- name: Free
+  price_text: $0 USD /mo
+  price: 0
+  currency: USD
+  period: month
+  included_quota: 60 credits per month; Up to 1080p rendered clips; has watermark
+- name: Starter
+  price_text: $ 15 USD /mo
+  price: 15
+  currency: USD
+  period: month
+  included_quota: 150 credits per month
+- name: Pro
+  price_text: $ 29 USD
+  price: 29
+  currency: USD
+  period: month
+  included_quota: 300 credits per month; $ 174 billed annually ($ 14.5 USD /mo); team workspace with 2
+    seats
+  overage: On-demand credit top-ups; packs available
+- name: Business
+  price_text: Custom pricing and packs
+  period: none
+  included_quota: Everything in Pro plus API & custom integrations
+rate_limit_statements:
+- AI image B-Roll (50 clips/day)
+- AI Voice-over 20 per day
+- Speech enhancement 10 times/day
+- Local video (Up to 30GB per video)
+- Zapier integration up to 300 credits/mo
+x-canonical:
+  generated: '2026-10-08'
+  vocabulary: all/0-working/economics/plans-canonical.yml
+  models:
+  - free
+  - hybrid
+  - subscription
+  units: []
+  plans:
+  - name: Free
+    access: other
+    model: free
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Starter
+    access: other
+    model: subscription
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Pro
+    access: other
+    model: hybrid
+    model_how: derived
+    units: []
+    periods:
+    - month
+  - name: Business
+    access: other
+    model: unstated
+    model_how: derived
+    units: []
+    periods:
+    - none
