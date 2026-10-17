@@ -58,6 +58,22 @@ paths:
       x-summary-source: derived
 components:
   schemas:
+    CensorJobOptions:
+      type: object
+      properties:
+        beepSound:
+          type: boolean
+          description: Use beep sound instead of the censored words.
+          example: true
+    CensorJobResponse:
+      type: object
+      properties:
+        jobId:
+          type: string
+          description: If the job was created successfully, this will contain the job ID.
+        message:
+          type: string
+          description: A message indicating the result of the job creation.
     CensorJobStatusResponse:
       type: object
       properties:
@@ -95,22 +111,6 @@ components:
       required:
       - projectId
       - clipId
-    CensorJobResponse:
-      type: object
-      properties:
-        jobId:
-          type: string
-          description: If the job was created successfully, this will contain the job ID.
-        message:
-          type: string
-          description: A message indicating the result of the job creation.
-    CensorJobOptions:
-      type: object
-      properties:
-        beepSound:
-          type: boolean
-          description: Use beep sound instead of the censored words.
-          example: true
   securitySchemes:
     bearer:
       scheme: bearer

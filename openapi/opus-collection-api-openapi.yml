@@ -197,6 +197,20 @@ components:
           example: Opus demo clips
       required:
       - collectionName
+    ContentExportedDto:
+      type: object
+      properties:
+        contentId:
+          type: string
+          description: Content ID
+          example: P0000000demo.CUexample2
+        uriForExport:
+          type: string
+          description: Export url
+          example: https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436
+      required:
+      - contentId
+      - uriForExport
     CollectionDto:
       type: object
       properties:
@@ -229,20 +243,9 @@ components:
             $ref: '#/components/schemas/ContentExportedDto'
       required:
       - contentList
-    ContentExportedDto:
+    EmptyDto:
       type: object
-      properties:
-        contentId:
-          type: string
-          description: Content ID
-          example: P0000000demo.CUexample2
-        uriForExport:
-          type: string
-          description: Export url
-          example: https://ext.cdn.opus.pro/media/org_Example00000001/google-oauth2|100000000000000000001/P0000000demo/c.CUexample3/VIDEO_FILE.mp4?v=1745586132350436
-      required:
-      - contentId
-      - uriForExport
+      properties: {}
     SuccessResponse:
       type: object
       properties:
@@ -250,9 +253,6 @@ components:
           type: object
       required:
       - data
-    EmptyDto:
-      type: object
-      properties: {}
   securitySchemes:
     bearer:
       scheme: bearer
